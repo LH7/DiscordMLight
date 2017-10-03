@@ -1,0 +1,489 @@
+//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.17"}*//
+
+/**
+ * Пустышка для raw импорта css файла
+ * первый мета тег для беттер дискорда его портит
+ */
+@media null { }
+
+/**
+ * Автоскрытие панелей
+ */
+@media screen and (max-width: 800px) {
+    .channels-wrap, .guilds-wrapper, .channel-members-wrap{
+        display: none !important;
+    }
+}
+@media screen and (max-width: 440px) {
+    .header-toolbar{
+        display: none;
+    }
+}
+
+/**
+ * Force compact on hotkey
+ */
+body.compact-mode .channels-wrap,
+body.compact-mode .guilds-wrapper,
+body.compact-mode .channel-members-wrap{
+    display: none !important;
+}
+
+/**
+ * Общие стили для компактной темы
+ */
+/* убирание тупых отступов по краям  */
+.message-group.compact .message > .message-text > .markup {
+    text-indent: -70px;
+    padding-left: 35px;
+}
+.message-group.compact .accessory {
+    padding-left: 35px;
+}
+/* скрытие повторов ников */
+.message-group.compact .message:not(.first) > .message-text > .markup > .username-wrapper {
+    display: none;
+}
+.message-group.compact .timestamp {
+    line-height: inherit;
+}
+.message-group.compact {
+    margin-left: 5px;
+    border-bottom: 1px solid #fbfbfb;
+}
+.message-group.compact .username-wrapper > .bot-tag {
+    font-size: 6pt !important;
+}
+
+/**
+ * Dark theme, full (единственный кусок темы для темной)
+ * Основной чатик
+ */
+.theme-dark .message-group * {
+    font-family: Tahoma, sans-serif;
+}
+.theme-dark .message-group .message-text>*{
+    font-size: 9pt !important;
+    color: #c7c5c5 !important;
+}
+.theme-dark .message-group .username-wrapper *{
+    font-size: 10pt !important;
+}
+.theme-dark .message-group .username-wrapper .user-name,
+.theme-dark .message-group .message-text .mention {
+    font-weight: bold !important;
+}
+.theme-dark .message-group:not(.compact) {
+    padding: 5px;
+    margin: 0 5px
+}
+.theme-dark .message-group:not(.compact) .avatar-large{
+    display: none;  /* закомментировать для показа аватаров */
+    border-radius: 0 !important;
+    margin-right: 5px !important;
+    margin-top: 0 !important;
+    background-size: 20px 20px;
+    width: 20px;
+    height: 20px;
+}
+.theme-dark .message-group .timestamp{
+    color: #a7a7a7 !important;
+}
+.theme-dark .message-group:not(.compact):not(:hover) .timestamp{
+    display: none;
+}
+.theme-dark .chat form{
+    margin: 0 10px;
+    box-shadow: none;
+}
+/* инпут, и хайд печатающих */
+.theme-dark .channel-text-area-default{
+    margin: 8px 0
+}
+.theme-dark .channel-text-area-default + div.typing{
+    display: none !important;
+}
+.theme-dark .message-group:not(.compact) .edit-message {
+    margin: 6px -26px 0 0;
+}
+
+/**
+ * Далее вся портянка для светлой темы
+ * Многие селекторы очень наркоманские из-за хешей
+ */
+
+/**
+ * Темный круг вокруг аватарки, для белых, чтобы не сливались с фоном
+ */
+.theme-light .avatar-small{
+    box-shadow: 0 0 1px 1px #EEE;
+}
+/**
+ * кружок статуса аватара
+ */
+.theme-light .avatar-small .status{
+    border: 2px solid #FFF;
+}
+
+/**
+ * Список юзеров (справа)
+ * уменьшена ширина
+ */
+.theme-light .channel-members {
+    background-color: #FFF;
+    border-left: 1px solid #F5F5F5;
+}
+.theme-light .channel-members .member{
+    padding: 5px 10px;
+}
+.theme-light .channel-members-wrap {
+    min-width: 200px;
+}
+
+/**
+ * Light theme, full
+ * Основной чатик
+ */
+.theme-light .message-group *{
+    font-family: Tahoma, sans-serif;
+}
+.theme-light .message-group .message-text>*{
+    font-size: 9pt !important;
+    color: black !important;
+}
+.theme-light .message-group .username-wrapper *{
+    font-size: 10pt !important;
+}
+.theme-light .message-group .username-wrapper .user-name,
+.theme-light .message-group .message-text .mention {
+    font-weight: bold !important;
+}
+.theme-light .message-group:not(.compact) {
+    padding: 5px;
+    margin: 0 5px
+}
+.theme-light .message-group:not(.compact) .avatar-large{
+    display: none; /* закомментировать для показа аватаров */
+    border-radius: 0 !important;
+    margin-right: 5px !important;
+    margin-top: 0 !important;
+    background-size: 20px 20px;
+    width: 20px;
+    height: 20px;
+}
+.theme-light .message-group .timestamp{
+    color: #c5c5c5 !important;
+}
+.theme-light .message-group:not(.compact):not(:hover) .timestamp{
+    display: none;
+}
+.theme-light .chat form{
+    margin: 0 10px;
+    box-shadow: none;
+}
+/* инпут, и хайд печатающих */
+.theme-light .channel-text-area-default{
+    margin: 8px 0
+}
+.theme-light .channel-text-area-default + div.typing{
+    display: none !important;
+}
+.theme-light .message-group:not(.compact) .edit-message {
+    margin: 6px -26px 0 0;
+}
+
+/**
+ * Панель комнат
+ */
+.theme-light .channels-wrap{
+    width: 220px;
+    background-color: #ffffff;
+}
+.theme-light .channels-wrap{
+    font-family: Tahoma, sans-serif !important;
+    border-right: 1px solid #EEE;
+}
+.theme-light .channels-wrap>div:last-child{
+    background-color: #ffffff;
+    border-top: 1px solid #EEE;
+}
+
+/* ...наркомааааания, в гробу я видал такие селекторы */
+
+/**
+ * Ник и описание акка
+ */
+.theme-light div[class^='accountDetails'] * {
+    color: #333;
+}
+
+/**
+ * Скроллбары
+ */
+/* лево-право */
+.theme-light div[class^='scrollerWrap-'] div[class^='scroller-']::-webkit-scrollbar-thumb {
+    background-color: rgba(140, 140, 140, 0.27);
+}
+/* сообщения */
+.theme-light .messages-wrapper>.scroller-wrap>.scroller::-webkit-scrollbar-thumb {
+    background-color: #d1d1d2;
+}
+
+/**
+ * Кнопки настройки и выключения звука
+ */
+.theme-light .channels-wrap>div:last-child>div:last-child{
+    filter: drop-shadow(0px 0px 0px #777);
+}
+.theme-light .channels-wrap>div:last-child>div:last-child div:hover,
+.theme-light .channels-wrap>div:last-child>div:last-child button:hover{
+    background-color: transparent;
+    filter: drop-shadow(0px 0px 1px #FAFAFA);
+}
+
+/**
+ * Заголовок Сервера
+ */
+.theme-light header,
+.theme-light .chat>.title-wrap
+{
+    border-bottom: 1px solid #EEE;
+    box-shadow: 0 0 0 #EEE;
+}
+.theme-light .channels-wrap>div:first-child{
+    background-color: #FFF;
+}
+.theme-light .channels-wrap>div:first-child header span[class^="name-"]{
+    color: #444;
+    font-weight: bold;
+}
+.theme-light .channels-wrap>div:first-child header:hover{
+    background-color: #F5F5F5;
+}
+
+/**
+ * Айтемы комнат
+ */
+.theme-light .channels-wrap > div > div[class^="scrollerWrap-"] > div[class^="scroller-"] div[class^="contentSelected"],
+.theme-light .channels-wrap > div > div[class^="scrollerWrap-"] > div[class^="scroller-"] div[class^="contentHovered"]{
+    background-color: #F1F1F1;
+}
+.theme-light .channels-wrap > div > div[class^="scrollerWrap-"] > div[class^="scroller-"] div[class^="nameSelected"],
+.theme-light .channels-wrap > div > div[class^="scrollerWrap-"] > div[class^="scroller-"] div[draggable] div[class^="nameHovered"] {
+    color: #333;
+}
+.theme-light .channels-wrap > div > div[class^="scrollerWrap-"] > div[class^="scroller-"] div[class^="nameDefault"] {
+    color: #777;
+}
+.theme-light .channels-wrap > div > div[class^="scrollerWrap-"] > div[class^="scroller-"] div[class^="nameUnread"] {
+    color: #000;
+    font-weight: bold;
+}
+.theme-light .channels-wrap > div > div[class^="scrollerWrap-"] > div[class^="scroller-"] div:not([draggable]) div[class*='justifyStart']>svg{
+    filter: drop-shadow(1px 1px 0px #777);
+}
+.theme-light .channels-wrap > div > div[class^="scrollerWrap-"] > div[class^="scroller-"] div[class^="nameDefault"] {
+    color: #777;
+}
+.theme-light .channels-wrap > div > div[class^="scrollerWrap-"] > div[class^="scroller-"] div[class^="contentSelected"] div[class^='iconSpacing']>svg,
+.theme-light .channels-wrap > div > div[class^="scrollerWrap-"] > div[class^="scroller-"] div[class^="contentHovered"] div[class^='iconSpacing']>svg,
+.theme-light .channels-wrap > div > div[class^="scrollerWrap-"] > div[class^="scroller-"] div[class^="contentDefault"] div[class^='iconSpacing']>svg{
+    filter: drop-shadow(1px 1px 0px #777);
+}
+
+/**
+ * бекграунд списка комнат
+ */
+.theme-light .channels-wrap > div > div[class^="scrollerWrap-"] > div[class^="scroller-"] {
+    background-color: #FFF !important;
+}
+
+
+/**
+ * Боковая панель, саамая левая с выбором сервера
+ */
+.theme-light .guilds-wrapper *{
+    font-family: Tahoma, sans-serif !important;
+}
+.theme-light .guilds-wrapper {
+    background: #FFF;
+    box-shadow: -1px 0 0 0 #EEE inset;
+}
+.theme-light .guilds-wrapper .guilds .friends-online {
+    font-size: 10px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: rgba(0,0,0,0.5);
+}
+.theme-light .guilds-wrapper .guild-separator:after {
+    position: absolute;
+    top: 0;
+    left: 20%;
+    right: 20%;
+    content: " ";
+    height: 1px;
+    background: #dee1e6;
+}
+.theme-light .guilds-wrapper .guilds .guild.selected:before {
+    height: 40px;
+    border-radius: 20px;
+    background: #BBB;
+    margin-top: -20px;
+}
+.theme-light .guilds-wrapper .guilds-add {
+    border-radius: 50%;
+    background: #FFF;
+    color: #c5c5c5;
+    border: 1px dashed #cacbcc;
+    font-size: 17px;
+}
+.theme-light .guilds-wrapper .guilds-add:hover {
+    color: #777777;
+    border-color: #7d7b7b;
+}
+
+/**
+ *  Инпут поиска в контактах
+ */
+.theme-light .search-bar-inner ::-webkit-input-placeholder {
+    color: #c5c5c5 !important;
+}
+.theme-light .search-bar-inner {
+    background-color: rgba(153,170,181,.1) !important;
+    border: 1px solid transparent;
+}
+.theme-light .private-channels .search-bar {
+    background-color: #FFF;
+    border: 1px solid transparent;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+/**
+ * Список контактов
+ */
+.theme-light .private-channels *{
+    font-family: Tahoma, sans-serif !important;
+}
+.theme-light .private-channels header {
+    font-size: 12px;
+    color: #333;
+    opacity: 0.7;
+}
+.theme-light .private-channels .channel *{
+    color: #777;
+}
+.theme-light .private-channels .channel:hover *,
+.theme-light .private-channels .channel.selected *{
+    color: #333;
+}
+.theme-light .private-channels .channel .channel-name {
+    opacity: 1;
+}
+.theme-light .private-channels .channel:hover a,
+.theme-light .private-channels .channel.selected a {
+    background: #F1F1F1;
+}
+
+/**
+ * Фикс кругов и бордеров аватаров/статусов при наведении/выделении
+ */
+.theme-light .private-channels .channel:hover a .avatar-small .status,
+.theme-light .private-channels .channel.selected a .avatar-small .status{
+    border: 2px solid #F1F1F1;
+}
+.theme-light .private-channels .channel:hover .avatar-small,
+.theme-light .private-channels .channel.selected .avatar-small{
+    box-shadow: none;
+}
+
+/**
+ * better discord, список плагинов, тем
+ */
+.theme-light .ui-standard-sidebar-view .bda-slist li{
+    background: #f3f3f3;
+    border-bottom: 1px solid #e4e4e4;
+}
+.theme-light .ui-standard-sidebar-view .bda-slist li:last-child{
+    background: #f3f3f3;
+    border-bottom: 1px solid transparent;
+}
+.theme-light .ui-standard-sidebar-view .bda-slist li:nth-child(odd) {
+    background: #f5f5f5;
+    border-top: 1px solid transparent;
+}
+.theme-light .ui-standard-sidebar-view .bda-slist .bda-description{
+    border-top: 1px solid #dcdcdc;
+}
+/* Настройки */
+.theme-light #bd-settings-sidebar .ui-tab-bar-item:not(.selected) {
+    color: #72767d;
+}
+.theme-light #bd-settings-sidebar .ui-tab-bar-header {
+    color: #b9bbbe;
+    font-weight: bold;
+}
+.theme-light #bd-settings-sidebar .ui-tab-bar-item:hover:not(.selected) {
+    color: #4f545c;
+    background-color: rgba(79,84,92,.1);
+}
+/* ui */
+.theme-light #bd-settingspane-container h2.ui-form-title {
+    color: #72767d;
+}
+.theme-light #bd-settingspane-container .ui-switch-item h3 {
+    color: #81858b;
+}
+.theme-light #bd-settingspane-container .ui-switch-item .style-description {
+    color: #bec5d2;
+}
+
+
+/**
+ * Возврат шрифта в блоке кода
+ */
+code, code *{
+    font-family: Menlo, Consolas, Monaco, monospace !important;
+    font-size: 12px    !important;
+    line-height: 14px  !important;
+}
+
+
+/**
+ * Плагин цитат
+ */
+
+/* Возврат шрифта */
+.message-group:not(.compact) .citar-btn {
+    font-family: "Segoe MDL2 Assets", "Whitney" !important;
+}
+
+/* кнопка цитаты */
+.theme-light .message-group:not(.compact) .citar-btn {
+    background-color: #ebebeb;
+}
+.theme-dark .message-group:not(.compact) .citar-btn {
+    background-color: #2f3136;
+}
+
+/* полоса цитаты */
+.theme-light .message-group:not(.compact) .embed-color-pill {
+    background-color: #f1f1f1 !important;
+}
+
+
+/**
+ * Web версия
+ */
+/* разделитель перед кнопкой загрузки */
+.theme-light .guilds-wrapper .btn-download-apps:after {
+    background-color: #dee1e6;
+    height: 1px;
+}
+.theme-light .guilds-wrapper .btn-download-apps {
+    color: #BBB;
+}
+.theme-light .download-app-fill {
+    fill: #FFF;
+    stroke: #BBB;
+}
