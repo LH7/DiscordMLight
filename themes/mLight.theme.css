@@ -1,4 +1,4 @@
-//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.17"}*//
+//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.18"}*//
 
 /**
  * Пустышка для raw импорта css файла
@@ -9,7 +9,7 @@
 /**
  * Автоскрытие панелей
  */
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 600px) {
     .channels-wrap, .guilds-wrapper, .channel-members-wrap{
         display: none !important;
     }
@@ -17,6 +17,64 @@
 @media screen and (max-width: 440px) {
     .header-toolbar{
         display: none;
+    }
+}
+/**
+ * Автоскрытие панели комнат если мелкая ширина
+ */
+@media screen and (max-width: 900px) {
+    .guilds-wrapper{
+        z-index: 999;
+    }
+    .guilds-wrapper:hover + .channels-wrap{
+        transform: translateX(0);
+        width: 220px !important;
+    }
+    .channels-wrap{
+        transition: transform 0.2s 0.3s, width 0.2s 0.3s;
+    }
+    .guilds-wrapper + .channels-wrap{
+        transform: translateX(-100%);
+        width: 0;
+    }
+    .channels-wrap:hover{
+        transform: translateX(0);
+        width: 220px !important;
+    }
+}
+
+/**
+ * Автоуменьшение панели участников если ширина мелкая
+ */
+@media screen and (max-width: 1100px) {
+    .channel-members-wrap{
+        min-width: 60px !important;
+        max-width: 60px !important;
+    }
+    .channel-members-wrap,
+    .channel-members{
+        transition: min-width 0.2s 0.3s, max-width 0.2s 0.3s;
+    }
+    .channel-members{
+        min-width: 70px !important;
+        max-width: 70px !important;
+    }
+    .channel-members-wrap:hover,
+    .channel-members:hover{
+        min-width: 200px !important;
+        max-width: 200px !important;
+    }
+    .channel-members .member-inner{
+        transition: opacity 0.3s 0.3s
+    }
+    .channel-members:not(:hover) .member-inner{
+        opacity: 0;
+    }
+    .channel-members .old-h2{
+        margin: 7px 0;
+        padding: 5px;
+        font-family: Tahoma, sans-serif;
+        font-size: 10px;
     }
 }
 
@@ -27,6 +85,31 @@ body.compact-mode .channels-wrap,
 body.compact-mode .guilds-wrapper,
 body.compact-mode .channel-members-wrap{
     display: none !important;
+}
+
+/**
+ * Аватарки чатика, уютной темы
+ */
+.message-group:not(.compact) .avatar-large {
+    display: block;
+    border-radius: 5px;
+    margin-right: 8px;
+    margin-top: 4px;
+    background-size: 30px 30px;
+    width: 30px;
+    height: 30px;
+}
+@media screen and (max-width: 1300px) {
+    .message-group:not(.compact) .avatar-large {
+        display: none;
+    }
+}
+
+/**
+ * Мелкие аватарки
+ */
+.avatar-small{
+    border-radius: 5px;
 }
 
 /**
@@ -77,15 +160,6 @@ body.compact-mode .channel-members-wrap{
     padding: 5px;
     margin: 0 5px
 }
-.theme-dark .message-group:not(.compact) .avatar-large{
-    display: none;  /* закомментировать для показа аватаров */
-    border-radius: 0 !important;
-    margin-right: 5px !important;
-    margin-top: 0 !important;
-    background-size: 20px 20px;
-    width: 20px;
-    height: 20px;
-}
 .theme-dark .message-group .timestamp{
     color: #a7a7a7 !important;
 }
@@ -133,10 +207,10 @@ body.compact-mode .channel-members-wrap{
     background-color: #FFF;
     border-left: 1px solid #F5F5F5;
 }
-.theme-light .channel-members .member{
+.channel-members .member{
     padding: 5px 10px;
 }
-.theme-light .channel-members-wrap {
+.channel-members-wrap {
     min-width: 200px;
 }
 
@@ -162,15 +236,6 @@ body.compact-mode .channel-members-wrap{
     padding: 5px;
     margin: 0 5px
 }
-.theme-light .message-group:not(.compact) .avatar-large{
-    display: none; /* закомментировать для показа аватаров */
-    border-radius: 0 !important;
-    margin-right: 5px !important;
-    margin-top: 0 !important;
-    background-size: 20px 20px;
-    width: 20px;
-    height: 20px;
-}
 .theme-light .message-group .timestamp{
     color: #c5c5c5 !important;
 }
@@ -195,8 +260,10 @@ body.compact-mode .channel-members-wrap{
 /**
  * Панель комнат
  */
-.theme-light .channels-wrap{
+.channels-wrap {
     width: 220px;
+}
+.theme-light .channels-wrap{
     background-color: #ffffff;
 }
 .theme-light .channels-wrap{
