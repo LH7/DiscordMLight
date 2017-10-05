@@ -1,4 +1,4 @@
-//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.18"}*//
+//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.19"}*//
 
 /**
  * Пустышка для raw импорта css файла
@@ -24,45 +24,46 @@
  */
 @media screen and (max-width: 900px) {
     .guilds-wrapper{
-        z-index: 999;
-    }
-    .guilds-wrapper:hover + .channels-wrap{
-        transform: translateX(0);
-        width: 220px !important;
+        z-index: 201;
     }
     .channels-wrap{
-        transition: transform 0.2s 0.3s, width 0.2s 0.3s;
+        z-index: 200;
+        position: fixed;
+        left: calc(70px - 100%);
+        height: 100%;
     }
-    .guilds-wrapper + .channels-wrap{
-        transform: translateX(-100%);
-        width: 0;
+    .guilds-wrapper:hover + .channels-wrap{
+        left: 70px;
+    }
+    .channels-wrap{
+        transition: left 0.5s 0.3s;
     }
     .channels-wrap:hover{
-        transform: translateX(0);
-        width: 220px !important;
+        left: 70px;
     }
 }
 
 /**
  * Автоуменьшение панели участников если ширина мелкая
  */
+@media screen and (max-width: 1100px) and (min-width: 601px){
+    body:not(.compact-mode) .messages-wrapper {
+        margin-right: 60px;
+    }
+    body:not(.compact-mode) .chat form {
+        margin-right: 65px !important;;
+    }
+}
 @media screen and (max-width: 1100px) {
     .channel-members-wrap{
-        min-width: 60px !important;
-        max-width: 60px !important;
+        position: fixed;
+        right: 0;
+        height: 100%;
+        transform: translateX(calc(100% - 60px));
+        transition: transform 0.2s 0.3s;
     }
-    .channel-members-wrap,
-    .channel-members{
-        transition: min-width 0.2s 0.3s, max-width 0.2s 0.3s;
-    }
-    .channel-members{
-        min-width: 70px !important;
-        max-width: 70px !important;
-    }
-    .channel-members-wrap:hover,
-    .channel-members:hover{
-        min-width: 200px !important;
-        max-width: 200px !important;
+    .channel-members-wrap:hover{
+        transform: translateX(0);
     }
     .channel-members .member-inner{
         transition: opacity 0.3s 0.3s
@@ -71,10 +72,16 @@
         opacity: 0;
     }
     .channel-members .old-h2{
-        margin: 7px 0;
-        padding: 5px;
+        margin: 7px 0 !important;
+        padding: 5px !important;
         font-family: Tahoma, sans-serif;
         font-size: 10px;
+        max-width: 60px;
+        transition: max-width 0.2s 0.2s;
+    }
+    .channel-members:hover .old-h2{
+        transition-delay: 0.3s;
+        max-width: 200px;
     }
 }
 
@@ -85,6 +92,14 @@ body.compact-mode .channels-wrap,
 body.compact-mode .guilds-wrapper,
 body.compact-mode .channel-members-wrap{
     display: none !important;
+}
+
+/**
+ * Роли участников
+ */
+.channel-members .old-h2{
+    margin: 15px 5px 10px 5px;
+    padding: 0;
 }
 
 /**
