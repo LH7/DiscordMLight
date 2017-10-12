@@ -1,4 +1,4 @@
-//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.19"}*//
+//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.20"}*//
 
 /**
  * Пустышка для raw импорта css файла
@@ -47,11 +47,11 @@
  * Автоуменьшение панели участников если ширина мелкая
  */
 @media screen and (max-width: 1100px) and (min-width: 601px){
-    body:not(.compact-mode) .messages-wrapper {
+    body:not(.compact-mode) div:not(:last-child) > .messages-wrapper {
         margin-right: 60px;
     }
-    body:not(.compact-mode) .chat form {
-        margin-right: 65px !important;;
+    body:not(.compact-mode) .chat > div > div:not(:last-child) > form {
+        margin-right: 65px !important;
     }
 }
 @media screen and (max-width: 1100px) {
@@ -202,6 +202,13 @@ body.compact-mode .channel-members-wrap{
  */
 
 /**
+ * Всплывашки
+ */
+.theme-light .tooltips *{
+    color: #FFF;
+}
+
+/**
  * Темный круг вокруг аватарки, для белых, чтобы не сливались с фоном
  */
 .theme-light .avatar-small{
@@ -346,18 +353,18 @@ body.compact-mode .channel-members-wrap{
 /**
  * Айтемы комнат
  */
-.theme-light .channels-wrap > div > div[class^="scrollerWrap-"] > div[class^="scroller-"] div[class^="contentSelected"],
-.theme-light .channels-wrap > div > div[class^="scrollerWrap-"] > div[class^="scroller-"] div[class^="contentHovered"]{
+.theme-light .channels-wrap div[class^="contentSelected"],
+.theme-light .channels-wrap div[class^="contentHovered"]{
     background-color: #F1F1F1;
 }
-.theme-light .channels-wrap > div > div[class^="scrollerWrap-"] > div[class^="scroller-"] div[class^="nameSelected"],
-.theme-light .channels-wrap > div > div[class^="scrollerWrap-"] > div[class^="scroller-"] div[draggable] div[class^="nameHovered"] {
+.theme-light .channels-wrap div[class^="nameSelected"],
+.theme-light .channels-wrap div[class^="nameHovered"] {
     color: #333;
 }
-.theme-light .channels-wrap > div > div[class^="scrollerWrap-"] > div[class^="scroller-"] div[class^="nameDefault"] {
+.theme-light .channels-wrap div[class^="nameDefault"] {
     color: #777;
 }
-.theme-light .channels-wrap > div > div[class^="scrollerWrap-"] > div[class^="scroller-"] div[class^="nameUnread"] {
+.theme-light .channels-wrap div[class^="nameUnread"] {
     color: #000;
     font-weight: bold;
 }
