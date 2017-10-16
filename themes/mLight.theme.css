@@ -1,4 +1,4 @@
-//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.20"}*//
+//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.21"}*//
 
 /**
  * Пустышка для raw импорта css файла
@@ -179,7 +179,7 @@ body.compact-mode .channel-members-wrap{
     color: #a7a7a7 !important;
 }
 .theme-dark .message-group:not(.compact):not(:hover) .timestamp{
-    display: none;
+    opacity: 0;
 }
 .theme-dark .chat form{
     margin: 0 10px;
@@ -262,7 +262,7 @@ body.compact-mode .channel-members-wrap{
     color: #c5c5c5 !important;
 }
 .theme-light .message-group:not(.compact):not(:hover) .timestamp{
-    display: none;
+    opacity: 0;
 }
 .theme-light .chat form{
     margin: 0 10px;
