@@ -1,4 +1,4 @@
-//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.22"}*//
+//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.23"}*//
 
 /**
  * Пустышка для raw импорта css файла
@@ -30,6 +30,9 @@
         z-index: 200;
         position: fixed;
         left: calc(70px - 100%);
+        height: calc(100%);
+    }
+    div[class*="titleBar-"] + div[class*="app-"] div[class*="channels-"]{
         height: calc(100% - 18px); /* height title */
     }
     .guilds-wrapper:hover + div > div > div[class*="channels-"]{
@@ -60,6 +63,9 @@
         right: 0;
         transform: translateX(calc(100% - 60px));
         transition: transform 0.2s 0.3s;
+        height: calc(100% - 48px); /* title chat bar*/
+    }
+    div[class*="titleBar-"] + div[class*="app-"] .channel-members-wrap{
         height: calc(100% - 18px - 48px - 2px); /* height title + title chat bar*/
     }
     .channel-members-wrap:hover{
