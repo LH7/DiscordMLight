@@ -1,4 +1,4 @@
-//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.21"}*//
+//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.22"}*//
 
 /**
  * Пустышка для raw импорта css файла
@@ -26,19 +26,19 @@
     .guilds-wrapper{
         z-index: 201;
     }
-    .channels-wrap{
+    div[class*="channels-"]{
         z-index: 200;
         position: fixed;
         left: calc(70px - 100%);
-        height: 100%;
+        height: calc(100% - 18px); /* height title */
     }
-    .guilds-wrapper:hover + .channels-wrap{
+    .guilds-wrapper:hover + div > div > div[class*="channels-"]{
         left: 70px;
     }
-    .channels-wrap{
+    div[class*="channels-"]{
         transition: left 0.5s 0.3s;
     }
-    .channels-wrap:hover{
+    div[class*="channels-"]:hover{
         left: 70px;
     }
 }
@@ -58,9 +58,9 @@
     .channel-members-wrap{
         position: fixed;
         right: 0;
-        height: 100%;
         transform: translateX(calc(100% - 60px));
         transition: transform 0.2s 0.3s;
+        height: calc(100% - 18px - 48px - 2px); /* height title + title chat bar*/
     }
     .channel-members-wrap:hover{
         transform: translateX(0);
@@ -88,11 +88,19 @@
 /**
  * Force compact on hotkey
  */
-body.compact-mode .channels-wrap,
+body.compact-mode div[class^="channels-"],
 body.compact-mode .guilds-wrapper,
 body.compact-mode .channel-members-wrap{
     display: none !important;
 }
+
+/**
+ * Понятия не имеюю зачем им это скругление, убираем
+ */
+div.guilds-wrapper + div{
+    border-radius: 0;
+}
+
 
 /**
  * Роли участников
@@ -186,10 +194,10 @@ body.compact-mode .channel-members-wrap{
     box-shadow: none;
 }
 /* инпут, и хайд печатающих */
-.theme-dark .channel-text-area-default{
+.theme-dark div[class*="channelTextAreaEnabled"]{
     margin: 8px 0
 }
-.theme-dark .channel-text-area-default + div.typing{
+.theme-dark div[class*="channelTextAreaEnabled"] + div.typing{
     display: none !important;
 }
 .theme-dark .message-group:not(.compact) .edit-message {
@@ -204,7 +212,7 @@ body.compact-mode .channel-members-wrap{
 /**
  * Всплывашки
  */
-.theme-light .tooltips *{
+.theme-light + .tooltips *{
     color: #FFF;
 }
 
@@ -269,10 +277,10 @@ body.compact-mode .channel-members-wrap{
     box-shadow: none;
 }
 /* инпут, и хайд печатающих */
-.theme-light .channel-text-area-default{
+.theme-light div[class*="channelTextAreaEnabled"]{
     margin: 8px 0
 }
-.theme-light .channel-text-area-default + div.typing{
+.theme-light div[class*="channelTextAreaEnabled"] + div.typing{
     display: none !important;
 }
 .theme-light .message-group:not(.compact) .edit-message {
@@ -280,19 +288,46 @@ body.compact-mode .channel-members-wrap{
 }
 
 /**
+ * Заголовок (необходим плагин темы)
+ */
+.theme-mLight div[class*="wordmark"] svg path {
+    fill: #000;
+}
+.theme-mLight div[class*="titleBar"]{
+    background-color: #FFF;
+    box-shadow: inset 0 -1px 0 #eceeef;
+}
+.theme-mLight #app-mount{
+    background-color: #FFF;
+}
+.theme-mLight div[class*="winButton"] svg polygon{
+    fill: #000;
+}
+.theme-mLight div[class*="winButton"] svg rect{
+    stroke: #000;
+}
+
+
+/* упоминания */
+.theme-light .unread-mentions-indicator-bottom .unread-mentions-bar,
+.theme-light .unread-mentions-indicator-top .unread-mentions-bar {
+    box-shadow: 0 0 0 #FFF;
+}
+
+/**
  * Панель комнат
  */
-.channels-wrap {
+div[class*="channels-"] {
     width: 220px;
 }
-.theme-light .channels-wrap{
+.theme-light div[class*="channels-"]{
     background-color: #ffffff;
 }
-.theme-light .channels-wrap{
+.theme-light div[class*="channels-"]{
     font-family: Tahoma, sans-serif !important;
     border-right: 1px solid #EEE;
 }
-.theme-light .channels-wrap>div:last-child{
+.theme-light div[class*="channels-"]>div:last-child{
     background-color: #ffffff;
     border-top: 1px solid #EEE;
 }
@@ -302,7 +337,7 @@ body.compact-mode .channel-members-wrap{
 /**
  * Ник и описание акка
  */
-.theme-light div[class^='accountDetails'] * {
+.theme-light div[class^='accountDetails-'] * {
     color: #333;
 }
 
@@ -321,11 +356,11 @@ body.compact-mode .channel-members-wrap{
 /**
  * Кнопки настройки и выключения звука
  */
-.theme-light .channels-wrap>div:last-child>div:last-child{
+.theme-light div[class*="channels-"]>div:last-child>div:last-child{
     filter: drop-shadow(0px 0px 0px #777);
 }
-.theme-light .channels-wrap>div:last-child>div:last-child div:hover,
-.theme-light .channels-wrap>div:last-child>div:last-child button:hover{
+.theme-light div[class*="channels-"]>div:last-child>div:last-child div:hover,
+.theme-light div[class*="channels-"]>div:last-child>div:last-child button:hover{
     background-color: transparent;
     filter: drop-shadow(0px 0px 1px #FAFAFA);
 }
@@ -333,57 +368,65 @@ body.compact-mode .channel-members-wrap{
 /**
  * Заголовок Сервера
  */
+.theme-light header g path:not(:first-child){
+    stroke: #000;
+}
+.theme-light header[class*="header-"]{
+    background-color: #fff;
+    border-bottom: 0 solid #FFF;
+    box-shadow: 0 1px 0 0 #eceeef;
+}
 .theme-light header,
 .theme-light .chat>.title-wrap
 {
     border-bottom: 1px solid #EEE;
     box-shadow: 0 0 0 #EEE;
 }
-.theme-light .channels-wrap>div:first-child{
+.theme-light div[class*="channels-"]>div:first-child{
     background-color: #FFF;
 }
-.theme-light .channels-wrap>div:first-child header span[class^="name-"]{
+.theme-light div[class*="channels-"]>div:first-child header span[class^="name-"]{
     color: #444;
     font-weight: bold;
 }
-.theme-light .channels-wrap>div:first-child header:hover{
+.theme-light div[class*="channels-"]>div:first-child header:hover{
     background-color: #F5F5F5;
 }
 
 /**
  * Айтемы комнат
  */
-.theme-light .channels-wrap div[class^="contentSelected"],
-.theme-light .channels-wrap div[class^="contentHovered"]{
+.theme-light div[class*="channels-"] div[class^="contentSelected"],
+.theme-light div[class*="channels-"] div[class^="contentHovered"]{
     background-color: #F1F1F1;
 }
-.theme-light .channels-wrap div[class^="nameSelected"],
-.theme-light .channels-wrap div[class^="nameHovered"] {
+.theme-light div[class*="channels-"] div[class^="nameSelected"],
+.theme-light div[class*="channels-"] div[class^="nameHovered"] {
     color: #333;
 }
-.theme-light .channels-wrap div[class^="nameDefault"] {
+.theme-light div[class*="channels-"] div[class^="nameDefault"] {
     color: #777;
 }
-.theme-light .channels-wrap div[class^="nameUnread"] {
+.theme-light div[class*="channels-"] div[class^="nameUnread"] {
     color: #000;
     font-weight: bold;
 }
-.theme-light .channels-wrap > div > div[class^="scrollerWrap-"] > div[class^="scroller-"] div:not([draggable]) div[class*='justifyStart']>svg{
+.theme-light div[class*="channels-"] > div > div[class^="scrollerWrap-"] > div[class^="scroller-"] div:not([draggable]) div[class*='justifyStart']>svg{
     filter: drop-shadow(1px 1px 0px #777);
 }
-.theme-light .channels-wrap > div > div[class^="scrollerWrap-"] > div[class^="scroller-"] div[class^="nameDefault"] {
+.theme-light div[class*="channels-"] > div > div[class^="scrollerWrap-"] > div[class^="scroller-"] div[class^="nameDefault"] {
     color: #777;
 }
-.theme-light .channels-wrap > div > div[class^="scrollerWrap-"] > div[class^="scroller-"] div[class^="contentSelected"] div[class^='iconSpacing']>svg,
-.theme-light .channels-wrap > div > div[class^="scrollerWrap-"] > div[class^="scroller-"] div[class^="contentHovered"] div[class^='iconSpacing']>svg,
-.theme-light .channels-wrap > div > div[class^="scrollerWrap-"] > div[class^="scroller-"] div[class^="contentDefault"] div[class^='iconSpacing']>svg{
+.theme-light div[class*="channels-"] > div > div[class^="scrollerWrap-"] > div[class^="scroller-"] div[class^="contentSelected"] div[class^='iconSpacing']>svg,
+.theme-light div[class*="channels-"] > div > div[class^="scrollerWrap-"] > div[class^="scroller-"] div[class^="contentHovered"] div[class^='iconSpacing']>svg,
+.theme-light div[class*="channels-"] > div > div[class^="scrollerWrap-"] > div[class^="scroller-"] div[class^="contentDefault"] div[class^='iconSpacing']>svg{
     filter: drop-shadow(1px 1px 0px #777);
 }
 
 /**
  * бекграунд списка комнат
  */
-.theme-light .channels-wrap > div > div[class^="scrollerWrap-"] > div[class^="scroller-"] {
+.theme-light div[class*="channels-"] > div > div[class^="scrollerWrap-"] > div[class^="scroller-"] {
     background-color: #FFF !important;
 }
 
