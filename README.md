@@ -14,7 +14,7 @@
 **./plugins/ssPanel.plugin.js** - Плагин для темы добавляющий хоткей (ctrl+h) для принудительного скрытия боковых панелей. А так же нужен для автоматического изменения цвета заголовка 
 
 ## Использование
-Для десктоп приложения необходим [BetterDiscord](https://github.com/Jiiks/BetterDiscordApp)  
+Для десктоп приложения необходим [BetterDiscord](https://github.com/Jiiks/BetterDiscordApp) или [его форк](https://github.com/rauenzi/BetterDiscordApp)  
 - Тему положить в «%APPDATA%\BetterDiscord\themes»
 - Плагин в «%APPDATA%\BetterDiscord\plugins»
 
