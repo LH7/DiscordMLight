@@ -1,4 +1,4 @@
-//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.23"}*//
+//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.24"}*//
 
 /**
  * Пустышка для raw импорта css файла
@@ -203,7 +203,7 @@ div.guilds-wrapper + div{
 .theme-dark div[class*="channelTextAreaEnabled"]{
     margin: 8px 0
 }
-.theme-dark div[class*="channelTextAreaEnabled"] + div.typing{
+.theme-dark div[class^="channelTextAreaEnabled"] + div[class^="typing-"]{
     display: none !important;
 }
 .theme-dark .message-group:not(.compact) .edit-message {
@@ -286,7 +286,7 @@ div.guilds-wrapper + div{
 .theme-light div[class*="channelTextAreaEnabled"]{
     margin: 8px 0
 }
-.theme-light div[class*="channelTextAreaEnabled"] + div.typing{
+.theme-light div[class^="channelTextAreaEnabled-"] + div[class^="typing-"]{
     display: none !important;
 }
 .theme-light .message-group:not(.compact) .edit-message {
