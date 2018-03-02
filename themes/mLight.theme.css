@@ -605,10 +605,12 @@ code, code *{
 }
 
 /* полоса цитаты */
-.theme-light .message-group:not(.compact) .embed-color-pill {
+.theme-light .message-group:not(.compact) [class^="embedPill-"] {
     background-color: #f1f1f1 !important;
 }
-
+.theme-dark .message-group:not(.compact) [class^="embedPill-"] {
+    background-color: #777 !important;
+}
 
 /**
  * Web версия
