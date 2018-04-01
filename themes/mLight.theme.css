@@ -1,4 +1,4 @@
-//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.24"}*//
+//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.25"}*//
 
 /**
  * Пустышка для raw импорта css файла
@@ -54,7 +54,7 @@
         margin-right: 60px;
     }
     body:not(.compact-mode) .chat > div > div:not(:last-child) > form {
-        margin-right: 65px !important;
+        margin-right: 70px !important;
     }
 }
 @media screen and (max-width: 1100px) {
@@ -71,10 +71,10 @@
     .channel-members-wrap:hover{
         transform: translateX(0);
     }
-    .channel-members .member-inner{
+    .channel-members div[class*="memberInner-"]{
         transition: opacity 0.3s 0.3s
     }
-    .channel-members:not(:hover) .member-inner{
+    .channel-members:not(:hover) div[class*="memberInner-"]{
         opacity: 0;
     }
     .channel-members .old-h2{
@@ -139,6 +139,13 @@ div.guilds-wrapper + div{
  */
 .avatar-small{
     border-radius: 5px;
+}
+
+/* возможно тоже аватары, но теперь у нас маски чтобы сделать хоббитские окна... */
+div[class*="image-"][class*="mask-"]{
+    border-radius: 5px;
+    -webkit-mask: none;
+    mask: none;
 }
 
 /**
@@ -225,9 +232,13 @@ div.guilds-wrapper + div{
 /**
  * Темный круг вокруг аватарки, для белых, чтобы не сливались с фоном
  */
-.theme-light .avatar-small{
+.theme-light .avatar-large{
     box-shadow: 0 0 1px 1px #EEE;
 }
+.theme-light span[class*="avatarWrapper-"] div[class*="image-"]{
+    box-shadow: 0 0 1px 1px #EEE !important;
+}
+
 /**
  * кружок статуса аватара
  */
@@ -243,8 +254,13 @@ div.guilds-wrapper + div{
     background-color: #FFF;
     border-left: 1px solid #F5F5F5;
 }
-.channel-members .member{
-    padding: 5px 10px;
+.channel-members div[class*="member-"] div[class*="content-"]{
+    padding: 4px;
+    margin: 0 8px;
+    border-radius: 0;
+}
+.channel-members div[class*="member-"]{
+    height: 40px;
 }
 .channel-members-wrap {
     min-width: 200px;
