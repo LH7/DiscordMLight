@@ -1,4 +1,4 @@
-//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.25"}*//
+//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.27"}*//
 
 /**
  * Пустышка для raw импорта css файла
@@ -10,7 +10,7 @@
  * Автоскрытие панелей
  */
 @media screen and (max-width: 600px) {
-    .channels-wrap, .guilds-wrapper, .channel-members-wrap{
+    .channels-wrap, .guilds-wrapper, div[class*="membersWrap-"]{
         display: none !important;
     }
 }
@@ -58,34 +58,30 @@
     }
 }
 @media screen and (max-width: 1100px) {
-    .channel-members-wrap{
+    div[class*="membersWrap-"]{
         position: fixed;
         right: 0;
         transform: translateX(calc(100% - 60px));
         transition: transform 0.2s 0.3s;
         height: calc(100% - 48px); /* title chat bar*/
     }
-    div[class*="titleBar-"] + div[class*="app-"] .channel-members-wrap{
+    div[class*="titleBar-"] + div[class*="app-"] div[class*="membersWrap-"]{
         height: calc(100% - 18px - 48px - 2px); /* height title + title chat bar*/
     }
-    .channel-members-wrap:hover{
+    div[class*="membersWrap-"]:hover{
         transform: translateX(0);
     }
-    .channel-members div[class*="memberInner-"]{
+    div[class*="members-"] div[class*="memberInner-"]{
         transition: opacity 0.3s 0.3s
     }
-    .channel-members:not(:hover) div[class*="memberInner-"]{
+    div[class*="members-"]:not(:hover) div[class*="memberInner-"]{
         opacity: 0;
     }
-    .channel-members .old-h2{
-        margin: 7px 0 !important;
-        padding: 5px !important;
-        font-family: Tahoma, sans-serif;
-        font-size: 10px;
+    div[class*="members-"] div[class*="membersGroup-"]{
         max-width: 60px;
         transition: max-width 0.2s 0.2s;
     }
-    .channel-members:hover .old-h2{
+    div[class*="members-"]:hover div[class*="membersGroup-"]{
         transition-delay: 0.3s;
         max-width: 200px;
     }
@@ -96,7 +92,7 @@
  */
 body.compact-mode div[class^="channels-"],
 body.compact-mode .guilds-wrapper,
-body.compact-mode .channel-members-wrap{
+body.compact-mode div[class*="membersWrap-"]{
     display: none !important;
 }
 
@@ -111,9 +107,12 @@ div.guilds-wrapper + div{
 /**
  * Роли участников
  */
-.channel-members .old-h2{
-    margin: 15px 5px 10px 5px;
-    padding: 0;
+div[class*="members-"] div[class*="membersGroup-"]{
+    margin: 7px 0 !important;
+    padding: 5px !important;
+    font-family: Tahoma, sans-serif;
+    height: 20px;
+    font-size: 10px;
 }
 
 /**
@@ -250,20 +249,21 @@ div[class*="image-"][class*="mask-"]{
  * Список юзеров (справа)
  * уменьшена ширина
  */
-.theme-light .channel-members {
+.theme-light div[class*="members-"] {
     background-color: #FFF;
     border-left: 1px solid #F5F5F5;
 }
-.channel-members div[class*="member-"] div[class*="content-"]{
+div[class*="members-"] div[class*="member-"] div[class*="content-"]{
     padding: 4px;
-    margin: 0 8px;
+    margin: 0 0;
     border-radius: 0;
 }
-.channel-members div[class*="member-"]{
+div[class*="members-"] div[class*="member-"]{
     height: 40px;
 }
-.channel-members-wrap {
+div[class*="membersWrap-"] {
     min-width: 200px;
+    max-width: 300px;
 }
 
 /**
