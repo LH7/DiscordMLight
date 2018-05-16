@@ -1,4 +1,4 @@
-//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.27"}*//
+//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.28"}*//
 
 /**
  * Пустышка для raw импорта css файла
@@ -145,6 +145,10 @@ div[class*="image-"][class*="mask-"]{
     border-radius: 5px;
     -webkit-mask: none;
     mask: none;
+}
+/* «некруглые» офлайн аватары */
+div[class*="avatarOffline-"] div[class*="image-"]{
+    border-radius: 5px;
 }
 
 /**
