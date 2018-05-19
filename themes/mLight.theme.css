@@ -1,4 +1,4 @@
-//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.28"}*//
+//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.29"}*//
 
 /**
  * Пустышка для raw импорта css файла
@@ -646,4 +646,21 @@ code, code *{
 .theme-light .download-app-fill {
     fill: #FFF;
     stroke: #BBB;
+}
+
+/**
+ * Исправления для мозиллы
+ */
+
+/* Скролл комнат... серьезно... вы маскируете стандартный скроллбар? %) */
+.theme-light div[class*="channels-"] div[class*="scrollbar-"]::before,
+.theme-light div[class*="channels-"] div[class*="scrollbar-"] > div[class*="pad-"]::before{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: #FFF;
+    content: "";
+}
+.theme-light div[class*="channels-"] div[class*="scrollbar-"] > div[class*="thumb-"]{
+    background-color: #D5D5D5 !important;
 }
