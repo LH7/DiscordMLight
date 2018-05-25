@@ -1,4 +1,4 @@
-//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.29"}*//
+//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.30"}*//
 
 /**
  * Пустышка для raw импорта css файла
@@ -210,10 +210,10 @@ div[class*="avatarOffline-"] div[class*="image-"]{
     box-shadow: none;
 }
 /* инпут, и хайд печатающих */
-.theme-dark div[class*="channelTextAreaEnabled"]{
+.theme-dark div[class*="channelTextArea-"]{
     margin: 8px 0
 }
-.theme-dark div[class^="channelTextAreaEnabled"] + div[class^="typing-"]{
+.theme-dark div[class^="channelTextArea-"] + div[class^="typing-"]{
     display: none !important;
 }
 .theme-dark .message-group:not(.compact) .edit-message {
@@ -303,10 +303,10 @@ div[class*="membersWrap-"] {
     box-shadow: none;
 }
 /* инпут, и хайд печатающих */
-.theme-light div[class*="channelTextAreaEnabled"]{
+.theme-light div[class*="channelTextArea-"]{
     margin: 8px 0
 }
-.theme-light div[class^="channelTextAreaEnabled-"] + div[class^="typing-"]{
+.theme-light div[class^="channelTextArea-"] + div[class^="typing-"]{
     display: none !important;
 }
 .theme-light .message-group:not(.compact) .edit-message {
