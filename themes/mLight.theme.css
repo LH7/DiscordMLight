@@ -1,4 +1,4 @@
-//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.30"}*//
+//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.31"}*//
 
 /**
  * Пустышка для raw импорта css файла
@@ -141,7 +141,7 @@ div[class*="members-"] div[class*="membersGroup-"]{
 }
 
 /* возможно тоже аватары, но теперь у нас маски чтобы сделать хоббитские окна... */
-div[class*="image-"][class*="mask-"]{
+span[class*="avatarWrapper-"] div[class*="image-"]{
     border-radius: 5px;
     -webkit-mask: none;
     mask: none;
@@ -235,7 +235,7 @@ div[class*="avatarOffline-"] div[class*="image-"]{
 /**
  * Темный круг вокруг аватарки, для белых, чтобы не сливались с фоном
  */
-.theme-light .avatar-large{
+.theme-light .avatar-large:not([class*="wrapper"]){
     box-shadow: 0 0 1px 1px #EEE;
 }
 .theme-light span[class*="avatarWrapper-"] div[class*="image-"]{
