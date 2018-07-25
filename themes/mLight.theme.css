@@ -1,4 +1,4 @@
-//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.31"}*//
+//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.32"}*//
 
 /**
  * Пустышка для raw импорта css файла
@@ -118,19 +118,18 @@ div[class*="members-"] div[class*="membersGroup-"]{
 /**
  * Аватарки чатика, уютной темы
  */
-.message-group:not(.compact) .avatar-large {
+div[class*="headerCozy-"] div[class*="avatar-"] > div[class*="image-"] {
     display: block;
     border-radius: 5px;
     margin-right: 8px;
-    margin-top: 4px;
+    margin-top: 5px;
     background-size: 30px 30px;
     width: 30px;
     height: 30px;
 }
-@media screen and (max-width: 1300px) {
-    .message-group:not(.compact) .avatar-large {
-        display: none;
-    }
+/* сдвиг аватарки влево */
+div[class*="headerCozy-"] div[class*="avatar-"] {
+    margin: 0 0 0 10px
 }
 
 /**
@@ -141,7 +140,8 @@ div[class*="members-"] div[class*="membersGroup-"]{
 }
 
 /* возможно тоже аватары, но теперь у нас маски чтобы сделать хоббитские окна... */
-span[class*="avatarWrapper-"] div[class*="image-"]{
+span[class*="avatarWrapper-"] div[class*="image-"],
+div[class*="avatarWrapperNormal-"] > div > div[class*="image-"]{
     border-radius: 5px;
     -webkit-mask: none;
     mask: none;
@@ -154,74 +154,43 @@ div[class*="avatarOffline-"] div[class*="image-"]{
 /**
  * Общие стили для компактной темы
  */
-/* убирание тупых отступов по краям  */
-.message-group.compact .message > .message-text > .markup {
-    text-indent: -70px;
-    padding-left: 35px;
-}
-.message-group.compact .accessory {
-    padding-left: 35px;
-}
 /* скрытие повторов ников */
-.message-group.compact .message:not(.first) > .message-text > .markup > .username-wrapper {
-    display: none;
-}
-.message-group.compact .timestamp {
-    line-height: inherit;
-}
-.message-group.compact {
-    margin-left: 5px;
-    border-bottom: 1px solid #fbfbfb;
-}
-.message-group.compact .username-wrapper > .bot-tag {
-    font-size: 6pt !important;
-}
-
-/**
- * Dark theme, full (единственный кусок темы для темной)
- * Основной чатик
- */
-.theme-dark .message-group * {
+div[class*="messageCompact-"] *{
     font-family: Tahoma, sans-serif;
 }
-.theme-dark .message-group .message-text>*{
-    font-size: 9pt !important;
-    color: #c7c5c5 !important;
-}
-.theme-dark .message-group .username-wrapper *{
+div[class*="messageCompact-"] span[class*="usernameWrapper-"] *,
+div[class*="messageCompact-"] div[class*="markup-"] .mention{
     font-size: 10pt !important;
-}
-.theme-dark .message-group .username-wrapper .user-name,
-.theme-dark .message-group .message-text .mention {
     font-weight: bold !important;
 }
-.theme-dark .message-group:not(.compact) {
-    padding: 5px;
-    margin: 0 5px
+.theme-light div[class*="messageCompact-"] div[class*="markup-"],
+.theme-light div[class*="messageCompact-"] div[class*="markup-"] > :not(.mention):not(a):not(time) {
+    font-size: 10pt !important;
+    color: black !important;
 }
-.theme-dark .message-group .timestamp{
-    color: #a7a7a7 !important;
+.theme-dark div[class*="messageCompact-"] div[class*="markup-"],
+.theme-dark div[class*="messageCompact-"] div[class*="markup-"] > :not(.mention):not(a):not(time) {
+    font-size: 10pt !important;
 }
-.theme-dark .message-group:not(.compact):not(:hover) .timestamp{
-    opacity: 0;
+div[class*="messageCompact-"]:not(:first-child) span[class*="usernameWrapper-"] {
+    display: none;
 }
-.theme-dark .chat form{
-    margin: 0 10px;
-    box-shadow: none;
+div[class*="messageCompact-"]:not(:first-child) h2[class*="headerCompact-"] {
+    margin-right: 0;
 }
-/* инпут, и хайд печатающих */
-.theme-dark div[class*="channelTextArea-"]{
-    margin: 8px 0
+div[class*="messageCompact-"] div[class*="contentCompact-"] > div ~ div[class*="markup-"] {
+    margin-left: 45px;
+    text-indent: -54px;
 }
-.theme-dark div[class^="channelTextArea-"] + div[class^="typing-"]{
-    display: none !important;
+div[class*="messageCompact-"] > div[class*="contentCompact-"] ~ div[class*="containerCompact-"] {
+    margin-left: -33px;
 }
-.theme-dark .message-group:not(.compact) .edit-message {
-    margin: 6px -26px 0 0;
+
+.messages > div[class*="containerCompact-"]{
+    padding: 0;
 }
 
 /**
- * Далее вся портянка для светлой темы
  * Многие селекторы очень наркоманские из-за хешей
  */
 
@@ -235,11 +204,8 @@ div[class*="avatarOffline-"] div[class*="image-"]{
 /**
  * Темный круг вокруг аватарки, для белых, чтобы не сливались с фоном
  */
-.theme-light .avatar-large:not([class*="wrapper"]){
+.theme-light div[class*="headerCozy-"] div[class*="avatar-"] div[class*="image-"] {
     box-shadow: 0 0 1px 1px #EEE;
-}
-.theme-light span[class*="avatarWrapper-"] div[class*="image-"]{
-    box-shadow: 0 0 1px 1px #EEE !important;
 }
 
 /**
@@ -271,47 +237,89 @@ div[class*="membersWrap-"] {
 }
 
 /**
- * Light theme, full
+ * full
  * Основной чатик
  */
-.theme-light .message-group *{
+div[class*="messageCozy-"] *{
     font-family: Tahoma, sans-serif;
 }
-.theme-light .message-group .message-text>*{
-    font-size: 9pt !important;
+.theme-light div[class*="messageCozy-"] div[class*="markup-"],
+.theme-light div[class*="messageCozy-"] div[class*="markup-"] > :not(.mention):not(a):not(time) {
+    font-size: 10pt !important;
     color: black !important;
 }
-.theme-light .message-group .username-wrapper *{
+.theme-dark div[class*="messageCozy-"] div[class*="markup-"],
+.theme-dark div[class*="messageCozy-"] div[class*="markup-"] > :not(.mention):not(a):not(time) {
     font-size: 10pt !important;
 }
-.theme-light .message-group .username-wrapper .user-name,
-.theme-light .message-group .message-text .mention {
+div[class*="messageCozy-"] span[class*="usernameWrapper-"] *,
+div[class*="messageCozy-"] div[class*="markup-"] .mention{
+    font-size: 10pt !important;
     font-weight: bold !important;
 }
-.theme-light .message-group:not(.compact) {
-    padding: 5px;
-    margin: 0 5px
+div[class*="messageCozy-"] div[class*="contentCozy-"]{
+    margin-left: 50px;
 }
-.theme-light .message-group .timestamp{
+hr[class*="divider-"]{
+    margin: 5px 10px 5px 10px !important;
+}
+.chat .divider {
+    margin: 5px 10px 5px 10px;
+}
+.messages > div[class*="containerCozy-"] {
+    padding: 0 0 0 0;
+}
+.theme-light .messages time[class*="timestamp"] {
     color: #c5c5c5 !important;
 }
-.theme-light .message-group:not(.compact):not(:hover) .timestamp{
+.theme-dark .messages time[class*="timestamp"] {
+    color: #a7a7a7 !important;
+}
+.messages div[class*="messageCozy-"]:not(:hover) time[class*="timestampCozy-"] {
     opacity: 0;
 }
-.theme-light .chat form{
+.messages div[class*="messageCompact-"]:not(:hover):not(:first-child) time[class*="timestampCompact-"] {
+    opacity: 0;
+}
+.chat .divider.divider-red > div {
+    margin-top: 10px;
+}
+.chat .divider.divider-red > div ~ span{
+    margin-top: 9px;
+}
+
+div[class*="messageGroupWrapperOffsetCorrection-"]{
+    margin-bottom: -20px;
+    margin-left: -10px;
+    margin-top: -20px;
+}
+.chat form{
     margin: 0 10px;
     box-shadow: none;
 }
 /* инпут, и хайд печатающих */
-.theme-light div[class*="channelTextArea-"]{
+div[class*="channelTextArea-"]{
     margin: 8px 0
 }
-.theme-light div[class^="channelTextArea-"] + div[class^="typing-"]{
+div[class^="channelTextArea-"] + div[class^="typing-"]{
     display: none !important;
 }
-.theme-light .message-group:not(.compact) .edit-message {
-    margin: 6px -26px 0 0;
+
+/**
+ * скрывалка аватаров, уже хуже чем было раньше =(
+ */
+@media screen and (max-width: 1300px) {
+    div[class*="messageCozy-"] div[class*="contentCozy-"]{
+        margin-left: 10px;
+    }
+    div[class*="headerCozy-"] div[class*="avatar-"] {
+        display: none;
+    }
+    div[class*="messageCozy-"] span[class*="usernameWrapper-"] {
+        margin-left: 10px;
+    }
 }
+
 
 /**
  * Заголовок (необходим плагин темы)
@@ -612,23 +620,23 @@ code, code *{
  */
 
 /* Возврат шрифта */
-.message-group:not(.compact) .citar-btn {
+.message-group .citar-btn {
     font-family: "Segoe MDL2 Assets", "Whitney" !important;
 }
 
 /* кнопка цитаты */
-.theme-light .message-group:not(.compact) .citar-btn {
+.theme-light div[class*="messageCozy"] .citar-btn {
     background-color: #ebebeb;
 }
-.theme-dark .message-group:not(.compact) .citar-btn {
+.theme-dark div[class*="messageCozy"] .citar-btn {
     background-color: #2f3136;
 }
 
 /* полоса цитаты */
-.theme-light .message-group:not(.compact) [class^="embedPill-"] {
+.theme-light div[class*="message"] [class^="embedPill-"] {
     background-color: #f1f1f1 !important;
 }
-.theme-dark .message-group:not(.compact) [class^="embedPill-"] {
+.theme-dark div[class*="message"] [class^="embedPill-"] {
     background-color: #777 !important;
 }
 
@@ -646,6 +654,17 @@ code, code *{
 .theme-light .download-app-fill {
     fill: #FFF;
     stroke: #BBB;
+}
+
+/* ереваны */
+div[class*="isMentionedCozy-"] {
+    margin-left: 7px;
+}
+
+span[class*="usernameWrapper-"] span[class*="botTagCozy-"],
+span[class*="usernameWrapper-"] span[class*="botTagCompact-"] {
+    font-size: 9px !important;
+    padding: 2px 3px
 }
 
 /**
