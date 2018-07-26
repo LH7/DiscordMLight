@@ -1,4 +1,4 @@
-//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.32"}*//
+//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.33"}*//
 
 /**
  * Пустышка для raw импорта css файла
@@ -163,13 +163,11 @@ div[class*="messageCompact-"] div[class*="markup-"] .mention{
     font-size: 10pt !important;
     font-weight: bold !important;
 }
-.theme-light div[class*="messageCompact-"] div[class*="markup-"],
-.theme-light div[class*="messageCompact-"] div[class*="markup-"] > :not(.mention):not(a):not(time) {
+.theme-light div[class*="messageCompact-"] div[class*="markup-"] {
     font-size: 10pt !important;
     color: black !important;
 }
-.theme-dark div[class*="messageCompact-"] div[class*="markup-"],
-.theme-dark div[class*="messageCompact-"] div[class*="markup-"] > :not(.mention):not(a):not(time) {
+.theme-dark div[class*="messageCompact-"] div[class*="markup-"]  {
     font-size: 10pt !important;
 }
 div[class*="messageCompact-"]:not(:first-child) span[class*="usernameWrapper-"] {
@@ -243,13 +241,11 @@ div[class*="membersWrap-"] {
 div[class*="messageCozy-"] *{
     font-family: Tahoma, sans-serif;
 }
-.theme-light div[class*="messageCozy-"] div[class*="markup-"],
-.theme-light div[class*="messageCozy-"] div[class*="markup-"] > :not(.mention):not(a):not(time) {
+.theme-light div[class*="messageCozy-"] div[class*="markup-"] {
     font-size: 10pt !important;
     color: black !important;
 }
-.theme-dark div[class*="messageCozy-"] div[class*="markup-"],
-.theme-dark div[class*="messageCozy-"] div[class*="markup-"] > :not(.mention):not(a):not(time) {
+.theme-dark div[class*="messageCozy-"] div[class*="markup-"] {
     font-size: 10pt !important;
 }
 div[class*="messageCozy-"] span[class*="usernameWrapper-"] *,
@@ -268,6 +264,7 @@ hr[class*="divider-"]{
 }
 .messages > div[class*="containerCozy-"] {
     padding: 0 0 0 0;
+    margin: 0;
 }
 .theme-light .messages time[class*="timestamp"] {
     color: #c5c5c5 !important;
