@@ -1,4 +1,4 @@
-//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.33"}*//
+//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.34"}*//
 
 /**
  * Пустышка для raw импорта css файла
@@ -10,7 +10,7 @@
  * Автоскрытие панелей
  */
 @media screen and (max-width: 600px) {
-    .channels-wrap, .guilds-wrapper, div[class*="membersWrap-"]{
+    .channels-wrap, div[class*="guildsWrapper-"], div[class*="membersWrap-"]{
         display: none !important;
     }
 }
@@ -23,7 +23,7 @@
  * Автоскрытие панели комнат если мелкая ширина
  */
 @media screen and (max-width: 900px) {
-    .guilds-wrapper{
+    div[class*="guildsWrapper-"]{
         z-index: 201;
     }
     div[class*="channels-"]{
@@ -35,7 +35,7 @@
     div[class*="titleBar-"] + div[class*="app-"] div[class*="channels-"]{
         height: calc(100% - 18px); /* height title */
     }
-    .guilds-wrapper:hover + div > div > div[class*="channels-"]{
+    div[class*="guildsWrapper-"]:hover + div > div > div[class*="channels-"]{
         left: 70px;
     }
     div[class*="channels-"]{
@@ -91,7 +91,7 @@
  * Force compact on hotkey
  */
 body.compact-mode div[class^="channels-"],
-body.compact-mode .guilds-wrapper,
+body.compact-mode div[class*="guildsWrapper-"],
 body.compact-mode div[class*="membersWrap-"]{
     display: none !important;
 }
@@ -99,7 +99,7 @@ body.compact-mode div[class*="membersWrap-"]{
 /**
  * Понятия не имеюю зачем им это скругление, убираем
  */
-div.guilds-wrapper + div{
+div[class*="guildsWrapper-"] + div{
     border-radius: 0;
 }
 
@@ -465,20 +465,20 @@ div[class*="channels-"] {
 /**
  * Боковая панель, саамая левая с выбором сервера
  */
-.theme-light .guilds-wrapper *{
+.theme-light div[class*="guildsWrapper-"] *{
     font-family: Tahoma, sans-serif !important;
 }
-.theme-light .guilds-wrapper {
+.theme-light div[class*="guildsWrapper-"] {
     background: #FFF;
     box-shadow: -1px 0 0 0 #EEE inset;
 }
-.theme-light .guilds-wrapper .guilds .friends-online {
+.theme-light div[class*="guildsWrapper-"] div[class*="guilds-"] div[class*="friendsOnline-"] {
     font-size: 10px;
     text-transform: uppercase;
     font-weight: 600;
     color: rgba(0,0,0,0.5);
 }
-.theme-light .guilds-wrapper .guild-separator:after {
+.theme-light div[class*="guildsWrapper-"] div[class*="guildSeparator-"]:after {
     position: absolute;
     top: 0;
     left: 20%;
@@ -487,20 +487,21 @@ div[class*="channels-"] {
     height: 1px;
     background: #dee1e6;
 }
-.theme-light .guilds-wrapper .guilds .guild.selected:before {
+.theme-light div[class*="guildsWrapper-"] div[class*="guilds-"] div[class*="guilds-"][class*="selected-"]:before {
     height: 40px;
     border-radius: 20px;
     background: #BBB;
     margin-top: -20px;
 }
-.theme-light .guilds-wrapper .guilds-add {
+.theme-light div[class*="guildsWrapper-"] button[class*="guildsAdd-"] {
     border-radius: 50%;
     background: #FFF;
     color: #c5c5c5;
     border: 1px dashed #cacbcc;
     font-size: 17px;
 }
-.theme-light .guilds-wrapper .guilds-add:hover {
+.theme-light div[class*="guildsWrapper-"] button[class*="guildsAdd-"]:hover {
+    background: #fbfbfb;
     color: #777777;
     border-color: #7d7b7b;
 }
@@ -508,10 +509,10 @@ div[class*="channels-"] {
 /**
  *  Инпут поиска в контактах
  */
-.theme-light .search-bar-inner ::-webkit-input-placeholder {
+.theme-light div[class*="searchBarInner-"] ::-webkit-input-placeholder {
     color: #c5c5c5 !important;
 }
-.theme-light .search-bar-inner {
+.theme-light div[class*="searchBarInner-"] {
     background-color: rgba(153,170,181,.1) !important;
     border: 1px solid transparent;
 }
@@ -519,7 +520,7 @@ div[class*="channels-"] {
     background-color: #FFF;
     border: 1px solid transparent;
     border-radius: 0;
-    box-shadow: none;
+    box-shadow: inset 0px -1px 0px #e3e5e8;
 }
 
 /**
@@ -641,16 +642,36 @@ code, code *{
  * Web версия
  */
 /* разделитель перед кнопкой загрузки */
-.theme-light .guilds-wrapper .btn-download-apps:after {
+.theme-light div[class*="guildsWrapper-"] [class*="downloadAppButton-"]:after {
     background-color: #dee1e6;
     height: 1px;
 }
-.theme-light .guilds-wrapper .btn-download-apps {
+.theme-light div[class*="guildsWrapper-"] [class*="downloadAppButton-"] {
     color: #BBB;
 }
-.theme-light .download-app-fill {
+.theme-light div[class*="guildsWrapper-"] [class*="downloadAppButton-"] svg circle{
+    box-shadow: inset 0 0 0 1px #111
+}
+.theme-light div[class*="guildsWrapper-"] [class*="downloadAppButton-"] use{
     fill: #FFF;
-    stroke: #BBB;
+    stroke: #FFF;
+}
+.theme-light div[class*="guildsWrapper-"] [class*="downloadAppButton-"]:hover use{
+    fill: #FAFAFA;
+}
+.theme-light div[class*="guildsWrapper-"] [class*="downloadAppButton-"] svg{
+    border-radius: 25px;
+    border: 1px dashed #e8e8e8;
+}
+.theme-light div[class*="guildsWrapper-"] [class*="downloadAppButton-"]:hover svg{
+    border-radius: 25px;
+    border: 1px dashed #a2a2a2;
+}
+.theme-light div[class*="guildsWrapper-"] [class*="downloadAppButton-"] path{
+    fill: #BBB;
+}
+.theme-light div[class*="guildsWrapper-"] [class*="downloadAppButton-"]:hover path:last-child{
+    fill: rgb(67, 181, 129);
 }
 
 /* ереваны */
