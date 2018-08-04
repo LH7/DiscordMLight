@@ -1,4 +1,4 @@
-//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.34"}*//
+//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.35"}*//
 
 /**
  * Пустышка для raw импорта css файла
@@ -53,7 +53,7 @@
     body:not(.compact-mode) div:not(:last-child) > .messages-wrapper {
         margin-right: 60px;
     }
-    body:not(.compact-mode) .chat > div > div:not(:last-child) > form {
+    body:not(.compact-mode) div[class*="chat-"] > div > div:not(:last-child) > form {
         margin-right: 70px !important;
     }
 }
@@ -184,7 +184,7 @@ div[class*="messageCompact-"] > div[class*="contentCompact-"] ~ div[class*="cont
     margin-left: -33px;
 }
 
-.messages > div[class*="containerCompact-"]{
+div[class*="messages-"] > div[class*="containerCompact-"]{
     padding: 0;
 }
 
@@ -259,29 +259,29 @@ div[class*="messageCozy-"] div[class*="contentCozy-"]{
 hr[class*="divider-"]{
     margin: 5px 10px 5px 10px !important;
 }
-.chat .divider {
+div[class*="chat-"] .divider {
     margin: 5px 10px 5px 10px;
 }
-.messages > div[class*="containerCozy-"] {
+div[class*="messages-"] > div[class*="containerCozy-"] {
     padding: 0 0 0 0;
     margin: 0;
 }
-.theme-light .messages time[class*="timestamp"] {
+.theme-light div[class*="messages-"] time[class*="timestamp-"] {
     color: #c5c5c5 !important;
 }
-.theme-dark .messages time[class*="timestamp"] {
+.theme-dark div[class*="messages-"] time[class*="timestamp-"] {
     color: #a7a7a7 !important;
 }
-.messages div[class*="messageCozy-"]:not(:hover) time[class*="timestampCozy-"] {
+div[class*="messages-"] div[class*="messageCozy-"]:not(:hover) time[class*="timestampCozy-"] {
     opacity: 0;
 }
-.messages div[class*="messageCompact-"]:not(:hover):not(:first-child) time[class*="timestampCompact-"] {
+div[class*="messages-"] div[class*="messageCompact-"]:not(:hover):not(:first-child) time[class*="timestampCompact-"] {
     opacity: 0;
 }
-.chat .divider.divider-red > div {
+div[class*="chat-"] .divider.divider-red > div {
     margin-top: 10px;
 }
-.chat .divider.divider-red > div ~ span{
+div[class*="chat-"] .divider.divider-red > div ~ span{
     margin-top: 9px;
 }
 
@@ -290,13 +290,15 @@ div[class*="messageGroupWrapperOffsetCorrection-"]{
     margin-left: -10px;
     margin-top: -20px;
 }
-.chat form{
+div[class*="chat-"] form{
     margin: 0 10px;
     box-shadow: none;
 }
 /* инпут, и хайд печатающих */
 div[class*="channelTextArea-"]{
-    margin: 8px 0
+    margin: 8px 0;
+    padding: 0;
+    border-top: none;
 }
 div[class^="channelTextArea-"] + div[class^="typing-"]{
     display: none !important;
