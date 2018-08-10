@@ -1,4 +1,4 @@
-//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.35"}*//
+//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.36"}*//
 
 /**
  * Пустышка для raw импорта css файла
@@ -256,7 +256,7 @@ div[class*="messageCozy-"] div[class*="markup-"] .mention{
 div[class*="messageCozy-"] div[class*="contentCozy-"]{
     margin-left: 50px;
 }
-hr[class*="divider-"]{
+[class*="divider-"]{
     margin: 5px 10px 5px 10px !important;
 }
 div[class*="chat-"] .divider {
@@ -278,10 +278,10 @@ div[class*="messages-"] div[class*="messageCozy-"]:not(:hover) time[class*="time
 div[class*="messages-"] div[class*="messageCompact-"]:not(:hover):not(:first-child) time[class*="timestampCompact-"] {
     opacity: 0;
 }
-div[class*="chat-"] .divider.divider-red > div {
+div[class*="chat-"] div[class*="divider-"][class*="dividerRed-"] > div {
     margin-top: 10px;
 }
-div[class*="chat-"] .divider.divider-red > div ~ span{
+div[class*="chat-"] div[class*="divider-"][class*="dividerRed-"] > span{
     margin-top: 9px;
 }
 
@@ -298,7 +298,7 @@ div[class*="chat-"] form{
 div[class*="channelTextArea-"]{
     margin: 8px 0;
     padding: 0;
-    border-top: none;
+    border-top: none !important;
 }
 div[class^="channelTextArea-"] + div[class^="typing-"]{
     display: none !important;
@@ -612,6 +612,19 @@ code, code *{
     font-family: Menlo, Consolas, Monaco, monospace !important;
     font-size: 12px    !important;
     line-height: 14px  !important;
+}
+
+.theme-light div[class*="markup-"] code.inline {
+    background: #f8f9f9 !important;
+    color: #657b83;
+    box-shadow: inset 0 0 1px #efefef;
+    border: 1px solid #efefef;
+}
+.theme-dark div[class*="markup-"] code.inline {
+    background: #2f3136 !important;
+    color: #839496;
+    box-shadow: inset 0 0 1px #efefef;
+    border: 1px solid rgba(32,34,37,.3);
 }
 
 
