@@ -1,4 +1,4 @@
-//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.36"}*//
+//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.37"}*//
 
 /**
  * Пустышка для raw импорта css файла
@@ -99,7 +99,7 @@ body.compact-mode div[class*="membersWrap-"]{
 /**
  * Понятия не имеюю зачем им это скругление, убираем
  */
-div[class*="guildsWrapper-"] + div{
+div[class*="guildsWrapper-"] {
     border-radius: 0;
 }
 
@@ -447,12 +447,13 @@ div[class*="channels-"] {
 .theme-light div[class*="channels-"] > div > div[class^="scrollerWrap-"] > div[class^="scroller-"] div:not([draggable]) div[class*='justifyStart']>svg{
     filter: drop-shadow(1px 1px 0px #777);
 }
-.theme-light div[class*="channels-"] > div > div[class^="scrollerWrap-"] > div[class^="scroller-"] div[class^="nameDefault"] {
+.theme-light div[class*="channels-"] > div > div[class^="scrollerWrap-"] > div[class^="scroller-"] div[class*="nameDefault"] {
     color: #777;
 }
-.theme-light div[class*="channels-"] > div > div[class^="scrollerWrap-"] > div[class^="scroller-"] div[class^="contentSelected"] div[class^='iconSpacing']>svg,
-.theme-light div[class*="channels-"] > div > div[class^="scrollerWrap-"] > div[class^="scroller-"] div[class^="contentHovered"] div[class^='iconSpacing']>svg,
-.theme-light div[class*="channels-"] > div > div[class^="scrollerWrap-"] > div[class^="scroller-"] div[class^="contentDefault"] div[class^='iconSpacing']>svg{
+.theme-light div[class*="channels-"] > div > div[class*="scrollerWrap-"] > div[class*="scroller-"] div[class*="contentSelected"] div[class*='iconSpacing'] svg,
+.theme-light div[class*="channels-"] > div > div[class*="scrollerWrap-"] > div[class*="scroller-"] div[class*="contentHovered"] div[class*='iconSpacing'] svg,
+.theme-light div[class*="channels-"] > div > div[class*="scrollerWrap-"] > div[class*="scroller-"] div[class*="contentDefault"] div[class*='iconSpacing'] svg,
+.theme-light div[class*="channels-"] button[class*='addButton-'] svg{
     filter: drop-shadow(1px 1px 0px #777);
 }
 
@@ -511,14 +512,17 @@ div[class*="channels-"] {
 /**
  *  Инпут поиска в контактах
  */
-.theme-light div[class*="searchBarInner-"] ::-webkit-input-placeholder {
+.theme-light .search-bar-inner  {
+    background-color: white !important;
+}
+.theme-light .search-bar-inner ::-webkit-input-placeholder{
     color: #c5c5c5 !important;
 }
-.theme-light div[class*="searchBarInner-"] {
-    background-color: rgba(153,170,181,.1) !important;
+.theme-light .search-bar {
+    background-color: white !important;
     border: 1px solid transparent;
 }
-.theme-light .private-channels .search-bar {
+.theme-light div[class*="privateChannels-"] div[class*="searchBar-"] {
     background-color: #FFF;
     border: 1px solid transparent;
     border-radius: 0;
@@ -528,27 +532,30 @@ div[class*="channels-"] {
 /**
  * Список контактов
  */
-.theme-light .private-channels *{
+.theme-light div[class*="privateChannels-"] *{
     font-family: Tahoma, sans-serif !important;
 }
-.theme-light .private-channels header {
+.theme-light div[class*="privateChannels-"] header {
     font-size: 12px;
     color: #333;
     opacity: 0.7;
 }
-.theme-light .private-channels .channel *{
-    color: #777;
-}
-.theme-light .private-channels .channel:hover *,
-.theme-light .private-channels .channel.selected *{
+.theme-light div[class*="privateChannels-"] div[class*="channel-"] *{
     color: #333;
 }
-.theme-light .private-channels .channel .channel-name {
+.theme-light div[class*="privateChannels-"] div[class*="channel-"]:hover *,
+.theme-light div[class*="privateChannels-"] div[class*="channel-"][class*="selected-"] *{
+    color: #333;
+}
+.theme-light div[class*="privateChannels-"] div[class*="channel-"] [class*="name-"] {
     opacity: 1;
 }
-.theme-light .private-channels .channel:hover a,
-.theme-light .private-channels .channel.selected a {
+.theme-light div[class*="privateChannels-"] div[class*="channel-"]:hover a,
+.theme-light div[class*="privateChannels-"] div[class*="channel-"][class*="selected-"] a {
     background: #F1F1F1;
+}
+.theme-light div[class*="privateChannels-"] div[class*="channel-"] [class*="close-"] {
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 16.5c-.5.5-1 1-1.5 1.5-1.5-1.5-3-3-4.5-4.5-1.5 1.5-3 3-4.5 4.5-.5-.5-1-1-1.5-1.5 1.5-1.5 3-3 4.5-4.5-1.5-1.5-3-3-4.5-4.5.5-.5 1-1 1.5-1.5 1.5 1.5 3 3 4.5 4.5 1.5-1.5 3-3 4.5-4.5.5.5 1 1 1.5 1.5-1.5 1.5-3 3-4.5 4.5 1.5 1.5 3 3 4.5 4.5"/></svg>') 50% no-repeat;
 }
 
 /**
