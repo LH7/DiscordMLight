@@ -1,4 +1,4 @@
-//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.37"}*//
+//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.38"}*//
 
 /**
  * Пустышка для raw импорта css файла
@@ -158,7 +158,7 @@ div[class*="avatarOffline-"] div[class*="image-"]{
 div[class*="messageCompact-"] *{
     font-family: Tahoma, sans-serif;
 }
-div[class*="messageCompact-"] span[class*="usernameWrapper-"] *,
+div[class*="messageCompact-"] span[class*="username-"],
 div[class*="messageCompact-"] div[class*="markup-"] .mention{
     font-size: 10pt !important;
     font-weight: bold !important;
@@ -170,7 +170,7 @@ div[class*="messageCompact-"] div[class*="markup-"] .mention{
 .theme-dark div[class*="messageCompact-"] div[class*="markup-"]  {
     font-size: 10pt !important;
 }
-div[class*="messageCompact-"]:not(:first-child) span[class*="usernameWrapper-"] {
+div[class*="messageCompact-"]:not(:first-child) span[class*="username-"] {
     display: none;
 }
 div[class*="messageCompact-"]:not(:first-child) h2[class*="headerCompact-"] {
@@ -248,7 +248,7 @@ div[class*="messageCozy-"] *{
 .theme-dark div[class*="messageCozy-"] div[class*="markup-"] {
     font-size: 10pt !important;
 }
-div[class*="messageCozy-"] span[class*="usernameWrapper-"] *,
+div[class*="messageCozy-"] span[class*="username-"],
 div[class*="messageCozy-"] div[class*="markup-"] .mention{
     font-size: 10pt !important;
     font-weight: bold !important;
@@ -256,11 +256,11 @@ div[class*="messageCozy-"] div[class*="markup-"] .mention{
 div[class*="messageCozy-"] div[class*="contentCozy-"]{
     margin-left: 50px;
 }
-[class*="divider-"]{
-    margin: 5px 10px 5px 10px !important;
+[class*="divider-"] span[class*="dividerContent-"]{
+    margin: -17px 0 -5px 0;
 }
-div[class*="chat-"] .divider {
-    margin: 5px 10px 5px 10px;
+[class*="divider-"] {
+    margin: 5px 10px 5px 10px !important;
 }
 div[class*="messages-"] > div[class*="containerCozy-"] {
     padding: 0 0 0 0;
@@ -278,12 +278,7 @@ div[class*="messages-"] div[class*="messageCozy-"]:not(:hover) time[class*="time
 div[class*="messages-"] div[class*="messageCompact-"]:not(:hover):not(:first-child) time[class*="timestampCompact-"] {
     opacity: 0;
 }
-div[class*="chat-"] div[class*="divider-"][class*="dividerRed-"] > div {
-    margin-top: 10px;
-}
-div[class*="chat-"] div[class*="divider-"][class*="dividerRed-"] > span{
-    margin-top: 9px;
-}
+
 
 div[class*="messageGroupWrapperOffsetCorrection-"]{
     margin-bottom: -20px;
@@ -315,6 +310,9 @@ div[class^="channelTextArea-"] + div[class^="typing-"]{
         display: none;
     }
     div[class*="messageCozy-"] span[class*="usernameWrapper-"] {
+        margin-left: 10px;
+    }
+    div[class*="messageCozy-"] h2[class*="headerCozyMeta-"]{
         margin-left: 10px;
     }
 }
