@@ -1,4 +1,4 @@
-//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.41"}*//
+//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.42"}*//
 
 /**
  * Пустышка для raw импорта css файла
@@ -50,7 +50,7 @@
  * Автоуменьшение панели участников если ширина мелкая
  */
 @media screen and (max-width: 1100px) and (min-width: 601px){
-    body:not(.compact-mode) div:not(:last-child) > .messages-wrapper {
+    body:not(.compact-mode) div:not(:last-child) > div[class*="messagesWrapper-"] {
         margin-right: 60px;
     }
     body:not(.compact-mode) div[class*="chat-"] > div > div:not(:last-child) > form {
