@@ -1,4 +1,4 @@
-//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.43"}*//
+//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.44"}*//
 
 /**
  * Пустышка для raw импорта css файла
@@ -151,6 +151,12 @@ div[class*="avatarWrapperNormal-"] > div > div[class*="image-"]{
     -webkit-mask: none;
     mask: none;
 }
+/* затемнение при наведении на всплывашку аватарки */
+div[class*="avatarWrapperNormal-"] > div[class*="maskProfile-"] {
+    border-radius: 5px;
+    -webkit-mask: none;
+    mask: none;
+}
 /* «некруглые» офлайн аватары */
 div[class*="avatarOffline-"] div[class*="image-"]{
     border-radius: 5px;
@@ -212,6 +218,12 @@ div[class*="messages-"] > div[class*="containerCompact-"]{
 }
 .theme-light div[class*="avatarSmall-"] div[class*="inner-"]{
     box-shadow: 0 0 1px 1px #EEE;
+}
+
+/* тень в левом верхнем углу списка серверов (анрид меншн?) В любом случае он на светлой теме не нужен */
+.theme-light div[class*="unreadMentionsBar-"] {
+    -webkit-box-shadow: none;
+    box-shadow: none;
 }
 
 /**
@@ -407,7 +419,7 @@ div[class*="channels-"] {
 /**
  * Заголовок Сервера
  */
-.theme-light header g path:not(:first-child){
+.theme-light header svg:not([name="Verified"]) g path:not(:first-child){
     stroke: #000;
 }
 .theme-light header[class*="header-"]{
@@ -430,6 +442,19 @@ div[class*="channels-"] {
 }
 .theme-light div[class*="channels-"]>div:first-child header:hover{
     background-color: #F5F5F5;
+}
+/* падинг и картинка комьюнити серверов */
+div[class*='channels-'] > div > div > div[class*='systemPad-'] > div:first-child,
+header + div[class*="bannerImage-"] {
+    display: none;
+}
+/* тень надписи комьюнити серверов */
+.theme-light header > span[class*="name-"] {
+    text-shadow: none !important;
+}
+/* отступ для мозилы */
+div[class*="channels-"] > div > div > div[class*="systemPad-"] {
+    padding-right: 0 !important;
 }
 
 /**
@@ -520,7 +545,7 @@ div[class*="channels-"] {
 /**
  * в сети
  */
- 
+
 .theme-light div[class*="friendsOnline-"] {
     color: #737373;
 }
@@ -731,6 +756,10 @@ span[class*="usernameWrapper-"] span[class*="botTagCompact-"] {
     position: absolute;
     background-color: #FFF;
     content: "";
+}
+.theme-light div[class*="channels-"] div[class*="scrollbar-"] > div[class*="pad-"]{
+    left: -3px;
+    width: 3px;
 }
 .theme-light div[class*="channels-"] div[class*="scrollbar-"] > div[class*="thumb-"]{
     background-color: #D5D5D5 !important;
