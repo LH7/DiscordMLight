@@ -1,4 +1,4 @@
-//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.45"}*//
+//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.46"}*//
 
 /**
  * Пустышка для raw импорта css файла
@@ -457,8 +457,7 @@ div[class*="channels-"] {
 .theme-light div[class*="channels-"]>div:first-child header:hover{
     background-color: #F5F5F5;
 }
-/* падинг и картинка комьюнити серверов */
-div[class*='channels-'] > div > div > div[class*='systemPad-'] > div:first-child,
+/* картинка комьюнити серверов, часто подгоняют под черную тему, поэтому просто скрываем, падинг к сожалению убрать нельзя, он юзается для смещения списка при скролле */
 header + div[class*="bannerImage-"] {
     display: none;
 }
@@ -520,6 +519,22 @@ div[class*="channels-"] > div > div > div[class*="systemPad-"] {
     fill: #777;
 }
 
+.theme-light div[class*="channels-"] div[class*="containerDefault-"] div[class*="wrapper-"] > div[class*="content-"] > div[class*="children-"] > div[class*="userLimit-"] > div > span[class*="users-"] {
+    background-color: #EEE;
+}
+.theme-light div[class*="channels-"] div[class*="containerDefault-"] div[class*="wrapper-"] > div[class*="content-"] > div[class*="children-"] > div[class*="userLimit-"] > div > span[class*="total-"] {
+    background-color: #E5E5E5;
+}
+.theme-light div[class*="channels-"] div[class*="containerDefault-"] div[class*="wrapper-"] > div[class*="content-"] > div[class*="children-"] > div[class*="userLimit-"] > div > span[class*="total-"]::after {
+    border-right-color: #E5E5E5;
+}
+
+.theme-light div[class*="channels-"] div[class*="containerDefault-"] div[class*="list-"] > div > div[class*="voiceUser-"]:hover > div[class*="content-"] {
+    background-color: #EEE;
+}
+.theme-light div[class*="channels-"] div[class*="containerDefault-"] div[class*="list-"] > div > div[class*="voiceUser-"]:hover > div[class*="content-"] > div[class*="username-"] {
+    color: #999;
+}
 
 /**
  * Боковая панель, саамая левая с выбором сервера
