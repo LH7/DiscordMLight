@@ -145,7 +145,7 @@ div[class*="avatarSmall-"] div[class*="inner-"]{
 }
 
 /* Темный ник в статусе в белой теме */
-.theme-light div[class*="nameTag-"] span[class*="username-"] {
+.theme-light div[class*="channels-"] div[class*="nameTag-"] span[class*="username-"] {
   color: black;
 }
 
