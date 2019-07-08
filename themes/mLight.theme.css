@@ -1,4 +1,4 @@
-//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.46"}*//
+//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.47"}*//
 
 /**
  * Пустышка для raw импорта css файла
@@ -142,6 +142,11 @@ div[class*="avatarSmall-"] div[class*="inner-"]{
     border-radius: 5px;
     -webkit-mask: none;
     mask: none;
+}
+
+/* Темный ник в статусе в белой теме */
+.theme-light div[class*="nameTag-"] span[class*="username-"] {
+  color: black;
 }
 
 /* возможно тоже аватары, но теперь у нас маски чтобы сделать хоббитские окна... */
