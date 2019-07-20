@@ -1,4 +1,4 @@
-//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.47"}*//
+//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.48"}*//
 
 /**
  * Пустышка для raw импорта css файла
@@ -115,56 +115,35 @@ div[class*="members-"] div[class*="membersGroup-"]{
     font-size: 10px;
 }
 
+/* Темный ник в статусе в белой теме */
+.theme-light div[class*="channels-"] div[class*="nameTag-"] span[class*="username-"] {
+    color: black;
+}
+
 /**
  * Аватарки чатика, уютной темы
  */
-div[class*="headerCozy-"] div[class*="avatar-"] > div[class*="image-"] {
-    display: block;
-    border-radius: 5px;
-    margin-right: 8px;
-    margin-top: 5px;
-    background-size: 30px 30px;
-    width: 30px;
-    height: 30px;
-}
 /* сдвиг аватарки влево */
 div[class*="headerCozy-"] div[class*="avatar-"] {
     margin: 0 0 0 10px
 }
-
-/**
- * Мелкие аватарки
- */
-.avatar-small{
+div[class*="avatar-"] svg > foreignObject, div[class*="avatarWrapper-"]:not([class*="avatarWrapperNormal"]) svg > foreignObject, div[class*="avatarSmall-"] svg > foreignObject {
+    mask: none !important;
+    border-radius: 5px !important;
+    width: 30px;
+    height: 30px;
+}
+.theme-light div[class*="avatar-"] svg > foreignObject, .theme-light div[class*="avatarWrapper-"]:not([class*="avatarWrapperNormal"]) svg > foreignObject, .theme-light div[class*="avatarSmall-"] svg > foreignObject {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #EEE;
+    box-sizing: border-box;
+}
+div[class*="avatar-"] svg > foreignObject > img, div[class*="avatarWrapper-"]:not([class*="avatarWrapperNormal"]) svg > foreignObject > img, div[class*="avatarSmall-"] svg > foreignObject > img {
     border-radius: 5px;
 }
-div[class*="avatarSmall-"] div[class*="inner-"]{
-    border-radius: 5px;
-    -webkit-mask: none;
-    mask: none;
-}
-
-/* Темный ник в статусе в белой теме */
-.theme-light div[class*="channels-"] div[class*="nameTag-"] span[class*="username-"] {
-  color: black;
-}
-
-/* возможно тоже аватары, но теперь у нас маски чтобы сделать хоббитские окна... */
-span[class*="avatarWrapper-"] div[class*="image-"],
-div[class*="avatarWrapperNormal-"] > div > div[class*="image-"]{
-    border-radius: 5px;
-    -webkit-mask: none;
-    mask: none;
-}
-/* затемнение при наведении на всплывашку аватарки */
-div[class*="avatarWrapperNormal-"] > div[class*="maskProfile-"] {
-    border-radius: 5px;
-    -webkit-mask: none;
-    mask: none;
-}
-/* «некруглые» офлайн аватары */
-div[class*="avatarOffline-"] div[class*="image-"]{
-    border-radius: 5px;
+div[class*="avatar-"], div[class*="avatarSmall-"], div[class*="avatarWrapper-"]:not([class*="avatarWrapperNormal"]) {
+    padding-top: 3px;
 }
 
 /**
@@ -231,12 +210,6 @@ div[class*="messages-"] > div[class*="containerCompact-"]{
     box-shadow: none;
 }
 
-/**
- * кружок статуса аватара
- */
-.theme-light div[class*="avatarSmall-"] div[class*="status-"]{
-    border: 2px solid #FFF;
-}
 
 /**
  * Список юзеров (справа)
@@ -257,6 +230,13 @@ div[class*="members-"] div[class*="member-"]{
 div[class*="membersWrap-"] {
     min-width: 200px;
     max-width: 300px;
+}
+
+/**
+ Список юзеров, коррекция аватарок
+*/
+div[class*="membersWrap"] div[class*="member-"]{
+    margin: -2px 1px 1px;
 }
 
 /**
