@@ -1,4 +1,4 @@
-//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.48"}*//
+//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.49"}*//
 
 /**
  * Пустышка для raw импорта css файла
@@ -236,7 +236,19 @@ div[class*="membersWrap-"] {
  Список юзеров, коррекция аватарок
 */
 div[class*="membersWrap"] div[class*="member-"]{
-    margin: -2px 1px 1px;
+    margin: 4px 1px 4px;
+}
+
+/**
+ * Папки, фон для светлой темы
+ */
+.theme-light span[class*="expandedFolderBackground-"],
+.theme-light div[class*="folder-"] {
+    background-color: #e5e5e5;
+}
+.theme-light span[class*="expandedFolderBackground-"][class*="hover-"],
+.theme-light div[class*="folder-"][class*="hover-"] {
+    background-color: #f5f5f5;
 }
 
 /**
