@@ -1,4 +1,4 @@
-//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.50"}*//
+//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.51"}*//
 
 /**
  * Пустышка для raw импорта css файла
@@ -267,26 +267,32 @@ div[class*="membersWrap"] div[class*="member-"]{
  * full
  * Основной чатик
  */
-div[class*="containerCozyBounded-"] *{
+div[class*="containerCozyBounded-"] *,
+div[class*="containerCozy-"] *{
     font-family: Tahoma, sans-serif;
 }
-.theme-light div[class*="containerCozyBounded-"] div[class*="markup-"] {
+.theme-light div[class*="containerCozyBounded-"] div[class*="markup-"],
+.theme-light div[class*="containerCozy-"] div[class*="markup-"]{
     font-size: 10pt !important;
     color: black !important;
 }
-.theme-dark div[class*="containerCozyBounded-"] div[class*="markup-"] {
+.theme-dark div[class*="containerCozyBounded-"] div[class*="markup-"], .theme-dark div[class*="containerCozy-"] div[class*="markup-"]{
     font-size: 10pt !important;
 }
 /* кнопки */
-.theme-light div[class*="containerCozyBounded-"] div[role="button"] {
+.theme-light div[class*="containerCozyBounded-"] div[role="button"],
+.theme-light div[class*="containerCozy-"] div[role="button"] {
     color: #999 !important;
 }
 div[class*="containerCozyBounded-"] span[class*="username-"],
-div[class*="containerCozyBounded-"] div[class*="markup-"] .mention{
+div[class*="containerCozy-"] span[class*="username-"],
+div[class*="containerCozyBounded-"] div[class*="markup-"] .mention, 
+div[class*="containerCozy-"] div[class*="markup-"] .mention{
     font-size: 10pt !important;
     font-weight: bold !important;
 }
-div[class*="containerCozyBounded-"] div[class*="contentCozy-"]{
+div[class*="containerCozyBounded-"] div[class*="contentCozy-"],
+div[class*="containerCozy-"] div[class*="contentCozy-"]{
     margin-left: 50px;
 }
 [class*="divider-"] span[class*="dividerContent-"]{
@@ -299,13 +305,18 @@ div[class*="messages-"] > div[class*="containerCozy-"] {
     padding: 0 0 0 0;
     margin: 0;
 }
+div[class*="messages-"] > div[class*="containerCozyBounded-"] {
+    padding: 0 0 0 0;
+    margin: 0;
+}
 .theme-light div[class*="messages-"] time[class*="timestamp-"] {
     color: #c5c5c5 !important;
 }
 .theme-dark div[class*="messages-"] time[class*="timestamp-"] {
     color: #a7a7a7 !important;
 }
-div[class*="messages-"] div[class*="containerCozyBounded-"]:not(:hover) time[class*="timestampCozy-"] {
+div[class*="messages-"] div[class*="containerCozyBounded-"]:not(:hover) time[class*="timestampCozy-"],
+div[class*="messages-"] div[class*="containerCozy-"]:not(:hover) time[class*="timestampCozy-"] {
     opacity: 0;
 }
 div[class*="messages-"] div[class*="messageCompact-"]:not(:hover):not(:first-child) time[class*="timestampCompact-"] {
@@ -376,10 +387,13 @@ div[class*="chat-"] div[class*="toolbar-"] div[class*="searchBar-"] {
     div[class*="headerCozy-"] div[class*="avatar-"] {
         display: none;
     }
-    div[class*="containerCozyBounded-"] span[class*="usernameWrapper-"] {
+    div[class*="containerCozyBounded-"] span[class*="usernameWrapper-"],
+    div[class*="containerCozy-"] span[class*="usernameWrapper-"]{
         margin-left: 10px;
     }
-    div[class*="containerCozyBounded-"] h2[class*="headerCozyMeta-"]{
+    div[class*="containerCozy-"] > div > div[class*="contentCozy-"],
+    h2[class*="headerCozyMeta-"]
+    {
         margin-left: 10px;
     }
 }
