@@ -1,4 +1,4 @@
-//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.49"}*//
+//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.50"}*//
 
 /**
  * Пустышка для raw импорта css файла
@@ -13,6 +13,9 @@
     .channels-wrap, div[role="dialog"] > div > div[class*="wrapper-"]:first-child, div[class*="membersWrap-"]{
         display: none !important;
     }
+    div[class*="base-"]{
+        left: 0;
+    }
 }
 @media screen and (max-width: 440px) {
     .header-toolbar{
@@ -26,23 +29,23 @@
     div[role="dialog"] > div > div[class*="wrapper-"]:first-child{
         z-index: 201;
     }
-    div[class*="channels-"]{
+    div[class*="sidebar-"]{
         z-index: 200;
         position: fixed;
         left: calc(70px - 100%);
         height: calc(100%);
     }
-    div[class*="titleBar-"] + div[class*="app-"] div[class*="channels-"]{
+    div[class*="titleBar-"] + div[class*="app-"] div[class*="sidebar-"]{
         height: calc(100% - 18px); /* height title */
     }
-    div[role="dialog"] > div > div[class*="wrapper-"]:first-child:hover + div > div > div[class*="channels-"]{
-        left: 70px;
+    div[role="dialog"] > div > div[class*="wrapper-"]:first-child:hover + div > div > div[class*="sidebar-"]{
+        left: 0px;
     }
-    div[class*="channels-"]{
+    div[class*="sidebar-"]{
         transition: left 0.5s 0.3s;
     }
-    div[class*="channels-"]:hover{
-        left: 70px;
+    div[class*="sidebar-"]:hover{
+        left: 0px;
     }
 }
 
@@ -51,26 +54,33 @@
  */
 @media screen and (max-width: 1100px) and (min-width: 601px){
     body:not(.compact-mode) div:not(:last-child) > div[class*="messagesWrapper-"] {
-        margin-right: 60px;
+        margin-right: 52px;
     }
     body:not(.compact-mode) div[class*="chat-"] > div > div:not(:last-child) > form {
-        margin-right: 70px !important;
+        margin-right: 10px !important;
     }
 }
 @media screen and (max-width: 1100px) {
     div[class*="membersWrap-"]{
         position: fixed;
         right: 0;
-        transform: translateX(calc(100% - 60px));
+        transform: translateX(calc(100% - 55px));
         transition: transform 0.2s 0.3s;
-        height: calc(100% - 48px); /* title chat bar*/
+        height: calc(100% - 57px); /* title chat bar*/
+    }
+    div[class*="membersWrap-"] > div {
+        border-radius: 0 0 0 10px;
     }
     div[class*="titleBar-"] + div[class*="app-"] div[class*="membersWrap-"]{
-        height: calc(100% - 18px - 48px - 2px); /* height title + title chat bar*/
+        height: calc(100% - 18px - 43px - 2px); /* height title + title chat bar*/
     }
     div[class*="membersWrap-"]:hover{
         transform: translateX(0);
     }
+    .theme-light div[class*="membersWrap-"]:hover div[class*="members-"] {
+        box-shadow: 0px 0px 0px 1px inset #ebebec;
+    }
+
     div[class*="members-"] div[class*="memberInner-"]{
         transition: opacity 0.3s 0.3s
     }
@@ -90,7 +100,7 @@
 /**
  * Force compact on hotkey
  */
-body.compact-mode div[class^="channels-"],
+body.compact-mode div[class^="sidebar-"],
 body.compact-mode div[role="dialog"] > div > div[class*="wrapper-"]:first-child,
 body.compact-mode div[class*="membersWrap-"]{
     display: none !important;
@@ -107,17 +117,21 @@ div[role="dialog"] > div > div[class*="wrapper-"]:first-child {
 /**
  * Роли участников
  */
-div[class*="members-"] div[class*="membersGroup-"]{
+div[class*="membersWrap-"] div[class*="membersGroup-"]{
     margin: 7px 0 !important;
     padding: 5px !important;
     font-family: Tahoma, sans-serif;
     height: 20px;
     font-size: 10px;
+    color: #BBB;
 }
 
 /* Темный ник в статусе в белой теме */
-.theme-light div[class*="channels-"] div[class*="nameTag-"] span[class*="username-"] {
-    color: black;
+.theme-light div[class*="sidebar-"] div[class*="nameTag-"] div[class*="title-"] {
+    font-weight: normal;
+}
+.theme-light div[class*="sidebar-"] div[class*="nameTag-"] div[class*="subtext-"] {
+    color: #DDD;
 }
 
 /**
@@ -217,12 +231,15 @@ div[class*="messages-"] > div[class*="containerCompact-"]{
  */
 .theme-light div[class*="members-"] {
     background-color: #FFF;
-    border-left: 1px solid #F5F5F5;
 }
 div[class*="members-"] div[class*="member-"] div[class*="content-"]{
     padding: 4px;
     margin: 0 0;
     border-radius: 0;
+}
+div[class*="members-"] div[class*="member-"] div[class*="avatar-"]{
+    padding-top: 0px;
+
 }
 div[class*="members-"] div[class*="member-"]{
     height: 40px;
@@ -236,41 +253,40 @@ div[class*="membersWrap-"] {
  Список юзеров, коррекция аватарок
 */
 div[class*="membersWrap"] div[class*="member-"]{
-    margin: 4px 1px 4px;
+    margin: -2px 1px 1px;
 }
 
 /**
- * Папки, фон для светлой темы
+ * Цвет списка друзей
  */
-.theme-light span[class*="expandedFolderBackground-"],
-.theme-light div[class*="folder-"] {
-    background-color: #e5e5e5;
-}
-.theme-light span[class*="expandedFolderBackground-"][class*="hover-"],
-.theme-light div[class*="folder-"][class*="hover-"] {
-    background-color: #f5f5f5;
+.theme-light a[aria-label="Home"]:not(:hover):not([class*="selected-"]) > div[class*="childWrapper-"]{
+    background-color: #EEE;
 }
 
 /**
  * full
  * Основной чатик
  */
-div[class*="messageCozy-"] *{
+div[class*="containerCozyBounded-"] *{
     font-family: Tahoma, sans-serif;
 }
-.theme-light div[class*="messageCozy-"] div[class*="markup-"] {
+.theme-light div[class*="containerCozyBounded-"] div[class*="markup-"] {
     font-size: 10pt !important;
     color: black !important;
 }
-.theme-dark div[class*="messageCozy-"] div[class*="markup-"] {
+.theme-dark div[class*="containerCozyBounded-"] div[class*="markup-"] {
     font-size: 10pt !important;
 }
-div[class*="messageCozy-"] span[class*="username-"],
-div[class*="messageCozy-"] div[class*="markup-"] .mention{
+/* кнопки */
+.theme-light div[class*="containerCozyBounded-"] div[role="button"] {
+    color: #999 !important;
+}
+div[class*="containerCozyBounded-"] span[class*="username-"],
+div[class*="containerCozyBounded-"] div[class*="markup-"] .mention{
     font-size: 10pt !important;
     font-weight: bold !important;
 }
-div[class*="messageCozy-"] div[class*="contentCozy-"]{
+div[class*="containerCozyBounded-"] div[class*="contentCozy-"]{
     margin-left: 50px;
 }
 [class*="divider-"] span[class*="dividerContent-"]{
@@ -289,7 +305,7 @@ div[class*="messages-"] > div[class*="containerCozy-"] {
 .theme-dark div[class*="messages-"] time[class*="timestamp-"] {
     color: #a7a7a7 !important;
 }
-div[class*="messages-"] div[class*="messageCozy-"]:not(:hover) time[class*="timestampCozy-"] {
+div[class*="messages-"] div[class*="containerCozyBounded-"]:not(:hover) time[class*="timestampCozy-"] {
     opacity: 0;
 }
 div[class*="messages-"] div[class*="messageCompact-"]:not(:hover):not(:first-child) time[class*="timestampCompact-"] {
@@ -311,6 +327,26 @@ div[class*="channelTextArea-"]{
     margin: 8px 0;
     padding: 0;
     border-top: none !important;
+}
+.theme-light div[class*="channelTextArea-"] > div[class*="inner-"]{
+    background-color: #FFF;
+    box-shadow: inset 0 0 0 1px #eceeef;
+}
+.theme-light div[class*="channelTextArea-"] > div[class*="inner-"] button [class*="attachButtonPlus-"]{
+    fill: #d8d8d8;
+}
+.theme-light div[class*="channelTextArea-"] div[class*="buttons-"] button div[class*="contents-"]{
+    color: #d8d8d8;
+}
+.theme-light div[class*="channelTextArea-"] div[class*="buttons-"] button:hover svg[class*="icon-"]{
+    color: #888;
+}
+.theme-light div[class*="channelTextArea-"] input,
+.theme-light div[class*="channelTextArea-"] textarea[class*="textArea-"]{
+    color: #000;
+}
+.theme-light div[class*="channelTextArea-"] textarea[class*="textArea-"]::placeholder {
+    color: #CCC;
 }
 form div[class*="typing-"]{
     display: none !important;
@@ -334,16 +370,16 @@ div[class*="chat-"] div[class*="toolbar-"] div[class*="searchBar-"] {
  * скрывалка аватаров, уже хуже чем было раньше =(
  */
 @media screen and (max-width: 1300px) {
-    div[class*="messageCozy-"] div[class*="contentCozy-"]{
+    div[class*="containerCozyBounded-"] div[class*="contentCozy-"]{
         margin-left: 10px;
     }
     div[class*="headerCozy-"] div[class*="avatar-"] {
         display: none;
     }
-    div[class*="messageCozy-"] span[class*="usernameWrapper-"] {
+    div[class*="containerCozyBounded-"] span[class*="usernameWrapper-"] {
         margin-left: 10px;
     }
-    div[class*="messageCozy-"] h2[class*="headerCozyMeta-"]{
+    div[class*="containerCozyBounded-"] h2[class*="headerCozyMeta-"]{
         margin-left: 10px;
     }
 }
@@ -379,19 +415,20 @@ div[class*="chat-"] div[class*="toolbar-"] div[class*="searchBar-"] {
 /**
  * Панель комнат
  */
-div[class*="channels-"] {
+div[class*="sidebar-"] {
     width: 220px;
 }
-.theme-light div[class*="channels-"]{
+.theme-light div[class*="sidebar-"] > div[class*="container-"]{
     background-color: #ffffff;
+    box-shadow: inset -1px 0px 0px 0px #eceeef;
 }
-.theme-light div[class*="channels-"]{
+.theme-light div[class*="sidebar-"]{
     font-family: Tahoma, sans-serif !important;
-    border-right: 1px solid #EEE;
 }
-.theme-light div[class*="channels-"]>div:last-child{
+.theme-light div[class*="sidebar-"]>div:last-child:not([class*="side-"]){
     background-color: #ffffff;
     border-top: 1px solid #EEE;
+    box-shadow: inset -1px 0px 0px 0px #eceeef;
 }
 
 /* ...наркомааааания, в гробу я видал такие селекторы */
@@ -418,43 +455,25 @@ div[class*="channels-"] {
 /**
  * Кнопки настройки и выключения звука
  */
-.theme-light div[class*="channels-"]>div:last-child>div:last-child{
-    filter: drop-shadow(0px 0px 0px #777);
-}
-.theme-light div[class*="channels-"]>div:last-child>div:last-child div:hover,
-.theme-light div[class*="channels-"]>div:last-child>div:last-child button:hover{
-    background-color: transparent;
-    filter: drop-shadow(0px 0px 1px #FAFAFA);
+.theme-light button[aria-label="Unmute"],
+.theme-light button[aria-label="Undeafen"],
+.theme-light button[aria-label="User Settings"]{
+    color: #BBB
 }
 
 /**
  * Заголовок Сервера
  */
-.theme-light header svg:not([name="Verified"]) g path:not(:first-child){
-    stroke: #000;
-}
-.theme-light header[class*="header-"]{
-    background-color: #fff;
-    border-bottom: 0 solid #FFF;
+.theme-light div[class*="chat-"] div[class*="title-"]{
     box-shadow: 0 1px 0 0 #eceeef;
 }
-.theme-light header,
-.theme-light .chat>.title-wrap
-{
-    border-bottom: 1px solid #EEE;
-    box-shadow: 0 0 0 #EEE;
+.theme-light div[class*="sidebar-"] > div > div:not([class*="bannerVisible-"]) header[class*="header-"]{
+    background-color: #fff;
+    border-bottom: 0 solid #FFF;
+    border-right: 1px solid #eceeef;
+    box-shadow: 0 1px 0 0 #eceeef;
 }
-.theme-light div[class*="channels-"]>div:first-child{
-    background-color: #FFF;
-}
-.theme-light div[class*="channels-"]>div:first-child header span[class^="name-"]{
-    color: #444;
-    font-weight: bold;
-}
-.theme-light div[class*="channels-"]>div:first-child header:hover{
-    background-color: #F5F5F5;
-}
-/* картинка комьюнити серверов, часто подгоняют под черную тему, поэтому просто скрываем, падинг к сожалению убрать нельзя, он юзается для смещения списка при скролле */
+/* картинка комьюнити серверов */
 header + div[class*="bannerImage-"] {
     display: none;
 }
@@ -463,75 +482,89 @@ header + div[class*="bannerImage-"] {
     text-shadow: none !important;
 }
 /* отступ для мозилы */
-div[class*="channels-"] > div > div > div[class*="systemPad-"] {
+div[class*="sidebar-"] > div > div > div[class*="systemPad-"] {
     padding-right: 0 !important;
 }
 
 /**
  * Айтемы комнат
  */
-.theme-light div[class*="channels-"] div[class*="containerDefault-"] div[class*="wrapper-"] > div[class*="content-"] {
+.theme-light div[class*="sidebar-"] div[class*="containerDefault-"] div[class*="wrapper-"] > div[class*="content-"] {
     background-color: #FFF;
 }
-.theme-light div[class*="channels-"] div[class*="containerDefault-"] div[class*="wrapper-"] > div[class*="content-"] > div[class*="name-"] {
+.theme-light div[class*="sidebar-"] div[class*="containerDefault-"] div[class*="wrapper-"] > div[class*="content-"] > div[class*="name-"] {
     color: #888;
 }
-.theme-light div[class*="channels-"] div[class*="containerDefault-"] div[class*="wrapper-"] > div[class*="content-"] > svg > path {
+.theme-light div[class*="sidebar-"] div[class*="containerDefault-"] div[class*="wrapper-"] > div[class*="content-"] > svg > path {
     fill: #CCC;
 }
-.theme-light div[class*="channels-"] div[class*="containerDefault-"] div[class*="wrapper-"] > div[class*="content-"] svg[class*="actionIcon-"] > path {
+.theme-light div[class*="sidebar-"] div[class*="containerDefault-"] div[class*="wrapper-"] > div[class*="content-"] svg[class*="actionIcon-"] > path {
     fill: #CCC;
 }
-.theme-light div[class*="channels-"] div[class*="containerDefault-"] div[class*="wrapper-"] > div[class*="content-"] svg[class*="actionIcon-"]:hover > path {
+.theme-light div[class*="sidebar-"] div[class*="containerDefault-"] div[class*="wrapper-"] > div[class*="content-"] svg[class*="actionIcon-"]:hover > path {
     fill: #777;
 }
-.theme-light div[class*="channels-"] div[class*="containerDefault-"] div[class*="wrapper-"]:hover > div[class*="content-"],
-.theme-light div[class*="channels-"] div[class*="containerDefault-"][class*="selected-"] div[class*="wrapper-"] > div[class*="content-"] {
+.theme-light div[class*="sidebar-"] div[class*="containerDefault-"] div[class*="wrapper-"]:hover > div[class*="content-"],
+.theme-light div[class*="sidebar-"] div[class*="containerDefault-"][class*="selected-"] div[class*="wrapper-"] > div[class*="content-"] {
     background-color: #F1F1F1;
 }
-.theme-light div[class*="channels-"] div[class*="containerDefault-"][class*="selected-"] div[class*="wrapper-"] > div[class*="content-"] > div[class*="name-"] {
+.theme-light div[class*="sidebar-"] div[class*="containerDefault-"][class*="selected-"] div[class*="wrapper-"] > div[class*="content-"] > div[class*="name-"] {
     color: #333;
 }
-.theme-light div[class*="channels-"] div[class*="containerDefault-"] div[class*="wrapper-"][class*="modeUnread-"] > div[class*="content-"] > div[class*="name-"] {
+.theme-light div[class*="sidebar-"] div[class*="containerDefault-"] div[class*="wrapper-"][class*="modeUnread-"] > div[class*="content-"] > div[class*="name-"] {
     color: #333;
     font-weight: bold;
 }
-.theme-light div[class*="channels-"] div[class*="containerDefault-"] div[class*="wrapper-"][class*="modeMuted-"] > div[class*="content-"] > div[class*="name-"] {
+.theme-light div[class*="sidebar-"] div[class*="containerDefault-"] div[class*="wrapper-"][class*="modeMuted-"] > div[class*="content-"] > div[class*="name-"] {
     color: #DDD;
 }
 
-.theme-light div[class*="channels-"] div[class*="containerDefault-"] div[class*="wrapper-"][class*="clickable-"] > div[class*="name-"] {
+.theme-light div[class*="sidebar-"] div[class*="containerDefault-"] div[class*="wrapper-"][class*="clickable-"] > div[class*="name-"] {
     color: #666;
 }
-.theme-light div[class*="channels-"] div[class*="containerDefault-"] div[class*="wrapper-"][class*="clickable-"]:hover > div[class*="name-"] {
+.theme-light div[class*="sidebar-"] div[class*="containerDefault-"] div[class*="wrapper-"][class*="clickable-"]:hover > div[class*="name-"] {
     color: #333;
 }
-.theme-light div[class*="channels-"] div[class*="containerDefault-"] div[class*="wrapper-"][class*="clickable-"] > svg[class*="icon-"] > path {
+.theme-light div[class*="sidebar-"] div[class*="containerDefault-"] div[class*="wrapper-"][class*="clickable-"] > svg[class*="icon-"] > path {
     fill: #CCC;
 }
-.theme-light div[class*="channels-"] div[class*="containerDefault-"] div[class*="wrapper-"][class*="clickable-"]:hover > svg[class*="icon-"] > path {
+.theme-light div[class*="sidebar-"] div[class*="containerDefault-"] div[class*="wrapper-"][class*="clickable-"]:hover > svg[class*="icon-"] > path {
     fill: #777;
 }
-.theme-light div[class*="channels-"] div[class*="containerDefault-"] div[class*="wrapper-"][class*="clickable-"]:hover > div[class*="children-"] svg > polygon {
+.theme-light div[class*="sidebar-"] div[class*="containerDefault-"] div[class*="wrapper-"][class*="clickable-"]:hover > div[class*="children-"] svg > polygon {
     fill: #777;
 }
 
-.theme-light div[class*="channels-"] div[class*="containerDefault-"] div[class*="wrapper-"] > div[class*="content-"] > div[class*="children-"] > div[class*="userLimit-"] > div > span[class*="users-"] {
+.theme-light div[class*="sidebar-"] div[class*="containerDefault-"] div[class*="wrapper-"] > div[class*="content-"] > div[class*="children-"] > div[class*="userLimit-"] > div > span[class*="users-"] {
     background-color: #EEE;
 }
-.theme-light div[class*="channels-"] div[class*="containerDefault-"] div[class*="wrapper-"] > div[class*="content-"] > div[class*="children-"] > div[class*="userLimit-"] > div > span[class*="total-"] {
+.theme-light div[class*="sidebar-"] div[class*="containerDefault-"] div[class*="wrapper-"] > div[class*="content-"] > div[class*="children-"] > div[class*="userLimit-"] > div > span[class*="total-"] {
     background-color: #E5E5E5;
 }
-.theme-light div[class*="channels-"] div[class*="containerDefault-"] div[class*="wrapper-"] > div[class*="content-"] > div[class*="children-"] > div[class*="userLimit-"] > div > span[class*="total-"]::after {
+.theme-light div[class*="sidebar-"] div[class*="containerDefault-"] div[class*="wrapper-"] > div[class*="content-"] > div[class*="children-"] > div[class*="userLimit-"] > div > span[class*="total-"]::after {
     border-right-color: #E5E5E5;
 }
 
-.theme-light div[class*="channels-"] div[class*="containerDefault-"] div[class*="list-"] > div > div[class*="voiceUser-"]:hover > div[class*="content-"] {
+.theme-light div[class*="sidebar-"] div[class*="containerDefault-"] div[class*="list-"] > div > div[class*="voiceUser-"]:hover > div[class*="content-"] {
     background-color: #EEE;
 }
-.theme-light div[class*="channels-"] div[class*="containerDefault-"] div[class*="list-"] > div > div[class*="voiceUser-"]:hover > div[class*="content-"] > div[class*="username-"] {
+.theme-light div[class*="sidebar-"] div[class*="containerDefault-"] div[class*="list-"] > div > div[class*="voiceUser-"]:hover > div[class*="content-"] > div[class*="username-"] {
     color: #999;
 }
+.theme-light div[class*="iconVisibility-"] [class*="unread-"]{
+    background-color: #CCC;
+}
+.theme-light div[class*="iconVisibility-"] button[aria-label="Create Channel"] {
+    display: none;
+}
+.theme-light div[class*="iconVisibility-"]:hover button[aria-label="Create Channel"] {
+    color: #CCC;
+    display: block;
+}
+
+/*.theme-light div[class*="bannerVisible-"] div[class*="animatedContainer-"]{
+  display: none;
+}*/
 
 /**
  * Боковая панель, саамая левая с выбором сервера
@@ -577,6 +610,7 @@ div[class*="channels-"] > div > div > div[class*="systemPad-"] {
 .theme-light div[class*="privateChannels-"] div[class*="searchBar-"] {
     background-color: #FFF;
     border: 1px solid transparent;
+    border-right: 1px solid #e3e5e8;
     border-radius: 0;
     box-shadow: inset 0px -1px 0px #e3e5e8;
 }
@@ -584,30 +618,16 @@ div[class*="channels-"] > div > div > div[class*="systemPad-"] {
 /**
  * Список контактов
  */
-.theme-light div[class*="privateChannels-"] *{
-    font-family: Tahoma, sans-serif !important;
+.theme-light div[class*="privateChannels-"] > div[class*="themeGhostHairline-"]{
+    background: #FFF;
+    border-right: 1px solid #e3e5e8;
 }
-.theme-light div[class*="privateChannels-"] header {
-    font-size: 12px;
-    color: #333;
-    opacity: 0.7;
-}
-.theme-light div[class*="privateChannels-"] div[class*="channel-"] *{
-    color: #333;
-}
-.theme-light div[class*="privateChannels-"] div[class*="channel-"]:hover *,
-.theme-light div[class*="privateChannels-"] div[class*="channel-"][class*="selected-"] *{
-    color: #333;
-}
-.theme-light div[class*="privateChannels-"] div[class*="channel-"] [class*="name-"] {
-    opacity: 1;
-}
-.theme-light div[class*="privateChannels-"] div[class*="channel-"]:hover a,
-.theme-light div[class*="privateChannels-"] div[class*="channel-"][class*="selected-"] a {
-    background: #F1F1F1;
-}
-.theme-light div[class*="privateChannels-"] div[class*="channel-"] [class*="close-"] {
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m18 16.5c-.5.5-1 1-1.5 1.5-1.5-1.5-3-3-4.5-4.5-1.5 1.5-3 3-4.5 4.5-.5-.5-1-1-1.5-1.5 1.5-1.5 3-3 4.5-4.5-1.5-1.5-3-3-4.5-4.5.5-.5 1-1 1.5-1.5 1.5 1.5 3 3 4.5 4.5 1.5-1.5 3-3 4.5-4.5.5.5 1 1 1.5 1.5-1.5 1.5-3 3-4.5 4.5 1.5 1.5 3 3 4.5 4.5"/></svg>') 50% no-repeat;
+
+/**
+ * Тень у френдов
+ */
+.theme-light div[class*="base-"] > div[class*="content-"] > div[class*="container-"]  > div[class*="themed-"]{
+    box-shadow: 0px 1px 0px 0px #e3e5e8;
 }
 
 /**
@@ -764,18 +784,22 @@ span[class*="usernameWrapper-"] span[class*="botTagCompact-"] {
  */
 
 /* Скролл комнат... серьезно... вы маскируете стандартный скроллбар? %) */
-.theme-light div[class*="channels-"] div[class*="scrollbar-"]::before,
-.theme-light div[class*="channels-"] div[class*="scrollbar-"] > div[class*="pad-"]::before{
+.theme-light div[class*="sidebar-"] div[class*="scrollbar-"]::before,
+.theme-light div[class*="sidebar-"] div[class*="scrollbar-"] > div[class*="pad-"]::before{
     width: 100%;
     height: 100%;
     position: absolute;
     background-color: #FFF;
     content: "";
 }
-.theme-light div[class*="channels-"] div[class*="scrollbar-"] > div[class*="pad-"]{
+.theme-light div[class*="sidebar-"] div[class*="scrollbar-"] > div[class*="pad-"]{
     left: -3px;
     width: 3px;
 }
-.theme-light div[class*="channels-"] div[class*="scrollbar-"] > div[class*="thumb-"]{
+.theme-light div[class*="sidebar-"] div[class*="scrollbar-"] > div[class*="thumb-"]{
     background-color: #D5D5D5 !important;
+}
+
+div[class*="membersWrap"] div[class*="member-"]{
+    margin: 4px 1px 4px;
 }
