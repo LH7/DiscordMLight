@@ -1,4 +1,4 @@
-//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.51"}*//
+//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.52"}*//
 
 /**
  * Пустышка для raw импорта css файла
@@ -39,13 +39,13 @@
         height: calc(100% - 18px); /* height title */
     }
     div[role="dialog"] > div > div[class*="wrapper-"]:first-child:hover + div > div > div[class*="sidebar-"]{
-        left: 0px;
+        left: 70px;
     }
     div[class*="sidebar-"]{
         transition: left 0.5s 0.3s;
     }
     div[class*="sidebar-"]:hover{
-        left: 0px;
+        left: 70px;
     }
 }
 
@@ -66,7 +66,7 @@
         right: 0;
         transform: translateX(calc(100% - 55px));
         transition: transform 0.2s 0.3s;
-        height: calc(100% - 57px); /* title chat bar*/
+        height: calc(100% - 57px - 50px); /* title chat bar*/
     }
     div[class*="membersWrap-"] > div {
         border-radius: 0 0 0 10px;
@@ -87,11 +87,11 @@
     div[class*="members-"]:not(:hover) div[class*="memberInner-"]{
         opacity: 0;
     }
-    div[class*="members-"] div[class*="membersGroup-"]{
+    div[class*="members-"] header[class*="membersGroup-"]{
         max-width: 60px;
         transition: max-width 0.2s 0.2s;
     }
-    div[class*="members-"]:hover div[class*="membersGroup-"]{
+    div[class*="members-"]:hover header[class*="membersGroup-"]{
         transition-delay: 0.3s;
         max-width: 200px;
     }
@@ -117,7 +117,7 @@ div[role="dialog"] > div > div[class*="wrapper-"]:first-child {
 /**
  * Роли участников
  */
-div[class*="membersWrap-"] div[class*="membersGroup-"]{
+div[class*="membersWrap-"] header[class*="membersGroup-"]{
     margin: 7px 0 !important;
     padding: 5px !important;
     font-family: Tahoma, sans-serif;
@@ -487,6 +487,11 @@ div[class*="sidebar-"] {
     border-right: 1px solid #eceeef;
     box-shadow: 0 1px 0 0 #eceeef;
 }
+.theme-light div[class*="sidebar-"] div[class*="privateChannels-"] header[class*="header-"]{
+    border-right: none !important;
+    box-shadow: none !important;
+}
+
 /* картинка комьюнити серверов */
 header + div[class*="bannerImage-"] {
     display: none;
@@ -587,8 +592,11 @@ div[class*="sidebar-"] > div > div > div[class*="systemPad-"] {
     font-family: Tahoma, sans-serif !important;
 }
 .theme-light div[role="dialog"] > div > div[class*="wrapper-"]:first-child {
-    background: #FFF;
     box-shadow: -1px 0 0 0 #EEE inset;
+}
+.theme-light div[role="dialog"] > div > div[class*="wrapper-"]:first-child >  div:not([class*="unreadMentionsIndicatorTop-"]) > div {
+    background: #FFF;
+    max-width: 71px;
 }
 .theme-light div[role="dialog"] > div > div[class*="wrapper-"]:first-child div[class*="guildSeparator-"] {
     background: #dee1e6;
@@ -635,6 +643,9 @@ div[class*="sidebar-"] > div > div > div[class*="systemPad-"] {
 .theme-light div[class*="privateChannels-"] > div[class*="themeGhostHairline-"]{
     background: #FFF;
     border-right: 1px solid #e3e5e8;
+}
+.theme-light div[class*="privateChannels-"]{
+    --background-secondary: #FFF;
 }
 
 /**
