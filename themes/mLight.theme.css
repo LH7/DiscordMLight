@@ -1,4 +1,4 @@
-//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.52"}*//
+//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.53"}*//
 
 /**
  * Пустышка для raw импорта css файла
@@ -362,6 +362,32 @@ div[class*="channelTextArea-"]{
 form div[class*="typing-"]{
     display: none !important;
 }
+
+/**
+ * Embed
+ */
+.theme-light div[class*="embedWrapper-"] {
+  border-color: #f1f1f1 !important;
+  background-color: #FAFAFA;
+  box-shadow: inset 0px 0px 0px 1px #EEE;
+}
+.theme-dark div[class*="embedWrapper-"] {
+  border-color: #e3e5e8 !important;
+  background-color: #3d4046;
+  box-shadow: inset 0px 0px 0px 1px #42454a;
+}
+
+
+div[class*="embedWrapper-"] div[class*="embedMargin-"]{
+  margin-top: 3px;
+}
+div[class*="embedWrapper-"] div[class*="embedMedia-"]{
+  margin-top: 8px;
+}
+div[class*="embedWrapper-"] div[class*="grid-"]{
+  padding: 4px 10px 10px;
+}
+
 
 /**
  * тулбар
