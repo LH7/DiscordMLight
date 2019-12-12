@@ -1,4 +1,4 @@
-//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.55"}*//
+//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.56"}*//
 
 /**
  * Пустышка для raw импорта css файла
@@ -328,17 +328,24 @@ div[class*="chat-"] form{
     box-shadow: none;
 }
 /* инпут, и хайд печатающих */
+div[class*="chatContent-"] > form {
+  border-top: none !important;
+}
+.theme-light div[class*="chatContent-"] > form div[class*="scrollableContainer-"] {
+  background-color: #FFF;
+  box-shadow: inset 0 0 0 1px #eceeef;
+}
+.theme-light div[class*="chatContent-"] > form div[class*="attachWrapper-"] {
+  border-right: none;
+}
+.theme-light div[class*="chatContent-"] > form div[class*="attachWrapper-"] button {
+  --interactive-normal: #bbbbbb;
+  padding-right: 0;
+}
 div[class*="channelTextArea-"]{
     margin: 8px 0;
     padding: 0;
     border-top: none !important;
-}
-.theme-light div[class*="channelTextArea-"] > div[class*="inner-"]{
-    background-color: #FFF;
-    box-shadow: inset 0 0 0 1px #eceeef;
-}
-.theme-light div[class*="channelTextArea-"] > div[class*="inner-"] button [class*="attachButtonPlus-"]{
-    fill: #d8d8d8;
 }
 .theme-light div[class*="channelTextArea-"] div[class*="buttons-"] button div[class*="contents-"]{
     color: #d8d8d8;
@@ -350,7 +357,7 @@ div[class*="channelTextArea-"]{
 .theme-light div[class*="channelTextArea-"] textarea[class*="textArea-"]{
     color: #000;
 }
-.theme-light div[class*="channelTextArea-"] textarea[class*="textArea-"]::placeholder {
+.theme-light div[class*="channelTextArea-"] div[class*="textArea-"] div[class*="placeholder-"]  {
     color: #CCC;
 }
 form div[class*="typing-"]{
