@@ -1,4 +1,4 @@
-//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.56"}*//
+//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.57"}*//
 
 /**
  * Пустышка для raw импорта css файла
@@ -10,7 +10,7 @@
  * Автоскрытие панелей
  */
 @media screen and (max-width: 600px) {
-    .channels-wrap, div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > div[class*="wrapper-"]:first-child, div[class*="membersWrap-"]{
+    .channels-wrap, div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > nav[class*="wrapper-"]:first-child, div[class*="membersWrap-"]{
         display: none !important;
     }
     div[class*="base-"]{
@@ -26,7 +26,7 @@
  * Автоскрытие панели комнат если мелкая ширина
  */
 @media screen and (max-width: 900px) {
-    div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > div[class*="wrapper-"]:first-child{
+    div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > nav[class*="wrapper-"]:first-child{
         z-index: 201;
     }
     div[class*="sidebar-"]{
@@ -38,7 +38,7 @@
     div[class*="titleBar-"] + div[class*="app-"] div[class*="sidebar-"]{
         height: calc(100% - 18px); /* height title */
     }
-    div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > div[class*="wrapper-"]:first-child:hover + div > div > div[class*="sidebar-"]{
+    div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > nav[class*="wrapper-"]:first-child:hover + div > div > div[class*="sidebar-"]{
         left: 70px;
     }
     div[class*="sidebar-"]{
@@ -100,7 +100,7 @@
 /**
  * Аналогично коду выше для компактного режима
  */
-body.compact-mode div[class^="sidebar-"], body.compact-mode div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > div[class*="wrapper-"]:first-child, body.compact-mode div[class*="membersWrap-"]{
+body.compact-mode div[class^="sidebar-"], body.compact-mode div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > nav[class*="wrapper-"]:first-child, body.compact-mode div[class*="membersWrap-"]{
     display: none !important;
 }
 body.compact-mode div[class*="base-"]{
@@ -619,36 +619,36 @@ div[class*="sidebar-"] > div > div > div[class*="systemPad-"] {
 /**
  * Боковая панель, саамая левая с выбором сервера
  */
-.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > div[class*="wrapper-"]:first-child *{
+.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > nav[class*="wrapper-"]:first-child *{
     font-family: Tahoma, sans-serif !important;
 }
-.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > div[class*="wrapper-"]:first-child {
+.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > nav[class*="wrapper-"]:first-child {
     box-shadow: -1px 0 0 0 #EEE inset;
 }
-.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > div[class*="wrapper-"]:first-child >  div:not([class*="unreadMentionsIndicatorTop-"]) > div {
+.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > nav[class*="wrapper-"]:first-child >  div:not([class*="unreadMentionsIndicatorTop-"]) > div {
     background: #FFF;
     max-width: 71px;
 }
-.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > div[class*="wrapper-"]:first-child div[class*="guildSeparator-"] {
+.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > nav[class*="wrapper-"]:first-child div[class*="guildSeparator-"] {
     background: #dee1e6;
     height: 1px;
 }
-.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > div[class*="wrapper-"]:first-child div[class*="circleIconButton-"] {
+.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > nav[class*="wrapper-"]:first-child div[class*="circleIconButton-"] {
     border-radius: 50%;
     background: #FFF;
     color: #c5c5c5;
     border: 1px dashed #cacbcc;
 }
-.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > div[class*="wrapper-"]:first-child div[class*="circleIconButton-"] span {
+.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > nav[class*="wrapper-"]:first-child div[class*="circleIconButton-"] span {
     font-size: 21px;
 }
-.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > div[class*="wrapper-"]:first-child div[class*="circleIconButton-"]:hover {
+.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > nav[class*="wrapper-"]:first-child div[class*="circleIconButton-"]:hover {
     background: #fbfbfb;
     color: #777777;
     border-color: #7d7b7b;
 }
 
-.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > div[class*="wrapper-"]:first-child div[class*="pill-"] > span[class*="item-"]{
+.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > nav[class*="wrapper-"]:first-child div[class*="pill-"] > span[class*="item-"]{
     background: #BBB;
 }
 
@@ -791,35 +791,35 @@ code, code *{
  * Web версия
  */
 /* разделитель перед кнопкой загрузки */
-.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > div[class*="wrapper-"]:first-child [class*="downloadAppButton-"]:after {
+.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > nav[class*="wrapper-"]:first-child [class*="downloadAppButton-"]:after {
     background-color: #dee1e6;
     height: 1px;
 }
-.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > div[class*="wrapper-"]:first-child [class*="downloadAppButton-"] {
+.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > nav[class*="wrapper-"]:first-child [class*="downloadAppButton-"] {
     color: #BBB;
 }
-.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > div[class*="wrapper-"]:first-child [class*="downloadAppButton-"] svg circle{
+.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > nav[class*="wrapper-"]:first-child [class*="downloadAppButton-"] svg circle{
     box-shadow: inset 0 0 0 1px #111
 }
-.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > div[class*="wrapper-"]:first-child [class*="downloadAppButton-"] use{
+.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > nav[class*="wrapper-"]:first-child [class*="downloadAppButton-"] use{
     fill: #FFF;
     stroke: #FFF;
 }
-.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > div[class*="wrapper-"]:first-child [class*="downloadAppButton-"]:hover use{
+.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > nav[class*="wrapper-"]:first-child [class*="downloadAppButton-"]:hover use{
     fill: #FAFAFA;
 }
-.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > div[class*="wrapper-"]:first-child [class*="downloadAppButton-"] svg{
+.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > nav[class*="wrapper-"]:first-child [class*="downloadAppButton-"] svg{
     border-radius: 25px;
     border: 1px dashed #e8e8e8;
 }
-.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > div[class*="wrapper-"]:first-child [class*="downloadAppButton-"]:hover svg{
+.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > nav[class*="wrapper-"]:first-child [class*="downloadAppButton-"]:hover svg{
     border-radius: 25px;
     border: 1px dashed #a2a2a2;
 }
-.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > div[class*="wrapper-"]:first-child [class*="downloadAppButton-"] path{
+.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > nav[class*="wrapper-"]:first-child [class*="downloadAppButton-"] path{
     fill: #BBB;
 }
-.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > div[class*="wrapper-"]:first-child [class*="downloadAppButton-"]:hover path:last-child{
+.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > nav[class*="wrapper-"]:first-child [class*="downloadAppButton-"]:hover path:last-child{
     fill: rgb(67, 181, 129);
 }
 
