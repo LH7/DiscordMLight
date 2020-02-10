@@ -1,868 +1,647 @@
-//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.2.57"}*//
+//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.3.57"}*//
+
+/*
+
+  v0.3
+  > Полная пересборка, убран весь легаси мусор
+  > Замена оригинальных переменных цветов
+  > Теперь скейлится размер шрифта и отступов в настройках, кроме аватаров
+  > Убрана анимация сворачивания/разворачивания панелей, теперь синхронно мемберы и комнаты
+  > Теперь с хешами заменяющими оригинальные вместо ужасов поисковых селекторов
+    + Лучше в плане производительности
+    - Хуже в плане совместимости
+      Будут ломать каждый билд пересоберу под каждый, все равно они жонглируют классами и структурой.
+      Возможно будут ломаться параллельные ветки вроде канари
+
+  В остальном тот же концепт
+
+  Да, я вкурсе про нормализованные da-* селекторы беттердискорда но:
+    - это не универсальное решение, не для браузера
+    - в коде дискорда много контейнеров с разными хешами, da-* их смешает в одну кучу
+  Может в будущем перепишу на стартовую инициализацию селекторов по скрипту, сейчас не приоритет
+
+*/
+
+#off #ucss-code-wrapper { left: 0; }
+
+.theme-light {
+    /**************************
+     * Стандартные переменные *
+     **************************/
+
+    /**
+     *  Общий фон, все в белый
+     */
+    --background-primary: #fff;
+    --background-secondary: #FFF;
+    --background-secondary-alt: #FFF;
+    --background-tertiary: #FFF;
+
+    /**
+     * Бекграунд поля ввода
+     */
+    --channeltextarea-background: #FFF;
+
+    /**
+     *  Общий текст
+     */
+    --text-normal: #000;
+
+
+    /**
+     * Кнопки
+     */
+    --interactive-normal: #AAA;
+
+    /**
+     * Реакции, хеши в комнатах
+     */
+    --text-muted: #CCC;
+
+    /**
+     * Выделенная комната
+     */
+    --background-modifier-selected: rgba(0,0,0,0.08);
+
+    /**
+     * Бордер под верхним заголовком
+     */
+    --elevation-low: 0 1px 0 #EEE;
+
+    /************************
+     * Кастомные переменные *
+     ************************/
+
+    /**
+     * Просто цвета, по возможности от светлого к темному
+     */
+    --theme-mlight-color-1: #F7F7F7;
+    --theme-mlight-color-2: #EBEBEB;
+    --theme-mlight-color-3: #DADADA;
+    --theme-mlight-color-4: #AAA;
+    --theme-mlight-color-mention: #FAA61A;
+}
 
 /**
- * Пустышка для raw импорта css файла
- * первый мета тег для беттер дискорда его портит
+ * Переопределение цвета для выделения активного сервера
  */
-@media null { }
+.theme-light .guilds-1SWlCJ {
+    --header-primary: var(--theme-mlight-color-4);
+}
 
 /**
- * Автоскрытие панелей
+ * Переопределение цвета для выделения непрочитанных комнат
+ */
+.theme-light .unread-3zKkbm {
+    --interactive-active: var(--theme-mlight-color-4);
+}
+
+/**
+ * Темная тема, меньше переменных, и в основном свои
+ */
+.theme-dark {
+    /************************
+     * Кастомные переменные *
+     ************************/
+
+    /**
+     * Просто цвета, по возможности от темного к светлому
+     */
+    --theme-mlight-color-1: #292b2f;
+    --theme-mlight-color-2: #444;
+    --theme-mlight-color-3: #6d6d6d;
+    --theme-mlight-color-mention: #714f15;
+}
+
+/**
+ * Общий шрифт
+ */
+::placeholder, body, button, input, select, textarea {
+    font-family: Tahoma, Arial, sans-serif;
+}
+
+/**
+ * Скрытие печатающих
+ */
+.typing-2GQL18 {
+    display: none;
+}
+
+/**
+ * Аватарки в чате, размер, тень
+ */
+.a11y-font-scaled-down .avatar-1BDn8e,
+.avatar-1BDn8e {
+    border-radius: 5px;
+    width: 32px;
+    height: 32px;
+    margin-top: 3px;
+    margin-right: 0;
+    margin-left: 2px;
+}
+.theme-light .avatar-1BDn8e {
+    box-shadow: 0px 0px 0px 1px var(--theme-mlight-color-2);
+}
+
+
+/**
+ * Сообщения, каждое сообщение.
+ */
+.cozyMessage-3V1Y8y > .container-3FojY8,
+.a11y-font-scaled-down .cozyMessage-3V1Y8y > .container-3FojY8{
+    padding: 0.125rem 0 0.3rem 40px;
+}
+.compact-T3H92H > .container-3FojY8,
+.a11y-font-scaled-down .compact-T3H92H > .container-3FojY8{
+    padding: 0.125rem 0 0.3rem 2.5rem;
+}
+.a11y-font-scaled-down .cozyMessage-3V1Y8y.mentioned-xhSam7 > .container-3FojY8,
+.cozyMessage-3V1Y8y.mentioned-xhSam7 > .container-3FojY8 {
+    padding: 0.2rem 0 0.7rem 48px;
+}
+.a11y-font-scaled-down .container-3FojY8.compact-T3H92H.mentioned-xhSam7,
+.container-3FojY8.compact-T3H92H.mentioned-xhSam7{
+    padding: 0.2rem 0 0.7rem 2.8rem;
+}
+
+
+/**
+ * Сообщения, отступ от первого сообщения
+ * По сути отступ от разделителя вниз
+ * .group-spacing-N это модификатор из настроек
+ */
+.group-spacing-0 .cozyMessage-3V1Y8y.groupStart-23k01U { padding-top: 0.1rem; }
+.group-spacing-0 .message-2qnXI6.compact-T3H92H.groupStart-23k01U { padding-top: 0.14rem !important; }
+
+.group-spacing-4 .cozyMessage-3V1Y8y.groupStart-23k01U { padding-top: 0.3rem; }
+.group-spacing-4 .message-2qnXI6.compact-T3H92H.groupStart-23k01U { padding-top: 0.4rem; }
+
+.group-spacing-8 .cozyMessage-3V1Y8y.groupStart-23k01U { padding-top: 0.5rem; }
+.group-spacing-8 .message-2qnXI6.compact-T3H92H.groupStart-23k01U { padding-top: 0.5rem; }
+
+.group-spacing-16 .cozyMessage-3V1Y8y.groupStart-23k01U { padding-top: 0.6rem; }
+.group-spacing-16 .message-2qnXI6.compact-T3H92H.groupStart-23k01U { padding-top: 0.7rem; }
+
+.group-spacing-24 .cozyMessage-3V1Y8y.groupStart-23k01U { padding-top: 1.05rem; }
+.group-spacing-24 .message-2qnXI6.compact-T3H92H.groupStart-23k01U { padding-top: 1rem; }
+
+/**
+ * Отступ от разделителя наверх
+ * .group-spacing-N это модификатор из настроек
+ */
+.group-spacing-0 .cozyMessage-3V1Y8y.groupStart-23k01U { margin-top: 0.1rem !important; }
+.group-spacing-0 .message-2qnXI6.compact-T3H92H.groupStart-23k01U { margin-top: 0.0rem !important; }
+
+.group-spacing-4 .cozyMessage-3V1Y8y.groupStart-23k01U { margin-top: 0.5rem !important; }
+.group-spacing-4 .message-2qnXI6.compact-T3H92H.groupStart-23k01U { margin-top: 0.3rem !important; }
+
+.group-spacing-8 .cozyMessage-3V1Y8y.groupStart-23k01U { margin-top: 0.9rem !important; }
+.group-spacing-8 .message-2qnXI6.compact-T3H92H.groupStart-23k01U { margin-top: 0.45rem !important; }
+
+.group-spacing-16 .cozyMessage-3V1Y8y.groupStart-23k01U { margin-top: 0.7rem !important; }
+.group-spacing-16 .message-2qnXI6.compact-T3H92H.groupStart-23k01U { margin-top: 0.7rem !important; }
+
+.group-spacing-24 .cozyMessage-3V1Y8y.groupStart-23k01U { margin-top: 1.2rem !important; }
+.group-spacing-24 .message-2qnXI6.compact-T3H92H.groupStart-23k01U { margin-top: 1rem !important; }
+
+
+/**
+ * Чат, отступ слева
+ */
+.chatContent-a9vAAp {
+    padding-left: 5px;
+}
+
+/**
+ * Разделитель (цвет) между группами сообщений
+ * Если это меншн то разделитель убираем.
+ */
+.cozyMessage-3V1Y8y.groupStart-23k01U:not(.mentioned-xhSam7),
+.message-2qnXI6.compact-T3H92H.groupStart-23k01U:not(.mentioned-xhSam7) {
+    border-top: 1px solid var(--theme-mlight-color-2);
+}
+
+/**
+ * Чат, разделитель по датам
+ * Убраны линии, и перемещен на разделитель сообщений
+ */
+.divider-JfaTT5 {
+    border-top: none;
+    margin-top: 0.0rem !important;
+    margin-bottom: 0.0rem !important;
+    transform: translateY(0.35em);
+}
+.divider-JfaTT5 > .content-1o0f9g{
+    border: 1px solid var(--theme-mlight-color-1);
+}
+
+/**
+ * Чат новые сообщения, просто сместить индикатор ниже
+ * Для каждого отступа
+ */
+.group-spacing-24 .divider-JfaTT5.isUnread-3Ef-o9 {
+    transform: translateY(0.49rem);
+}
+.group-spacing-16 .divider-JfaTT5.isUnread-3Ef-o9 {
+    transform: translateY(0.25rem);
+}
+.group-spacing-8 .divider-JfaTT5.isUnread-3Ef-o9 {
+    transform: translateY(0.7rem);
+}
+.group-spacing-4 .divider-JfaTT5.isUnread-3Ef-o9 {
+    transform: translateY(0.45rem);
+}
+.group-spacing-0 .divider-JfaTT5.isUnread-3Ef-o9 {
+    transform: translateY(0.15rem);
+}
+/* в компактной теме немного вверх */
+.compact-T3H92H + .divider-JfaTT5 > * {
+    transform: translateY(-0.15rem);
+}
+
+/**
+ * Удаление подсветки сообщений при наведении, кроме ереванов, если это не превью
+ */
+:not(.preview-2nSL_2) > .cozyMessage-3V1Y8y:not(.mentioned-xhSam7) {
+    background-color: var(--background-primary) !important;
+}
+:not(.preview-2nSL_2) > .compact-T3H92H:not(.mentioned-xhSam7) {
+    background-color: var(--background-primary) !important;
+}
+
+/**
+ * Рамка для ереванов
+ */
+.cozyMessage-3V1Y8y.mentioned-xhSam7,
+.compact-T3H92H.mentioned-xhSam7 {
+    box-shadow: inset 0px 0px 0px 1px var(--theme-mlight-color-mention);
+}
+.localBot-GrCgVt:before, .mentioned-xhSam7:before {
+    background-color: var(--theme-mlight-color-mention);
+    width: 1px;
+}
+
+/**
+ * Ник и аватарка, должны быть одинаковы числом со знаком
+ * паддинг это ник, маргин аватарка
+ */
+.cozyMessage-3V1Y8y .header-23xsNx,
+.a11y-font-scaled-down .cozyMessage-3V1Y8y .header-23xsNx {
+    padding-left: 40px;
+    margin-left: -40px;
+}
+
+/**
+ * Граница отделяющая сервера (light-only)
+ */
+.theme-light .base-3dtUhz {
+    border-left: 1px solid var(--theme-mlight-color-2);
+}
+/**
+ * Граница отделяющая список друзей или комнат от чата (light-only)
+ */
+.theme-light .sidebar-2K8pFh {
+    border-right: 1px solid var(--theme-mlight-color-2);
+}
+
+/**
+ * Граница отделяющая панель с ником и наушниками
+ */
+.theme-light .panels-j1Uci_ {
+    box-shadow: inset 0 1px 0 0px var(--theme-mlight-color-2);
+}
+
+/**
+ * Граница отделяющая заголовок приложения (light-only)
+ */
+.theme-light .titleBar-AC4pGV {
+    box-shadow: inset 0px -1px 0px var(--theme-mlight-color-2);
+}
+
+/**
+ * Кнопки друзей, загрузки, новых серверов
+ * Просто обводка (light-only)
+ */
+.theme-light .listItemWrapper-3X98Pc:not(:hover){
+    border-radius: 24px;
+    border: 1px dashed var(--theme-mlight-color-3);
+}
+.theme-light .listItemWrapper-3X98Pc {
+    border: 1px solid transparent;
+}
+
+/**
+ * Превью сообщений, в светлой теме бордер
+ */
+.theme-light .preview-2nSL_2 {
+    border: 1px solid var(--theme-mlight-color-2);
+}
+
+/**
+ * Непрочитанные комнаты
+ */
+.modeUnread-1zpFdA .name-3_Dsmg {
+    font-weight: 1000;
+}
+
+/**
+ * выравнивение метки времени компактной темы
+ */
+.timestampCompact-29LLPQ {
+    transform: translateY(-2px);
+}
+
+/**
+ * Метка времени
+ */
+.a11y-font-scaled-down .timestampCozyAlt-1Hs08c, .timestampCozyAlt-1Hs08c {
+    transform: translateX(0) translateY(0.1rem);
+    overflow: hidden;
+    width: 3.3em;
+    font-size: 10px;
+    opacity: 0;
+}
+.timestampCozy-1HNQR2 {
+    opacity: 0;
+}
+.cozyMessage-3V1Y8y:hover .timestampCozy-1HNQR2 {
+    opacity: 1;
+}
+
+/**
+ * Меню справа от сообщения
+ */
+.buttons-cl5qTG {
+    opacity: 0.7;
+}
+.buttons-cl5qTG:hover {
+    opacity: 1;
+}
+/* убрать кнопки с быстрыми реакциями, оставить только меню */
+.buttons-cl5qTG .emojiButton-jE9tXC,
+.buttons-cl5qTG .emojiSeparator-10VgEJ {
+    display: none;
+}
+
+
+
+/**
+ * Компактная тема, скрытие повторов ников
+ */
+.message-2qnXI6.compact-T3H92H:not(.groupStart-23k01U) .username-1A8OIy {
+    display: none;
+}
+
+/**
+ * Компактная тема, выравнивание текста
+ */
+.message-2qnXI6.compact-T3H92H > .container-3FojY8{
+    text-indent: -2.8em;
+}
+
+/**
+ * Блок кода (light-only)
+ */
+.theme-light .markup-2BOw-j code {
+    border: 1px solid var(--theme-mlight-color-3);
+    background: var(--theme-mlight-color-1);
+}
+
+/**
+ * «Цитаты»
+ */
+.blockquoteContainer-U5TVEi blockquote {
+    padding: 2px 8px 3px 11px;
+}
+
+/**
+ * Поле ввода сообщений, обводка (light-only)
+ */
+.theme-light .form-2fGMdU .scrollableContainer-2NUZem {
+    box-shadow: 0 0 0 1px var(--theme-mlight-color-2);
+}
+/**
+ * Поле ввода сообщений, расстояние от краев
+ */
+.form-2fGMdU {
+    padding-left: 0.2rem;
+    margin-top: 0.5rem;
+}
+.channelTextArea-rNsIhG {
+    margin-bottom: 8px;
+}
+
+/**
+ * Поле редактирования сообщений, обводка
+ */
+.theme-light .channelTextArea-2VhZ6z {
+    border: 1px solid var(--theme-mlight-color-3);
+}
+
+/**
+ * Предпросмотр сайта (light-only)
+ */
+.embedFull-2tM8-- {
+    background: var(--theme-mlight-color-1);
+    box-shadow: 0 0 0 1px var(--theme-mlight-color-2);
+    border-left: 4px solid var(--theme-mlight-color-3) !important;
+    margin-top: 0.5rem;
+}
+/* отступы */
+.embedFull-2tM8-- .embedMargin-UO5XwE {
+    margin-top: 2px;
+}
+.embedFull-2tM8-- .embedMedia-1guQoW {
+    margin-top: 8px;
+}
+
+
+/**
+ * Хз что это, убрать
+ * выглядит как огромный отступ после последнего сообщения
+ */
+.scroller-3sQKXg:after{
+    display: none;
+}
+
+/**
+ * Скругление заголовка сервера, туда же.
+ */
+.platform-win .sidebar-2K8pFh {
+    border-radius: 0;
+}
+
+/**
+ * Комнаты, меньше ширина
+ */
+.sidebar-2K8pFh {
+    width: 220px;
+}
+
+/**
+ * Участники, меньше ширина
+ */
+.membersWrap-2h-GB4 {
+    min-width: 200px;
+    width: 200px;
+}
+
+/**
+ * Участники (и юзер на панельке), аватары
+ */
+/* скругление вместо круга */
+.avatar-3uk_u9 .mask-1l8v16 foreignObject,
+.avatar-SmRMf2 .mask-1l8v16 foreignObject {
+    mask: none;
+    border-radius: 5px;
+}
+/* скругление для совместимости со старым хромом */
+.avatar-3uk_u9 .mask-1l8v16 foreignObject img,
+.avatar-SmRMf2 .mask-1l8v16 foreignObject img {
+    border-radius: 5px;
+}
+/* обводка чтобы не сливались */
+.theme-light .avatar-3uk_u9 foreignObject,
+.theme-light .avatar-SmRMf2 foreignObject {
+    box-shadow: inset 0px 0px 0px 1px var(--theme-mlight-color-2);
+}
+
+/**
+ * Участники, отступы
+ */
+.member-3-YXUe {
+    margin-left: 0px
+}
+/**
+ * Участники, отступы заголовков
+ */
+.membersGroup-v9BXpm {
+    padding-left: 8px;
+    padding-top: 12px;
+    height: 27px;
+}
+
+
+/**
+ * Автоуменьшение ширины мемберов до аватаров
+ */
+@media screen and (max-width: 1100px)  and (min-width: 601px) {
+    /**
+     * Мемберы, скрытие до аватаров
+     */
+    .membersWrap-2h-GB4 {
+        position: fixed;
+        right: -150px;
+        height: calc(100% - 50px);
+    }
+    /* + заголовок десктопа */
+    .platform-win .membersWrap-2h-GB4{
+        height: calc(100% - 70px);
+    }
+    /**
+     * Чат, отступ справа.
+     * Cмысл ласт потомка:
+     * чтобы на приватных беседах не было отступа
+     */
+    .chatContent-a9vAAp:not(:last-child) {
+        padding-right: 50px;
+    }
+    /**
+     * Мемберы, уменьшение заголовков групп
+     */
+    .membersGroup-v9BXpm {
+        font-size: 10px;
+        padding-left: 4px;
+    }
+    /**
+     * Мемберы, открытие при наведении
+     */
+    .membersWrap-2h-GB4:hover {
+        border-left: 1px solid var(--theme-mlight-color-2);
+        right: 0;
+    }
+
+    /**
+     * Панель серверов на передний план, из-за бордера
+     */
+    .guilds-1SWlCJ {
+        z-index: 3;
+    }
+    /**
+     * Панели комнат, скрытие
+     */
+    .sidebar-2K8pFh {
+        position: fixed;
+        left: -148px;
+        z-index: 2;
+        height: 100%;
+    }
+    .platform-win .sidebar-2K8pFh{
+        height: calc(100% - 20px);
+    }
+
+    /**
+     * убираем 1 бордер, так как будут склеены 2:
+     * С чата и серверов
+     */
+    .theme-light .base-3dtUhz {
+        border-left: none;
+    }
+    /**
+     * Показ при наведении либо на серверы либо на комнаты
+     */
+    .guilds-1SWlCJ:hover + .base-3dtUhz .sidebar-2K8pFh,
+    .sidebar-2K8pFh:hover {
+        left: 72px;
+        z-index: 100;
+        border-right: 1px solid var(--theme-mlight-color-2);
+        border-left: 1px solid var(--theme-mlight-color-2);
+    }
+
+    /**
+     * Фикс заголовка комнат, налезает на комнаты
+     * Второе это заголовок друзей
+     */
+    .title-3qD0b-,
+    .container-1r6BKw {
+        z-index: 1;
+    }
+}
+
+/**
+ * Автоскрытие аватаров в уютной теме
+ * Просто сдвиг влево
+ */
+@media screen and (max-width: 1300px) {
+    .cozyMessage-3V1Y8y > .container-3FojY8,
+    .a11y-font-scaled-down .cozyMessage-3V1Y8y > .container-3FojY8 {
+        padding-left: 5px;
+    }
+    .a11y-font-scaled-down .cozyMessage-3V1Y8y.mentioned-xhSam7 > .container-3FojY8,
+    .cozyMessage-3V1Y8y.mentioned-xhSam7 > .container-3FojY8{
+        padding-left: 5px;
+    }
+    .timestampCozyAlt-1Hs08c {
+        display: none;
+    }
+}
+/**
+ * Полное скрытие панелей
  */
 @media screen and (max-width: 600px) {
-    .channels-wrap, div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > nav[class*="wrapper-"]:first-child, div[class*="membersWrap-"]{
-        display: none !important;
+    .guilds-1SWlCJ, .sidebar-2K8pFh, .membersWrap-2h-GB4 {
+        display: none;
     }
-    div[class*="base-"]{
+    .base-3dtUhz {
         left: 0;
     }
 }
-@media screen and (max-width: 440px) {
-    .header-toolbar{
-        display: none;
-    }
+/* Аналогично коду выше для компактного режима */
+body.compact-mode .guilds-1SWlCJ,
+body.compact-mode .sidebar-2K8pFh,
+body.compact-mode .membersWrap-2h-GB4 {
+    display: none;
 }
-/**
- * Автоскрытие панели комнат если мелкая ширина
- */
-@media screen and (max-width: 900px) {
-    div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > nav[class*="wrapper-"]:first-child{
-        z-index: 201;
-    }
-    div[class*="sidebar-"]{
-        z-index: 200;
-        position: fixed;
-        left: calc(70px - 100%);
-        height: calc(100%);
-    }
-    div[class*="titleBar-"] + div[class*="app-"] div[class*="sidebar-"]{
-        height: calc(100% - 18px); /* height title */
-    }
-    div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > nav[class*="wrapper-"]:first-child:hover + div > div > div[class*="sidebar-"]{
-        left: 70px;
-    }
-    div[class*="sidebar-"]{
-        transition: left 0.5s 0.3s;
-    }
-    div[class*="sidebar-"]:hover{
-        left: 70px;
-    }
-}
-
-/**
- * Автоуменьшение панели участников если ширина мелкая
- */
-@media screen and (max-width: 1100px) and (min-width: 601px){
-    body:not(.compact-mode) div:not(:last-child) > div[class*="messagesWrapper-"] {
-        margin-right: 46px;
-    }
-    body:not(.compact-mode) div[class*="chat-"] > div > div:not(:last-child) > form {
-        margin-right: 10px !important;
-    }
-}
-@media screen and (max-width: 1100px) {
-    div[class*="membersWrap-"]{
-        position: fixed;
-        right: 0;
-        transform: translateX(calc(100% - 51px));
-        transition: transform 0.2s 0.3s;
-        height: calc(100% - 57px - 50px); /* title chat bar*/
-    }
-    div[class*="membersWrap-"] > div {
-        border-radius: 0 0 0 10px;
-    }
-    div[class*="titleBar-"] + div[class*="app-"] div[class*="membersWrap-"]{
-        height: calc(100% - 20px - 57px - 50px); /* height title + title chat bar*/
-    }
-    div[class*="membersWrap-"]:hover{
-        transform: translateX(0);
-    }
-    .theme-light div[class*="membersWrap-"]:hover div[class*="members-"] {
-        box-shadow: 0px 0px 0px 1px inset #ebebec;
-    }
-
-    div[class*="members-"] div[class*="memberInner-"]{
-        transition: opacity 0.3s 0.3s
-    }
-    div[class*="members-"]:not(:hover) div[class*="memberInner-"]{
-        opacity: 0;
-    }
-    div[class*="members-"] header[class*="membersGroup-"]{
-        max-width: 60px;
-        transition: max-width 0.2s 0.2s;
-    }
-    div[class*="members-"]:hover header[class*="membersGroup-"]{
-        transition-delay: 0.3s;
-        max-width: 200px;
-    }
-}
-
-/**
- * Аналогично коду выше для компактного режима
- */
-body.compact-mode div[class^="sidebar-"], body.compact-mode div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > nav[class*="wrapper-"]:first-child, body.compact-mode div[class*="membersWrap-"]{
-    display: none !important;
-}
-body.compact-mode div[class*="base-"]{
+body.compact-mode .base-3dtUhz {
     left: 0;
-}
-
-/**
- * Роли участников
- */
-div[class*="membersWrap-"] header[class*="membersGroup-"]{
-    margin: 7px 0 !important;
-    padding: 5px !important;
-    font-family: Tahoma, sans-serif;
-    height: 20px;
-    font-size: 10px;
-    color: #BBB;
-}
-
-/* Темный ник в статусе в белой теме */
-.theme-light div[class*="sidebar-"] div[class*="nameTag-"] div[class*="title-"] {
-    font-weight: normal;
-}
-.theme-light div[class*="sidebar-"] div[class*="nameTag-"] div[class*="subtext-"] {
-    color: #DDD;
-}
-
-/* сдвиг ника к аватарке в списке мемберов */
-div[class*="membersWrap-"] div[class*="member-"] div[class*="avatar-"] {
-    margin-right: 5px;
-}
-
-/**
- * Аватарки чатика, уютной темы
- */
-/* сдвиг аватарки влево */
-div[class*="headerCozy-"] div[class*="avatar-"] {
-    margin: 0 0 0 10px
-}
-:not([class*="header-"]):not([class*="card-"]) > div[class*="avatar-"] svg > foreignObject, div[class*="avatarWrapper-"]:not([class*="avatarWrapperNormal"]):not([class*="avatarWrapperNonUserBot-"]) svg > foreignObject, div[class*="avatarSmall-"] svg > foreignObject {
-    mask: none !important;
-    border-radius: 5px !important;
-    width: 32px;
-    height: 32px;
-    box-sizing: border-box;
-}
-div[class*="user-"] > div[class*="avatar-"] svg > foreignObject {
-    width: 24px !important;
-    height: 24px !important;
-}
-.theme-light :not([class*="header-"]):not([class*="card-"]) >  div[class*="avatar-"] svg > foreignObject, .theme-light div[class*="avatarWrapper-"]:not([class*="avatarWrapperNormal"]) svg > foreignObject, .theme-light div[class*="avatarSmall-"] svg > foreignObject {
-    border: 1px solid #EEE;
-}
-div[class*="avatar-"] svg > foreignObject > img, div[class*="avatarWrapper-"]:not([class*="avatarWrapperNormal"]) svg > foreignObject > img, div[class*="avatarSmall-"] svg > foreignObject > img {
-    border-radius: 5px;
-}
-div[class*="containerCozyBounded-"] div[class*="avatar-"], div[class*="avatarSmall-"], div[class*="avatarWrapper-"]:not([class*="avatarWrapperNormal"]) {
-    padding-top: 3px;
-}
-
-/**
- * Общие стили для компактной темы
- */
-/* скрытие повторов ников */
-div[class*="messageCompact-"] *{
-    font-family: Tahoma, sans-serif;
-}
-div[class*="messageCompact-"] span[class*="username-"],
-div[class*="messageCompact-"] div[class*="markup-"] .mention{
-    font-size: 10pt !important;
-    font-weight: bold !important;
-}
-.theme-light div[class*="messageCompact-"] div[class*="markup-"] {
-    font-size: 10pt !important;
-    color: black !important;
-}
-.theme-dark div[class*="messageCompact-"] div[class*="markup-"]  {
-    font-size: 10pt !important;
-}
-div[class*="messageCompact-"]:not(:first-child) span[class*="username-"] {
-    display: none;
-}
-div[class*="messageCompact-"]:not(:first-child) h2[class*="headerCompact-"] {
-    margin-right: 0;
-}
-div[class*="messageCompact-"] div[class*="contentCompact-"] > div ~ div[class*="markup-"] {
-    margin-left: 45px;
-    text-indent: -54px;
-}
-div[class*="messageCompact-"] > div[class*="contentCompact-"] ~ div[class*="containerCompact-"] {
-    margin-left: -33px;
-}
-
-div[class*="messages-"] > div[class*="containerCompact-"]{
-    padding: 0;
-}
-
-/**
- * Многие селекторы очень наркоманские из-за хешей
- */
-
-/**
- * Всплывашки
- */
-.theme-light + .tooltips *{
-    color: #FFF;
-}
-
-/**
- * Темный круг вокруг аватарки, для белых, чтобы не сливались с фоном
- */
-.theme-light div[class*="headerCozy-"] div[class*="avatar-"] div[class*="image-"] {
-    box-shadow: 0 0 1px 1px #EEE;
-}
-.theme-light div[class*="avatarSmall-"] div[class*="inner-"]{
-    box-shadow: 0 0 1px 1px #EEE;
-}
-
-/* тень в левом верхнем углу списка серверов (анрид меншн?) В любом случае он на светлой теме не нужен */
-.theme-light div[class*="unreadMentionsBar-"] {
-    -webkit-box-shadow: none;
-    box-shadow: none;
-}
-
-
-/**
- * Список юзеров (справа)
- * уменьшена ширина
- */
-.theme-light div[class*="members-"] {
-    background-color: #FFF;
-}
-div[class*="members-"] div[class*="member-"] div[class*="content-"]{
-    padding: 4px;
-    margin: 0 0;
-    border-radius: 0;
-}
-div[class*="members-"] div[class*="member-"] div[class*="avatar-"]{
-    padding-top: 0px;
-
-}
-div[class*="members-"] div[class*="member-"]{
-    height: 40px;
-}
-div[class*="membersWrap-"], div[class*="membersWrap-"] div[class*="members-"] {
-    width: 200px;
-    min-width: 200px;
-    max-width: 300px;
-}
-
-/**
- * Цвет списка друзей
- */
-.theme-light a[href^="/channels/@me"]:not(:hover):not([class*="selected-"]) > div[class*="childWrapper-"]{
-    background-color: #EEE;
-}
-
-/**
- * full
- * Основной чатик
- */
-div[class*="containerCozyBounded-"] *,
-div[class*="containerCozy-"] *{
-    font-family: Tahoma, sans-serif;
-}
-.theme-light div[class*="containerCozyBounded-"] div[class*="markup-"],
-.theme-light div[class*="containerCozy-"] div[class*="markup-"]{
-    font-size: 10pt !important;
-    color: black !important;
-}
-.theme-dark div[class*="containerCozyBounded-"] div[class*="markup-"], .theme-dark div[class*="containerCozy-"] div[class*="markup-"]{
-    font-size: 10pt !important;
-}
-/* кнопки */
-.theme-light div[class*="containerCozyBounded-"] div[role="button"],
-.theme-light div[class*="containerCozy-"] div[role="button"] {
-    color: #999 !important;
-}
-div[class*="containerCozyBounded-"] span[class*="username-"],
-div[class*="containerCozy-"] span[class*="username-"],
-div[class*="containerCozyBounded-"] div[class*="markup-"] .mention, 
-div[class*="containerCozy-"] div[class*="markup-"] .mention{
-    font-size: 10pt !important;
-    font-weight: bold !important;
-}
-div[class*="containerCozyBounded-"] div[class*="contentCozy-"],
-div[class*="containerCozy-"] div[class*="contentCozy-"]{
-    margin-left: 50px;
-}
-[class*="divider-"] span[class*="dividerContent-"]{
-    margin: -17px 0 -5px 0;
-}
-[class*="divider-"] {
-    margin: 5px 10px 5px 10px !important;
-}
-div[class*="messages-"] > div[class*="containerCozy-"] {
-    padding: 0 0 0 0;
-    margin: 0;
-}
-div[class*="messages-"] > div[class*="containerCozyBounded-"] {
-    padding: 0 0 0 0;
-    margin: 0;
-}
-.theme-light div[class*="messages-"] time[class*="timestamp-"] {
-    color: #c5c5c5 !important;
-}
-.theme-dark div[class*="messages-"] time[class*="timestamp-"] {
-    color: #a7a7a7 !important;
-}
-div[class*="messages-"] div[class*="containerCozyBounded-"]:not(:hover) time[class*="timestampCozy-"],
-div[class*="messages-"] div[class*="containerCozy-"]:not(:hover) time[class*="timestampCozy-"] {
-    opacity: 0;
-}
-div[class*="messages-"] div[class*="messageCompact-"]:not(:hover):not(:first-child) time[class*="timestampCompact-"] {
-    opacity: 0;
-}
-
-
-div[class*="messageGroupWrapperOffsetCorrection-"]{
-    margin-bottom: -20px;
-    margin-left: -10px;
-    margin-top: -20px;
-}
-div[class*="chat-"] form{
-    margin: 0 10px;
-    box-shadow: none;
-}
-/* инпут, и хайд печатающих */
-div[class*="chatContent-"] > form {
-  border-top: none !important;
-}
-.theme-light div[class*="chatContent-"] > form div[class*="scrollableContainer-"] {
-  background-color: #FFF;
-  box-shadow: inset 0 0 0 1px #eceeef;
-}
-.theme-light div[class*="chatContent-"] > form div[class*="attachWrapper-"] {
-  border-right: none;
-}
-.theme-light div[class*="chatContent-"] > form div[class*="attachWrapper-"] button {
-  --interactive-normal: #bbbbbb;
-  padding-right: 0;
-}
-div[class*="channelTextArea-"]{
-    margin: 8px 0;
-    padding: 0;
-    border-top: none !important;
-}
-.theme-light div[class*="channelTextArea-"] div[class*="buttons-"] button div[class*="contents-"]{
-    color: #d8d8d8;
-}
-.theme-light div[class*="channelTextArea-"] div[class*="buttons-"] button:hover svg[class*="icon-"]{
-    color: #888;
-}
-.theme-light div[class*="channelTextArea-"] input,
-.theme-light div[class*="channelTextArea-"] textarea[class*="textArea-"]{
-    color: #000;
-}
-.theme-light div[class*="channelTextArea-"] div[class*="textArea-"] div[class*="placeholder-"]  {
-    color: #CCC;
-}
-form div[class*="typing-"]{
-    display: none !important;
-}
-
-/**
- * Embed
- */
-.theme-light div[class*="embedWrapper-"] {
-  border-color: #f1f1f1 !important;
-  background-color: #FAFAFA;
-  box-shadow: inset 0px 0px 0px 1px #EEE;
-}
-.theme-dark div[class*="embedWrapper-"] {
-  border-color: #313131 !important;
-  background-color: #3d4046;
-  box-shadow: inset 0px 0px 0px 1px #42454a;
-}
-
-
-div[class*="embedWrapper-"] div[class*="embedMargin-"]{
-  margin-top: 3px;
-}
-div[class*="embedWrapper-"] div[class*="embedMedia-"]{
-  margin-top: 8px;
-}
-div[class*="embedWrapper-"] div[class*="grid-"]{
-  padding: 4px 10px 10px;
-}
-
-
-/**
- * тулбар
- */
-div[class*="chat-"] div[class*="toolbar-"] svg > path {
-    fill: #BBB;
-}
-div[class*="chat-"] div[class*="toolbar-"] svg:hover > path {
-    fill: #555;
-}
-div[class*="chat-"] div[class*="toolbar-"] div[class*="searchBar-"] {
-    background-color: #FFF;
-    box-shadow: inset 0 0 0 1px #eceeef;
-}
-
-/**
- * скрывалка аватаров, уже хуже чем было раньше =(
- */
-@media screen and (max-width: 1300px) {
-    div[class*="containerCozyBounded-"] div[class*="contentCozy-"]{
-        margin-left: 10px;
-    }
-    div[class*="headerCozy-"] div[class*="avatar-"] {
-        display: none;
-    }
-    div[class*="containerCozyBounded-"] span[class*="usernameWrapper-"],
-    div[class*="containerCozy-"] span[class*="usernameWrapper-"]{
-        margin-left: 10px;
-    }
-    div[class*="containerCozy-"] > div > div[class*="contentCozy-"],
-    h2[class*="headerCozyMeta-"]
-    {
-        margin-left: 10px;
-    }
-}
-
-
-/**
- * Смена цвета заголовка для десктопной версии
- */
-.theme-light div[class*="wordmark"] svg path {
-    fill: #000;
-}
-.theme-light  #app-mount > div[class*="app-"] > div[class*="app-"] > div[class*="bg-"] {
-   background-color: #FFF;
-}
-.theme-light div[class*="titleBar"]{
-    background-color: #FFF;
-    box-shadow: inset 0 -1px 0 #eceeef;
-}
-.theme-light #app-mount{
-    background-color: #FFF;
-}
-.theme-light div[class*="winButton"] svg polygon{
-    fill: #000;
-}
-.theme-light div[class*="winButton"] svg rect{
-    stroke: #000;
-}
-
-
-/* упоминания */
-.theme-light .unread-mentions-indicator-bottom .unread-mentions-bar,
-.theme-light .unread-mentions-indicator-top .unread-mentions-bar {
-    box-shadow: 0 0 0 #FFF;
-}
-
-/**
- * Панель комнат
- */
-div[class*="sidebar-"] {
-    width: 220px;
-    border-radius: 0 !important;
-}
-.theme-light div[class*="sidebar-"] > div[class*="container-"]{
-    background-color: #ffffff;
-    box-shadow: inset -1px 0px 0px 0px #eceeef;
-}
-.theme-light div[class*="sidebar-"]{
-    font-family: Tahoma, sans-serif !important;
-}
-.theme-light div[class*="sidebar-"]>div:last-child:not([class*="side-"]){
-    background-color: #ffffff;
-    border-top: 1px solid #EEE;
-    box-shadow: inset -1px 0px 0px 0px #eceeef;
-}
-
-/* ...наркомааааания, в гробу я видал такие селекторы */
-
-/**
- * Ник и описание акка
- */
-.theme-light div[class^='accountDetails-'] * {
-    color: #333;
-}
-
-/**
- * Скроллбары
- */
-/* лево-право */
-.theme-light div[class^='scrollerWrap-'] div[class^='scroller-']::-webkit-scrollbar-thumb {
-    background-color: rgba(140, 140, 140, 0.27);
-}
-/* сообщения */
-.theme-light .messages-wrapper>.scroller-wrap>.scroller::-webkit-scrollbar-thumb {
-    background-color: #d1d1d2;
-}
-
-/**
- * Кнопки настройки и выключения звука
- */
-.theme-light svg[name="Nova_HeadsetDeafen"],
-.theme-light svg[name="Nova_MicrophoneMute"],
-.theme-light div:not([class*="iconContainer-"]) > svg[name="Gear"]{
-    color: #BBB
-}
-
-/**
- * Заголовок Сервера
- */
-.theme-light div[class*="chat-"] div[class*="title-"]{
-    box-shadow: 0 1px 0 0 #eceeef;
-}
-.theme-light div[class*="sidebar-"] > div > div:not([class*="bannerVisible-"]) header[class*="header-"]{
-    background-color: #fff;
-    border-bottom: 0 solid #FFF;
-    border-right: 1px solid #eceeef;
-    box-shadow: 0 1px 0 0 #eceeef;
-}
-.theme-light div[class*="sidebar-"] div[class*="privateChannels-"] header[class*="header-"]{
-    border-right: none !important;
-    box-shadow: none !important;
-}
-
-/* картинка комьюнити серверов */
-header + div[class*="bannerImage-"] {
-    display: none;
-}
-/* тень надписи комьюнити серверов */
-.theme-light header > span[class*="name-"] {
-    text-shadow: none !important;
-}
-/* отступ для мозилы */
-div[class*="sidebar-"] > div > div > div[class*="systemPad-"] {
-    padding-right: 0 !important;
-}
-
-/**
- * Айтемы комнат
- */
-.theme-light div[class*="sidebar-"] div[class*="containerDefault-"] div[class*="wrapper-"] > div[class*="content-"] {
-    background-color: #FFF;
-}
-.theme-light div[class*="sidebar-"] div[class*="containerDefault-"] div[class*="wrapper-"] > div[class*="content-"] > div[class*="name-"] {
-    color: #888;
-}
-.theme-light div[class*="sidebar-"] div[class*="containerDefault-"] div[class*="wrapper-"] > div[class*="content-"] > svg > path {
-    fill: #CCC;
-}
-.theme-light div[class*="sidebar-"] div[class*="containerDefault-"] div[class*="wrapper-"] > div[class*="content-"] svg[class*="actionIcon-"] > path {
-    fill: #CCC;
-}
-.theme-light div[class*="sidebar-"] div[class*="containerDefault-"] div[class*="wrapper-"] > div[class*="content-"] svg[class*="actionIcon-"]:hover > path {
-    fill: #777;
-}
-.theme-light div[class*="sidebar-"] div[class*="containerDefault-"] div[class*="wrapper-"]:hover > div[class*="content-"],
-.theme-light div[class*="sidebar-"] div[class*="containerDefault-"][class*="selected-"] div[class*="wrapper-"] > div[class*="content-"] {
-    background-color: #F1F1F1;
-}
-.theme-light div[class*="sidebar-"] div[class*="containerDefault-"][class*="selected-"] div[class*="wrapper-"] > div[class*="content-"] > div[class*="name-"] {
-    color: #333;
-}
-.theme-light div[class*="sidebar-"] div[class*="containerDefault-"] div[class*="wrapper-"][class*="modeUnread-"] > div[class*="content-"] > div[class*="name-"] {
-    color: #333;
-    font-weight: bold;
-}
-.theme-light div[class*="sidebar-"] div[class*="containerDefault-"] div[class*="wrapper-"][class*="modeMuted-"] > div[class*="content-"] > div[class*="name-"] {
-    color: #DDD;
-}
-
-.theme-light div[class*="sidebar-"] div[class*="containerDefault-"] div[class*="wrapper-"][class*="clickable-"] > div[class*="name-"] {
-    color: #666;
-}
-.theme-light div[class*="sidebar-"] div[class*="containerDefault-"] div[class*="wrapper-"][class*="clickable-"]:hover > div[class*="name-"] {
-    color: #333;
-}
-.theme-light div[class*="sidebar-"] div[class*="containerDefault-"] div[class*="wrapper-"][class*="clickable-"] > svg[class*="icon-"] > path {
-    fill: #CCC;
-}
-.theme-light div[class*="sidebar-"] div[class*="containerDefault-"] div[class*="wrapper-"][class*="clickable-"]:hover > svg[class*="icon-"] > path {
-    fill: #777;
-}
-.theme-light div[class*="sidebar-"] div[class*="containerDefault-"] div[class*="wrapper-"][class*="clickable-"]:hover > div[class*="children-"] svg > polygon {
-    fill: #777;
-}
-
-.theme-light div[class*="sidebar-"] div[class*="containerDefault-"] div[class*="wrapper-"] > div[class*="content-"] > div[class*="children-"] > div[class*="userLimit-"] > div > span[class*="users-"] {
-    background-color: #EEE;
-}
-.theme-light div[class*="sidebar-"] div[class*="containerDefault-"] div[class*="wrapper-"] > div[class*="content-"] > div[class*="children-"] > div[class*="userLimit-"] > div > span[class*="total-"] {
-    background-color: #E5E5E5;
-}
-.theme-light div[class*="sidebar-"] div[class*="containerDefault-"] div[class*="wrapper-"] > div[class*="content-"] > div[class*="children-"] > div[class*="userLimit-"] > div > span[class*="total-"]::after {
-    border-right-color: #E5E5E5;
-}
-
-.theme-light div[class*="sidebar-"] div[class*="containerDefault-"] div[class*="list-"] > div > div[class*="voiceUser-"]:hover > div[class*="content-"] {
-    background-color: #EEE;
-}
-.theme-light div[class*="sidebar-"] div[class*="containerDefault-"] div[class*="list-"] > div > div[class*="voiceUser-"]:hover > div[class*="content-"] > div[class*="username-"] {
-    color: #999;
-}
-.theme-light div[class*="iconVisibility-"] [class*="unread-"]{
-    background-color: #CCC;
-}
-.theme-light div[class*="iconVisibility-"] button[aria-label="Create Channel"] {
-    display: none;
-}
-.theme-light div[class*="iconVisibility-"]:hover button[aria-label="Create Channel"] {
-    color: #CCC;
-    display: block;
-}
-
-/*.theme-light div[class*="bannerVisible-"] div[class*="animatedContainer-"]{
-  display: none;
-}*/
-
-/**
- * Боковая панель, саамая левая с выбором сервера
- */
-.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > nav[class*="wrapper-"]:first-child *{
-    font-family: Tahoma, sans-serif !important;
-}
-.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > nav[class*="wrapper-"]:first-child {
-    box-shadow: -1px 0 0 0 #EEE inset;
-}
-.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > nav[class*="wrapper-"]:first-child >  div:not([class*="unreadMentionsIndicatorTop-"]) > div {
-    background: #FFF;
-    max-width: 71px;
-}
-.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > nav[class*="wrapper-"]:first-child div[class*="guildSeparator-"] {
-    background: #dee1e6;
-    height: 1px;
-}
-.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > nav[class*="wrapper-"]:first-child div[class*="circleIconButton-"] {
-    border-radius: 50%;
-    background: #FFF;
-    color: #c5c5c5;
-    border: 1px dashed #cacbcc;
-}
-.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > nav[class*="wrapper-"]:first-child div[class*="circleIconButton-"] span {
-    font-size: 21px;
-}
-.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > nav[class*="wrapper-"]:first-child div[class*="circleIconButton-"]:hover {
-    background: #fbfbfb;
-    color: #777777;
-    border-color: #7d7b7b;
-}
-
-.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > nav[class*="wrapper-"]:first-child div[class*="pill-"] > span[class*="item-"]{
-    background: #BBB;
-}
-
-/**
- *  Инпут поиска в контактах
- */
-.theme-light div[class*="privateChannels-"] div[class*="searchBar-"] > div[class*="searchBarComponent-"] {
-    background-color: white !important;
-    box-shadow: inset 0 0 0 1px #eceeef;
-
-}
-.theme-light div[class*="privateChannels-"] div[class*="searchBar-"] {
-    background-color: #FFF;
-    border: 1px solid transparent;
-    border-right: 1px solid #e3e5e8;
-    border-radius: 0;
-    box-shadow: inset 0px -1px 0px #e3e5e8;
-}
-
-/**
- * Список контактов
- */
-.theme-light div[class*="privateChannels-"] > div[class*="themeGhostHairline-"]{
-    background: #FFF;
-    border-right: 1px solid #e3e5e8;
-}
-.theme-light div[class*="privateChannels-"]{
-    --background-secondary: #FFF;
-}
-
-/**
- * Тень у френдов
- */
-.theme-light div[class*="base-"] > div[class*="content-"] > div[class*="container-"]  > div[class*="themed-"]{
-    box-shadow: 0px 1px 0px 0px #e3e5e8;
-}
-
-/**
- * Фикс кругов и бордеров аватаров/статусов при наведении/выделении
- */
-.theme-light .private-channels .channel:hover a .avatar-small .status,
-.theme-light .private-channels .channel.selected a .avatar-small .status{
-    border: 2px solid #F1F1F1;
-}
-.theme-light .private-channels .channel:hover .avatar-small,
-.theme-light .private-channels .channel.selected .avatar-small{
-    box-shadow: none;
-}
-
-/**
- * better discord, список плагинов, тем
- */
-.theme-light .ui-standard-sidebar-view .bda-slist li{
-    background: #f3f3f3;
-    border-bottom: 1px solid #e4e4e4;
-}
-.theme-light .ui-standard-sidebar-view .bda-slist li:last-child{
-    background: #f3f3f3;
-    border-bottom: 1px solid transparent;
-}
-.theme-light .ui-standard-sidebar-view .bda-slist li:nth-child(odd) {
-    background: #f5f5f5;
-    border-top: 1px solid transparent;
-}
-.theme-light .ui-standard-sidebar-view .bda-slist .bda-description{
-    border-top: 1px solid #dcdcdc;
-}
-/* Настройки */
-.theme-light #bd-settings-sidebar .ui-tab-bar-item:not(.selected) {
-    color: #72767d;
-}
-.theme-light #bd-settings-sidebar .ui-tab-bar-header {
-    color: #b9bbbe;
-    font-weight: bold;
-}
-.theme-light #bd-settings-sidebar .ui-tab-bar-item:hover:not(.selected) {
-    color: #4f545c;
-    background-color: rgba(79,84,92,.1);
-}
-/* ui */
-.theme-light #bd-settingspane-container h2.ui-form-title {
-    color: #72767d;
-}
-.theme-light #bd-settingspane-container .ui-switch-item h3 {
-    color: #81858b;
-}
-.theme-light #bd-settingspane-container .ui-switch-item .style-description {
-    color: #bec5d2;
-}
-
-
-/**
- * Возврат шрифта в блоке кода
- */
-code, code *{
-    font-family: Menlo, Consolas, Monaco, monospace !important;
-    font-size: 12px    !important;
-    line-height: 14px  !important;
-}
-
-.theme-light div[class*="markup-"] code.inline {
-    background: #f8f9f9 !important;
-    color: #657b83;
-    box-shadow: inset 0 0 1px #efefef;
-    border: 1px solid #efefef;
-}
-.theme-dark div[class*="markup-"] code.inline {
-    background: #2f3136 !important;
-    color: #839496;
-    border: 1px solid rgba(32,34,37,.3);
-}
-
-
-/**
- * Плагин цитат
- */
-
-/* Возврат шрифта */
-.message-group .citar-btn {
-    font-family: "Segoe MDL2 Assets", "Whitney" !important;
-}
-
-/* кнопка цитаты */
-.theme-light div[class*="messageCozy"] .citar-btn {
-    background-color: #ebebeb;
-}
-.theme-dark div[class*="messageCozy"] .citar-btn {
-    background-color: #2f3136;
-}
-
-/* полоса цитаты */
-.theme-light div[class*="message"] [class^="embedPill-"] {
-    background-color: #f1f1f1 !important;
-}
-.theme-dark div[class*="message"] [class^="embedPill-"] {
-    background-color: #777 !important;
-}
-
-/**
- * Web версия
- */
-/* разделитель перед кнопкой загрузки */
-.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > nav[class*="wrapper-"]:first-child [class*="downloadAppButton-"]:after {
-    background-color: #dee1e6;
-    height: 1px;
-}
-.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > nav[class*="wrapper-"]:first-child [class*="downloadAppButton-"] {
-    color: #BBB;
-}
-.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > nav[class*="wrapper-"]:first-child [class*="downloadAppButton-"] svg circle{
-    box-shadow: inset 0 0 0 1px #111
-}
-.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > nav[class*="wrapper-"]:first-child [class*="downloadAppButton-"] use{
-    fill: #FFF;
-    stroke: #FFF;
-}
-.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > nav[class*="wrapper-"]:first-child [class*="downloadAppButton-"]:hover use{
-    fill: #FAFAFA;
-}
-.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > nav[class*="wrapper-"]:first-child [class*="downloadAppButton-"] svg{
-    border-radius: 25px;
-    border: 1px dashed #e8e8e8;
-}
-.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > nav[class*="wrapper-"]:first-child [class*="downloadAppButton-"]:hover svg{
-    border-radius: 25px;
-    border: 1px dashed #a2a2a2;
-}
-.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > nav[class*="wrapper-"]:first-child [class*="downloadAppButton-"] path{
-    fill: #BBB;
-}
-.theme-light div[class*="app-"] > div[class*="app-"] > div[class*="layers-"] > div[class*="layer-"] > div[class*="container-"] > nav[class*="wrapper-"]:first-child [class*="downloadAppButton-"]:hover path:last-child{
-    fill: rgb(67, 181, 129);
-}
-
-/* ереваны */
-div[class*="isMentionedCozy-"] {
-    margin-left: 7px;
-}
-
-span[class*="usernameWrapper-"] span[class*="botTagCozy-"],
-span[class*="usernameWrapper-"] span[class*="botTagCompact-"] {
-    font-size: 9px !important;
-    padding: 2px 3px
-}
-
-/**
- * Превью чатика в настройках
- */
-div[class*="previewInner-"] > div[class*="containerCozyBounded-"],
-div[class*="previewInner-"] > div[class*="containerCompactBounded-"] {
-    padding: 0;
-}
-
-/**
- * Исправления для мозиллы
- */
-
-/* Скролл комнат... серьезно... вы маскируете стандартный скроллбар? %) */
-.theme-light div[class*="sidebar-"] div[class*="scrollbar-"]::before,
-.theme-light div[class*="sidebar-"] div[class*="scrollbar-"] > div[class*="pad-"]::before{
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background-color: #FFF;
-    content: "";
-}
-.theme-light div[class*="sidebar-"] div[class*="scrollbar-"] > div[class*="pad-"]{
-    left: -3px;
-    width: 3px;
-}
-.theme-light div[class*="sidebar-"] div[class*="scrollbar-"] > div[class*="thumb-"]{
-    background-color: #D5D5D5 !important;
-}
-
-div[class*="membersWrap"] div[class*="member-"]{
-    margin: 4px 1px 4px;
 }
