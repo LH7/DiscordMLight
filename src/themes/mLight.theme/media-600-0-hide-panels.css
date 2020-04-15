@@ -1,0 +1,21 @@
+/**
+ * Полное скрытие панелей если ширина меньше 600 писелей
+ */
+@media screen and (max-width: 600px) {
+    .guilds-1SWlCJ, .sidebar-2K8pFh, .membersWrap-2h-GB4 {
+        display: none;
+    }
+    .base-3dtUhz {
+        left: 0;
+    }
+}
+
+/* Аналогично коду выше для компактного режима */
+body.compact-mode .guilds-1SWlCJ,
+body.compact-mode .sidebar-2K8pFh,
+body.compact-mode .membersWrap-2h-GB4 {
+    display: none;
+}
+body.compact-mode .base-3dtUhz {
+    left: 0;
+}

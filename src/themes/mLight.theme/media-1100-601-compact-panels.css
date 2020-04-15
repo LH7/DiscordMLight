@@ -1,0 +1,86 @@
+/**
+ * Автоуменьшение ширины мемберов до аватаров
+ * автоскрытие комнат
+ */
+@media screen and (max-width: 1100px) and (min-width: 601px) {
+    /**
+     * Мемберы, скрытие до аватаров
+     */
+    .membersWrap-2h-GB4 {
+        position: fixed;
+        right: -150px;
+        height: calc(100% - 50px);
+    }
+    /* + заголовок десктопа */
+    .platform-win .membersWrap-2h-GB4{
+        height: calc(100% - 70px);
+    }
+    /**
+     * Чат, отступ справа.
+     * Cмысл ласт потомка:
+     * чтобы на приватных беседах не было отступа
+     */
+    .chatContent-a9vAAp:not(:last-child) {
+        padding-right: 50px;
+    }
+    /**
+     * Мемберы, уменьшение заголовков групп
+     */
+    .membersGroup-v9BXpm {
+        font-size: 10px;
+        padding-left: 4px;
+    }
+    /**
+     * Мемберы, открытие при наведении
+     */
+    .membersWrap-2h-GB4:hover {
+        border-left: 1px solid var(--theme-mlight-color-2);
+        right: 0;
+    }
+
+    /**
+     * Панель серверов на передний план, из-за бордера
+     */
+    .guilds-1SWlCJ {
+        z-index: 3;
+    }
+    /**
+     * Панели комнат, скрытие
+     */
+    .sidebar-2K8pFh {
+        position: fixed;
+        left: -148px;
+        z-index: 2;
+        height: 100%;
+    }
+    .platform-win .sidebar-2K8pFh{
+        height: calc(100% - 20px);
+    }
+
+    /**
+     * убираем 1 бордер, так как будут склеены 2:
+     * С чата и серверов
+     */
+    .theme-light .base-3dtUhz {
+        border-left: none;
+    }
+    /**
+     * Показ при наведении либо на серверы либо на комнаты
+     */
+    .guilds-1SWlCJ:hover + .base-3dtUhz .sidebar-2K8pFh,
+    .sidebar-2K8pFh:hover {
+        left: 72px;
+        z-index: 100;
+        border-right: 1px solid var(--theme-mlight-color-2);
+        border-left: 1px solid var(--theme-mlight-color-2);
+    }
+
+    /**
+     * Фикс заголовка комнат, налезает на комнаты
+     * Второе это заголовок друзей
+     */
+    .title-3qD0b-,
+    .container-1r6BKw {
+        z-index: 1;
+    }
+}

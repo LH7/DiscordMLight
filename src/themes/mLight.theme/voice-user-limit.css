@@ -1,0 +1,12 @@
+/**
+ * Голосовые комнвты, цвета лимитов (light only)
+ */
+.theme-light .userLimit-64AFxe > .wrapper-pZmgj4 {
+    box-shadow: 0 0 0 1px var(--theme-mlight-color-2);
+}
+.theme-light .total-3tKGEB {
+    background-color: var(--theme-mlight-color-1);
+}
+.theme-light .total-3tKGEB:after {
+    border-right-color: var(--theme-mlight-color-1);
+}

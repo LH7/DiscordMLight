@@ -1,0 +1,52 @@
+/**
+ * Разделители по датам
+ */
+.group-spacing-24 .divider-3_HH5L.hasContent-1_DUdQ {
+    margin-top: 1.2rem; margin-bottom: 1.2rem;
+}
+.group-spacing-16 .divider-3_HH5L.hasContent-1_DUdQ {
+    margin-top: 0.8rem; margin-bottom: 0.8rem;
+}
+.group-spacing-8 .divider-3_HH5L.hasContent-1_DUdQ {
+    margin-top: 0.4rem; margin-bottom: 0.4rem;
+}
+.group-spacing-4 .divider-3_HH5L.hasContent-1_DUdQ {
+    margin-top: 0.2rem; margin-bottom: 0.2rem;
+}
+.group-spacing-0 .divider-3_HH5L.hasContent-1_DUdQ {
+    margin-top: 0.1rem; margin-bottom: 0.1rem;
+}
+
+/* расстояние между ссобщениями */
+.group-spacing-24 .groupStart-23k01U {
+    margin-top: 1rem; margin-bottom: 1rem;
+}
+.group-spacing-16 .groupStart-23k01U {
+    margin-top: 0.66rem; margin-bottom: 0.66rem;
+}
+.group-spacing-8 .groupStart-23k01U {
+    margin-top: 0.33rem; margin-bottom: 0.33rem;
+}
+.group-spacing-4 .groupStart-23k01U {
+    margin-top: 0.16rem; margin-bottom: 0.16rem;
+}
+.group-spacing-0 .groupStart-23k01U {
+    margin-top: 0; margin-bottom: 0;
+}
+
+/* паддинг ласт сообщения */
+.scroller-3sQKXg:after {
+    height: 0.5rem;
+}
+
+/* группа сообщений, линия */
+.theme-light .groupStart-23k01U {
+    box-shadow: 0 -1px 0 var(--theme-mlight-color-1);
+}
+.theme-dark .groupStart-23k01U {
+    box-shadow: 0 -1px 0 var(--theme-mlight-color-2);
+}
+/* но убираем линию если новая дата */
+.divider-3_HH5L + .groupStart-23k01U {
+    box-shadow: none;
+}

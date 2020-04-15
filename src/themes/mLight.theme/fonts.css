@@ -1,0 +1,10 @@
+/**
+ * Общий шрифт
+ */
+::placeholder, body, button, input, select, textarea {
+    font-family: Tahoma, Arial, sans-serif;
+}
+
+.username-1A8OIy, .mention {
+    font-weight: 1000;
+}

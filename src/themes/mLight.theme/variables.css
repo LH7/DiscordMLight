@@ -1,0 +1,91 @@
+/**
+ * Переменные
+ */
+.theme-light {
+    /**************************
+     * Стандартные переменные *
+     **************************/
+
+    /**
+     *  Общий фон, все в белый
+     */
+    --background-primary: #fff;
+    --background-secondary: #FFF;
+    --background-secondary-alt: #FFF;
+    --background-tertiary: #FFF;
+
+    /**
+     * Бекграунд поля ввода
+     */
+    --channeltextarea-background: #FFF;
+
+    /**
+     *  Общий текст
+     */
+    --text-normal: #000;
+
+
+    /**
+     * Кнопки
+     */
+    --interactive-normal: #AAA;
+
+    /**
+     * Реакции, хеши в комнатах
+     */
+    --text-muted: #CCC;
+
+    /**
+     * Выделенная комната
+     */
+    --background-modifier-selected: rgba(0,0,0,0.08);
+
+    /**
+     * Бордер под верхним заголовком
+     */
+    --elevation-low: 0 1px 0 #EEE;
+
+    /************************
+     * Кастомные переменные *
+     ************************/
+
+    /**
+     * Просто цвета, по возможности от светлого к темному
+     */
+    --theme-mlight-color-1: #F7F7F7;
+    --theme-mlight-color-2: #EBEBEB;
+    --theme-mlight-color-3: #DADADA;
+    --theme-mlight-color-4: #AAA;
+    --theme-mlight-color-mention: #FAA61A;
+}
+
+/**
+ * Переопределение цвета для выделения активного сервера
+ */
+.theme-light .guilds-1SWlCJ {
+    --header-primary: var(--theme-mlight-color-4);
+}
+
+/**
+ * Переопределение цвета для выделения непрочитанных комнат
+ */
+.theme-light .unread-3zKkbm {
+    --interactive-active: var(--theme-mlight-color-4);
+}
+
+/**
+ * Темная тема, меньше переменных, и в основном свои
+ */
+.theme-dark {
+    /************************
+     * Кастомные переменные *
+     ************************/
+
+    /**
+     * Просто цвета, по возможности от темного к светлому
+     */
+    --theme-mlight-color-1: #292b2f;
+    --theme-mlight-color-2: #444;
+    --theme-mlight-color-3: #6d6d6d;
+    --theme-mlight-color-mention: #714f15;
+}

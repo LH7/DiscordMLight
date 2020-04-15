@@ -1,0 +1,15 @@
+
+/**
+ * Автоскрытие аватаров в уютной теме
+ */
+@media screen and (max-width: 1300px) {
+    .cozyMessage-3V1Y8y .timestampVisibleOnHover-2bQeI4 {
+        display: none;
+    }
+    .cozyMessage-3V1Y8y .avatar-1BDn8e {
+        display: none;
+    }
+    .cozyMessage-3V1Y8y.message-2qnXI6 {
+        padding-left: 10px;
+    }
+}

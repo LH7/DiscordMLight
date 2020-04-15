@@ -1,0 +1,9 @@
+/**
+ * Меню справа от сообщения
+ */
+.mouse-mode .message-2qnXI6:hover .buttons-cl5qTG:not(:hover) {
+    opacity: 0.7;
+}
+.buttons-cl5qTG:hover {
+    opacity: 1;
+}

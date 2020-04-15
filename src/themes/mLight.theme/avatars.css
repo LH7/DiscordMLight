@@ -1,0 +1,40 @@
+/**
+ * Аватарки в чате, размер, тень
+ */
+.a11y-font-scaled-down .avatar-1BDn8e, .avatar-1BDn8e {
+    border-radius: 0.3em;
+    width: 2.2em;
+    height: 2.2em;
+    margin-top: 0.25em;
+    top: auto;
+}
+.theme-light .a11y-font-scaled-down .avatar-1BDn8e, .theme-light .avatar-1BDn8e {
+    box-shadow: 0px 0px 0px 1px var(--theme-mlight-color-2);
+}
+.a11y-font-scaled-down .avatar-1BDn8e, .avatar-1BDn8e {
+    left: 0.4rem;
+}
+
+
+/**
+ * Участники, друзья и юзер на панельке, аватары
+ */
+/* скругление вместо круга */
+.avatar-3uk_u9 .mask-1l8v16 foreignObject,
+.avatar-SmRMf2 .mask-1l8v16 foreignObject,
+.avatar-3W3CeO .mask-1l8v16 foreignObject {
+    mask: none;
+    border-radius: 5px;
+}
+/* скругление для совместимости со старым хромом */
+.avatar-3uk_u9 .mask-1l8v16 foreignObject img,
+.avatar-SmRMf2 .mask-1l8v16 foreignObject img,
+.avatar-3W3CeO .mask-1l8v16 foreignObject img{
+    border-radius: 5px;
+}
+/* обводка чтобы не сливались */
+.theme-light .avatar-3uk_u9 foreignObject,
+.theme-light .avatar-SmRMf2 foreignObject,
+.theme-light .avatar-3W3CeO foreignObject {
+    box-shadow: inset 0 0 0 1px var(--theme-mlight-color-2);
+}

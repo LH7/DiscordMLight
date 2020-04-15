@@ -1,0 +1,14 @@
+/**
+ * Комнаты, меньше ширина
+ */
+.sidebar-2K8pFh {
+    width: 220px;
+}
+
+/**
+ * Участники, меньше ширина
+ */
+.membersWrap-2h-GB4, .members-1998pB {
+    min-width: 200px;
+    width: 200px;
+}

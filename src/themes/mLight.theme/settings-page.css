@@ -1,0 +1,13 @@
+/**
+ * Превью сообщений, в светлой теме бордер
+ */
+.theme-light .preview-2nSL_2 {
+    border: 1px solid var(--theme-mlight-color-2);
+}
+
+/**
+ * Линия отделяющая список настроек
+ */
+.theme-light .sidebarRegion-VFTUkN {
+    border-right: 1px solid var(--theme-mlight-color-2);
+}

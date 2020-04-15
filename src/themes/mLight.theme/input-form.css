@@ -1,0 +1,24 @@
+/**
+ * Поле ввода сообщений, обводка (light-only)
+ */
+.theme-light .form-2fGMdU .scrollableContainer-2NUZem {
+    box-shadow: 0 0 0 1px var(--theme-mlight-color-2);
+}
+
+/**
+ * Поле ввода сообщений, расстояние от краев
+ */
+.form-2fGMdU {
+    padding-left: 8px;
+    margin-top: 0.5rem;
+}
+.channelTextArea-rNsIhG {
+    margin-bottom: 8px;
+}
+
+/**
+ * Поле редактирования сообщений, обводка
+ */
+.theme-light .channelTextArea-2VhZ6z {
+    border: 1px solid var(--theme-mlight-color-3);
+}

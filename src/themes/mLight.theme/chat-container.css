@@ -1,0 +1,24 @@
+/**
+ * Общая позиция чата
+ */
+
+/* позиция текста чатика */
+.cozy-3raOZG.wrapper-2a6GCs {
+    padding-left: 3rem;
+    padding-right: 10px;
+}
+
+/* для аватарок, должно быть одинаковым числом */
+.a11y-font-scaled-down .cozy-3raOZG,
+.a11y-font-scaled-down .cozy-3raOZG .header-23xsNx {
+    padding-left: 3rem;
+}
+.a11y-font-scaled-down .cozy-3raOZG .header-23xsNx {
+    margin-left: -3rem;
+}
+
+/* выравнивание метки времени */
+.a11y-font-scaled-down .cozy-3raOZG .timestamp-3ZCmNB.alt-1uNpEt,
+.cozy-3raOZG .timestamp-3ZCmNB.alt-1uNpEt {
+    width: 2.1rem;
+}
