@@ -83,4 +83,11 @@
     .container-1r6BKw {
         z-index: 1;
     }
+
+    /**
+     * Фикс прикрепленных сообщений, вылезает влево из-за мелкой ширины
+     */
+    .layerContainer-yqaFcK > [id*="popout_"] {
+        right: 65px !important;
+    }
 }

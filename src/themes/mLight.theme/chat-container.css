@@ -3,14 +3,15 @@
  */
 
 /* позиция текста чатика */
-.cozy-3raOZG.wrapper-2a6GCs {
+.a11y-font-scaled-down .cozy-3raOZG.wrapper-2a6GCs,
+.cozy-3raOZG.wrapper-2a6GCs{
     padding-left: 3rem;
     padding-right: 10px;
 }
 
 /* для аватарок, должно быть одинаковым числом */
 .a11y-font-scaled-down .cozy-3raOZG,
-.a11y-font-scaled-down .cozy-3raOZG .header-23xsNx {
+.a11y-font-scaled-down .cozy-3raOZG.wrapper-2a6GCs .header-23xsNx {
     padding-left: 3rem;
 }
 .a11y-font-scaled-down .cozy-3raOZG .header-23xsNx {

@@ -19,19 +19,19 @@
 
 /* расстояние между ссобщениями */
 .group-spacing-24 .groupStart-23k01U {
-    margin-top: 1rem; margin-bottom: 1rem;
+    padding-top: 1rem; margin-bottom: 0;
 }
 .group-spacing-16 .groupStart-23k01U {
-    margin-top: 0.66rem; margin-bottom: 0.66rem;
+    padding-top: 0.66rem; margin-bottom: 0;
 }
 .group-spacing-8 .groupStart-23k01U {
-    margin-top: 0.33rem; margin-bottom: 0.33rem;
+    padding-top: 0.33rem; margin-bottom: 0;
 }
 .group-spacing-4 .groupStart-23k01U {
-    margin-top: 0.16rem; margin-bottom: 0.16rem;
+    padding-top: 0.16rem; margin-bottom: 0;
 }
 .group-spacing-0 .groupStart-23k01U {
-    margin-top: 0; margin-bottom: 0;
+    padding-top: 0; margin-bottom: 0;
 }
 
 /* паддинг ласт сообщения */

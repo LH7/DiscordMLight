@@ -1,4 +1,4 @@
-//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.3.58"}*//
+//META{"name":"mLight","description":"Фикс-тема для дискорда https://github.com/LH7/DiscordMLight","author":"LH","version":"0.3.59"}*//
 /*
 
   v0.3
