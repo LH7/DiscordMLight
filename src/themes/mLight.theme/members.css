@@ -1,14 +1,13 @@
+
 /**
- * Участники, отступы
+ * Мемберы, уменьшение заголовков групп и отступов участников
  */
-.member-3-YXUe {
-    margin-left: 0
+.membersGroup-2eiWxl {
+    font-size: 10px;
+    padding-left: 4px;
+    padding-top: 6px;
+    height: 20px;
 }
-/**
- * Участники, отступы заголовков
- */
-.membersGroup-v9BXpm {
-    padding-left: 8px;
-    padding-top: 12px;
-    height: 36px;
+.member-2gU6Ar {
+    margin-left: 0;
 }

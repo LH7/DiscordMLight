@@ -1,10 +1,10 @@
 /**
  * убрать метки времени сообщений
  */
-.timestamp-3ZCmNB {
+.timestamp-p1Df1m {
     opacity: 0;
 }
-.cozyMessage-3V1Y8y:hover .timestamp-3ZCmNB,
-.compact-T3H92H .timestamp-3ZCmNB {
+.cozyMessage-1DWF9U:hover .timestamp-p1Df1m,
+.compact-2Nkcau .timestamp-p1Df1m {
     opacity: 1;
 }

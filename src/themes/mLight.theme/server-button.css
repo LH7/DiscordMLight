@@ -2,10 +2,10 @@
  * Кнопки друзей, загрузки, новых серверов
  * Просто обводка (light-only)
  */
-.theme-light .listItemWrapper-3X98Pc:not(:hover){
+.theme-light .listItemWrapper-3d87LP:not(:hover){
     border-radius: 24px;
     border: 1px dashed var(--theme-mlight-color-3);
 }
-.theme-light .listItemWrapper-3X98Pc {
+.theme-light .listItemWrapper-3d87LP {
     border: 1px solid transparent;
 }

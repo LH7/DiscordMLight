@@ -2,22 +2,26 @@
  * Компактная тема
  */
 /* скрытие повторов ников */
-.message-2qnXI6.compact-T3H92H:not(.groupStart-23k01U) .username-1A8OIy {
+.message-2CShn3.compact-2Nkcau:not(.groupStart-3Mlgv1) .username-h_Y3Us{
     display: none;
 }
-.compact-T3H92H.wrapper-2a6GCs {
+.message-2CShn3.compact-2Nkcau:not(.groupStart-3Mlgv1) .headerText-2z4IhQ {
+    margin-right: 0;
+}
+.compact-2Nkcau.wrapper-30-Nkg {
     padding-left: 2.8rem;
 }
-.compact-T3H92H .contents-2mQqc9 {
+.compact-2Nkcau .contents-2MsGLg {
     text-indent: -2.8rem;
 }
 
 /* метки времени */
-.compact-T3H92H .timestamp-3ZCmNB {
+.compact-2Nkcau .timestamp-p1Df1m {
     width: 3.2em;
     height: 1.5em;
     overflow: hidden;
+    text-indent: 0;
 }
-.separator-2nZzUB {
+.separator-AebOhG {
     display: none;
 }

@@ -1,16 +1,16 @@
 /**
  * Предпросмотр сайта (light-only)
  */
-.embedFull-2tM8-- {
+.embedFull-1HGV2S {
     background: var(--theme-mlight-color-1);
     box-shadow: 0 0 0 1px var(--theme-mlight-color-2);
     border-left: 4px solid var(--theme-mlight-color-3) !important;
     margin-top: 0.5rem;
 }
 /* отступы */
-.embedFull-2tM8-- .embedMargin-UO5XwE {
+.embedFull-1HGV2S .embedMargin-2PsaQ4 {
     margin-top: 2px;
 }
-.embedFull-2tM8-- .embedMedia-1guQoW {
+.embedFull-1HGV2S .embedMedia-1guQoW {
     margin-top: 8px;
 }

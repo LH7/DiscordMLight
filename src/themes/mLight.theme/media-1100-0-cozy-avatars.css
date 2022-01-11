@@ -3,14 +3,17 @@
  * Автоскрытие аватаров в уютной теме
  */
 @media screen and (max-width: 1300px) {
-    .cozyMessage-3V1Y8y .timestampVisibleOnHover-2bQeI4 {
+    .cozyMessage-1DWF9U .timestampVisibleOnHover-9PEuZS {
         display: none;
     }
-    .cozyMessage-3V1Y8y .avatar-1BDn8e {
+    .cozyMessage-1DWF9U .avatar-2e8lTP {
         display: none;
     }
-    .a11y-font-scaled-down .a11y-font-scaled-down .cozy-3raOZG.wrapper-2a6GCs,
-    .messagesWrapper-1sRNjr .cozy-3raOZG.wrapper-2a6GCs {
-        padding-left: 10px;
+    .a11y-font-scaled-down .a11y-font-scaled-down .cozy-VmLDNB.wrapper-30-Nkg,
+    .messagesWrapper-RpOMA3 .cozy-VmLDNB.wrapper-30-Nkg {
+        padding-left: 5px;
+    }
+    .message-2CShn3 {
+        padding-right: 5px !important;
     }
 }

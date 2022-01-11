@@ -15,11 +15,10 @@ embed.css
 hide-typing.css
 unread-rooms.css
 compact-theme-fix.css
-quotes.css
 settings-page.css
 members.css
 server-button.css
-voice-user-limit.css
+// voice-user-limit.css
 jump-to-new-message-button.css
 media-1100-0-cozy-avatars.css
 media-1100-601-compact-panels.css

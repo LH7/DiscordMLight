@@ -1,25 +1,26 @@
 /**
  * Граница отделяющая сервера (light-only)
  */
-.theme-light .base-3dtUhz {
+.theme-light .base-2jDfDU {
     border-left: 1px solid var(--theme-mlight-color-2);
 }
 /**
  * Граница отделяющая список друзей или комнат от чата (light-only)
  */
-.theme-light .sidebar-2K8pFh {
+.theme-light .sidebar-1tnWFu {
     border-right: 1px solid var(--theme-mlight-color-2);
 }
 
 /**
  * Граница отделяющая панель с ником и наушниками
  */
-.theme-light .panels-j1Uci_ {
+.theme-light .panels-3wFtMD {
     box-shadow: inset 0 1px 0 0px var(--theme-mlight-color-2);
 }
 
 /**
  * Граница отделяющая заголовок приложения (light-only)
+ * не использую, поэтому хз какой там хеш
  */
 .theme-light .titleBar-AC4pGV {
     box-shadow: inset 0px -1px 0px var(--theme-mlight-color-2);

@@ -3,23 +3,20 @@
  */
 
 /* позиция текста чатика */
-.a11y-font-scaled-down .cozy-3raOZG.wrapper-2a6GCs,
-.cozy-3raOZG.wrapper-2a6GCs{
-    padding-left: 3rem;
+.a11y-font-scaled-down .cozy-VmLDNB.wrapper-30-Nkg,
+.cozy-VmLDNB.wrapper-30-Nkg{
+    padding-left: 3.2rem;
     padding-right: 10px;
 }
 
-/* для аватарок, должно быть одинаковым числом */
-.a11y-font-scaled-down .cozy-3raOZG,
-.a11y-font-scaled-down .cozy-3raOZG.wrapper-2a6GCs .header-23xsNx {
-    padding-left: 3rem;
-}
-.a11y-font-scaled-down .cozy-3raOZG .header-23xsNx {
-    margin-left: -3rem;
+/* для аватарок */
+.a11y-font-scaled-down .cozy-VmLDNB,
+.a11y-font-scaled-down .cozy-VmLDNB.wrapper-30-Nkg .avatar-2e8lTP {
+    left: 0.3rem;
 }
 
 /* выравнивание метки времени */
-.a11y-font-scaled-down .cozy-3raOZG .timestamp-3ZCmNB.alt-1uNpEt,
-.cozy-3raOZG .timestamp-3ZCmNB.alt-1uNpEt {
-    width: 2.1rem;
+.a11y-font-scaled-down .cozy-VmLDNB .timestamp-p1Df1m.alt-1dvXnH,
+.cozy-VmLDNB .timestamp-p1Df1m.alt-1dvXnH {
+    transform: translateX(-0.8rem);
 }

@@ -2,26 +2,26 @@
  * Полное скрытие панелей если ширина меньше 600 писелей
  */
 @media screen and (max-width: 600px) {
-    .guilds-1SWlCJ, .sidebar-2K8pFh, .membersWrap-2h-GB4 {
+    .guilds-2JjMmN, .sidebar-1tnWFu, .membersWrap-3NUR2t {
         display: none;
     }
-    .base-3dtUhz {
+    .base-2jDfDU {
         left: 0;
     }
     /**
      * Фикс прикрепленных сообщений, вылезает влево из-за мелкой ширины
      */
-    .layerContainer-yqaFcK > [id*="popout_"] {
+    .layerContainer-2v_Sit > [id*="popout_"] {
         right: 0 !important;
     }
 }
 
 /* Аналогично коду выше для компактного режима */
-body.compact-mode .guilds-1SWlCJ,
-body.compact-mode .sidebar-2K8pFh,
-body.compact-mode .membersWrap-2h-GB4 {
+body.compact-mode .guilds-2JjMmN,
+body.compact-mode .sidebar-1tnWFu,
+body.compact-mode .membersWrap-3NUR2t {
     display: none;
 }
-body.compact-mode .base-3dtUhz {
+body.compact-mode .base-2jDfDU {
     left: 0;
 }
